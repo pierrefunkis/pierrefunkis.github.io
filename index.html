@@ -1,305 +1,1626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Semantic — Data Talent & Engineering</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic — Data Services</title>
+  <meta name="description" content="Semantic connects companies with experienced, independent data professionals. Selected specialists, ready to integrate directly into your teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #0b0f17;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #4f46e5;
-      --accent2: #22c55e;
-      --pill: rgba(79, 70, 229, 0.15);
+      --ink:     #0F172A;
+      --ink-mid: #1E293B;
+      --text:    #475569;
+      --muted:   #94A3B8;
+      --border:  #E2E8F0;
+      --surface: #F8FAFF;
+      --primary: #6366F1;
+      --primary-dark: #4F46E5;
+      --primary-light: #EEF2FF;
+      --white:   #FFFFFF;
+      --nav-h:   70px;
+      --r:       14px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: radial-gradient(circle at top, #111827, var(--bg));
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--white);
       line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* NAVBAR */
-    .nav-container {
-      position: sticky;
-      top: 0;
+    /* ── NAVBAR ─────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
-      backdrop-filter: blur(12px);
-      background: rgba(11, 15, 23, 0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    nav {
-      max-width: 1100px;
-      margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
+      justify-content: space-between;
+      padding: 0 48px;
     }
 
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      position: relative;
+    .nav-logo {
       display: flex;
+      align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.03);
-      padding: 6px;
-      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px;
+      gap: 2px;
     }
 
     .nav-pill {
       position: absolute;
-      height: 34px;
-      width: 110px;
-      border-radius: 999px;
-      background: var(--pill);
-      transition: all 0.3s ease;
-      top: 6px;
-      left: 6px;
-      z-index: 0;
+      top: 5px;
+      left: 5px;
+      height: calc(100% - 10px);
+      background: var(--ink);
+      border-radius: 100px;
+      transition: left 0.28s cubic-bezier(0.4,0,0.2,1), width 0.28s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
     }
 
-    .nav-item {
+    .nav-page-btn {
       position: relative;
       z-index: 1;
-      padding: 6px 14px;
-      cursor: pointer;
+      padding: 9px 22px;
+      background: transparent;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 14px;
-      color: var(--muted);
-      user-select: none;
-    }
-
-    .nav-item.active {
-      color: white;
-    }
-
-    .cta-button {
-      background: var(--accent);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .cta-button:hover {
-      opacity: 0.85;
-    }
-
-    /* PAGE */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    .hero {
-      font-size: 42px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .subhero {
-      color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 30px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: rgba(17, 24, 39, 0.7);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 18px;
-      border-radius: 14px;
-    }
-
-    .card h3 {
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .section-title {
-      margin-top: 50px;
-      font-size: 20px;
       font-weight: 600;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color 0.25s;
+      white-space: nowrap;
     }
 
-    .hidden {
-      display: none;
-    }
+    .nav-page-btn.active { color: #fff; }
 
-    /* FORM */
-    .form {
-      margin-top: 30px;
-      display: grid;
-      gap: 10px;
-      max-width: 500px;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0,0,0,0.2);
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      background: var(--primary);
       color: white;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    textarea {
-      min-height: 120px;
+    .nav-cta-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
     }
 
+    .mobile-nav-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px 16px;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .mobile-nav-menu.open { display: flex; }
+
+    .mobile-nav-btn {
+      padding: 12px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .mobile-nav-btn.active { background: var(--primary-light); color: var(--primary); }
+    .mobile-nav-btn:hover  { background: var(--surface); }
+
+    .mobile-cta-wrap {
+      padding: 8px 0 0;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    .mobile-cta-wrap .btn-primary { width: 100%; justify-content: center; }
+
+    /* ── PAGES ──────────────────────────────────── */
+    .page { display: none; min-height: 100vh; }
+    .page.active { display: block; }
+
+    /* ── LAYOUT ─────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+    .section    { padding: 100px 0; }
+
+    /* ── TYPE ───────────────────────────────────── */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .heading-xl {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(38px,5vw,62px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .heading-lg {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px,3.5vw,44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .heading-sm {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    .body-lg { font-size: 18px; line-height: 1.7; color: var(--text); }
+    .body-md { font-size: 15px; line-height: 1.65; color: var(--text); }
+
+    .section-header { max-width: 600px; margin: 0 auto 64px; text-align: center; }
+    .section-header .heading-lg { margin-bottom: 16px; }
+
+    /* ── BUTTONS ─────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: white; transform: translateY(-2px); }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      background: white;
+      color: var(--primary);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .btn-white:hover { transform: translateY(-2px); }
+
+    .btn-white-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-white-ghost:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+    /* ── HERO (shared) ───────────────────────────── */
+    .hero {
+      padding-top: calc(var(--nav-h) + 84px);
+      padding-bottom: 100px;
+      background: var(--ink);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(99,102,241,0.28) 0%, transparent 65%);
+      top: -200px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      bottom: -60px; left: 10%;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 6px;
+      background: rgba(99,102,241,0.14);
+      border: 1px solid rgba(99,102,241,0.28);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #A5B4FC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+
+    .hero-label span {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #818CF8;
+      border-radius: 50%;
+    }
+
+    .hero .heading-xl { color: white; max-width: 640px; margin-bottom: 24px; }
+    .hero .body-lg    { color: rgba(255,255,255,0.62); max-width: 520px; margin-bottom: 44px; }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ── HERO VARIANTS ───────────────────────────── */
+    .hero-talents { background: linear-gradient(140deg, #1E1B4B 0%, var(--ink) 60%); }
+
+    /* ── DARK SECTION ────────────────────────────── */
+    .dark-section { background: var(--ink); }
+    .dark-section .eyebrow { color: #818CF8; }
+    .dark-section .heading-lg { color: white; }
+    .dark-section .body-md  { color: rgba(255,255,255,0.58); }
+    .dark-section .body-lg  { color: rgba(255,255,255,0.58); }
+
+    /* ── CHECK WRAP ──────────────────────────────── */
+    .check-wrap {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* ── OFFER SECTION ───────────────────────────── */
+    .offer-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .offer-text .heading-lg { margin-bottom: 20px; }
+
+    .benefits-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── MODEL SECTION ───────────────────────────── */
+    .model-layout { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start; }
+
+    .model-text .heading-lg { margin-bottom: 20px; }
+
+    .model-bullets { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+
+    .model-bullets li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: rgba(255,255,255,0.62);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .dot-marker {
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .principle-cards { display: flex; flex-direction: column; gap: 16px; }
+
+    .principle-card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r);
+      padding: 24px 28px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .principle-card:hover { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); }
+
+    .principle-tag {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #818CF8;
+      margin-bottom: 8px;
+    }
+
+    .principle-card .heading-sm { color: white; margin-bottom: 6px; }
+    .principle-card .body-md    { font-size: 14px; }
+
+    /* ── EXPERTISE ───────────────────────────────── */
+    .expertise-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+
+    .expertise-col-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      padding: 8px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+
+    /* ── HUB CALLOUT ─────────────────────────────── */
+    .hub-callout {
+      background: linear-gradient(135deg, #1E1B4B 0%, var(--ink) 100%);
+      border-radius: 20px;
+      padding: 52px 56px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      margin-top: 72px;
+    }
+
+    .hub-callout .heading-sm { color: white; font-size: 22px; margin-bottom: 12px; }
+    .hub-callout .body-md    { color: rgba(255,255,255,0.58); font-size: 15px; }
+
+    .hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px 5px 8px;
+      background: rgba(99,102,241,0.18);
+      border: 1px solid rgba(99,102,241,0.32);
+      border-radius: 100px;
+      font-size: 13px;
+      color: #A5B4FC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    /* ── USE CASES ───────────────────────────────── */
+    .usecases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+    .usecase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px 26px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .usecase-card:hover { border-color: var(--primary); box-shadow: 0 4px 24px rgba(99,102,241,0.09); transform: translateY(-2px); }
+
+    .uc-icon {
+      width: 42px; height: 42px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .usecase-card .heading-sm { margin-bottom: 8px; }
+
+    /* ── HOW IT WORKS ────────────────────────────── */
+    .steps-wrap { position: relative; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+
+    .steps-connector {
+      position: absolute;
+      top: 26px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(to right, var(--border), var(--primary), var(--border));
+      pointer-events: none;
+    }
+
+    .steps-grid-3 { grid-template-columns: repeat(3,1fr); }
+    .steps-conn-3 { left: calc(16.67% + 20px); right: calc(16.67% + 20px); }
+
+    .step-item { text-align: center; }
+
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-item .heading-sm { margin-bottom: 8px; }
+    .step-item .body-md    { font-size: 14px; }
+
+    .how-note {
+      margin-top: 56px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .how-note .heading-sm { margin-bottom: 4px; }
+
+    .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--primary-light);
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ── FINAL CTA ───────────────────────────────── */
+    .final-cta { background: var(--primary); text-align: center; padding: 100px 0; }
+    .final-cta .heading-lg { color: white; margin-bottom: 16px; }
+    .final-cta .body-lg    { color: rgba(255,255,255,0.72); margin-bottom: 44px; }
+
+    .cta-dual { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── BENEFITS GRID (Talents page) ────────────── */
+    .benefits-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+    .benefit-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .benefit-card:hover { box-shadow: 0 8px 32px rgba(15,23,42,0.07); transform: translateY(-2px); }
+
+    .bc-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card .heading-sm { margin-bottom: 8px; }
+
+    /* ── PROFILES GRID ───────────────────────────── */
+    .profiles-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+
+    .profile-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 18px 22px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .profile-item:hover { border-color: var(--primary); background: var(--primary-light); }
+
+    .p-dot { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; flex-shrink: 0; }
+    .profile-item .heading-sm { font-size: 15px; }
+
+    /* ── ABOUT PAGE STATS ────────────────────────── */
+    .stats-bar { background: white; border-top: 1px solid var(--border); }
+
+    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); }
+
+    .stat-item {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-num em { font-style: normal; color: var(--primary); }
+
+    .stat-label { font-size: 14px; color: var(--muted); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; }
+
+    /* ── STORY SECTION ───────────────────────────── */
+    .story-layout { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start; }
+    .story-text .heading-lg { margin-bottom: 24px; }
+    .story-text .body-md    { font-size: 16px; margin-bottom: 20px; }
+
+    .story-aside {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px;
+    }
+
+    .story-aside .heading-sm { margin-bottom: 20px; }
+
+    .story-aside ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .story-aside li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text); line-height: 1.5; }
+
+    /* ── VALUES ──────────────────────────────────── */
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+
+    .value-card {
+      border-top: 3px solid var(--primary);
+      padding-top: 24px;
+    }
+
+    .value-card .heading-sm { margin-bottom: 10px; }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: var(--ink); padding: 48px 0; }
+
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .footer-copy { font-size: 14px; color: rgba(255,255,255,0.38); }
+
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── MODAL ───────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.62);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: 20px;
+      padding: 48px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.22);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 34px; height: 34px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      padding: 0;
+    }
+
+    .modal-close:hover { background: var(--border); }
+
+    .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 6px; }
+    .modal-sub   { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    .form-success {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    .form-success-icon {
+      width: 60px; height: 60px;
+      background: #DCFCE7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .navbar { padding: 0 24px; }
+      .nav-center { display: none; }
+      .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+      .container { padding: 0 24px; }
+      .section { padding: 72px 0; }
+
+      .offer-layout,
+      .model-layout,
+      .expertise-layout,
+      .story-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      .benefits-grid-3,
+      .usecases-grid,
+      .values-grid { grid-template-columns: repeat(2,1fr); }
+
+      .steps-grid { grid-template-columns: repeat(2,1fr); }
+      .steps-connector { display: none; }
+
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:nth-child(2n) { border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+
+      .hub-callout { flex-direction: column; padding: 36px; gap: 24px; }
+      .how-note { flex-direction: column; align-items: flex-start; }
+
+      .profiles-grid { grid-template-columns: 1fr; }
+
+      .hero { padding-top: calc(var(--nav-h) + 56px); padding-bottom: 72px; }
+    }
+
+    @media (max-width: 600px) {
+      .benefits-grid-3,
+      .usecases-grid,
+      .values-grid,
+      .stats-inner { grid-template-columns: 1fr; }
+      .steps-grid,
+      .steps-grid-3 { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hub-callout { padding: 28px 24px; }
+      .modal-box { padding: 32px 22px; }
+      .stat-item { padding: 32px 24px; }
+    }
   </style>
 </head>
-
 <body>
 
-<div class="nav-container">
-  <nav>
-    <div class="logo">Semantic<span>.</span></div>
+<!-- ══ NAVBAR ══════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-logo" onclick="switchPage('companies')">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="11" cy="16" r="8.5" fill="#6366F1" opacity="0.7"/>
+      <circle cx="21" cy="16" r="8.5" fill="#6366F1"/>
+      <circle cx="16" cy="16" r="3.8" fill="white"/>
+    </svg>
+    Semantic
+  </div>
 
-    <div class="nav-links" id="navLinks">
-      <div class="nav-pill" id="pill"></div>
-      <div class="nav-item active" onclick="showPage('companies', 0)">For Companies</div>
-      <div class="nav-item" onclick="showPage('talents', 1)">For Talents</div>
-      <div class="nav-item" onclick="showPage('about', 2)">About Us</div>
+  <div class="nav-center" id="navCenter">
+    <div class="nav-pill" id="navPill"></div>
+    <button class="nav-page-btn active" data-page="companies" onclick="switchPage('companies')">For Companies</button>
+    <button class="nav-page-btn" data-page="talents"  onclick="switchPage('talents')">For Talents</button>
+    <button class="nav-page-btn" data-page="about"    onclick="switchPage('about')">About Us</button>
+  </div>
+
+  <button class="nav-cta-btn" onclick="openModal()">
+    Request Expert
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M1.5 6.5h10M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open navigation">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+      <path d="M3 6h16M3 11h16M3 16h16" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="mobile-nav-menu" id="mobileNavMenu">
+  <button class="mobile-nav-btn active" data-page="companies" onclick="switchPage('companies'); closeMobileMenu()">For Companies</button>
+  <button class="mobile-nav-btn" data-page="talents"  onclick="switchPage('talents');  closeMobileMenu()">For Talents</button>
+  <button class="mobile-nav-btn" data-page="about"    onclick="switchPage('about');    closeMobileMenu()">About Us</button>
+  <div class="mobile-cta-wrap">
+    <button class="btn-primary" onclick="openModal(); closeMobileMenu()">Request Expert →</button>
+  </div>
+</div>
+
+<!-- ══ PAGE: FOR COMPANIES ═════════════════════════ -->
+<div id="companies" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container hero-content">
+      <div class="hero-label"><span></span>Data Services · Staff Augmentation</div>
+      <h1 class="heading-xl">Experienced data experts<br>for your projects</h1>
+      <p class="body-lg">Selected specialists, ready to integrate directly into your teams. Fast, structured, and continuously supported.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal()">
+          Request Expert
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M1.5 6.5h10M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn-outline-white" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How it works</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER -->
+  <section class="section">
+    <div class="container">
+      <div class="offer-layout">
+        <div class="offer-text">
+          <span class="eyebrow">What We Offer</span>
+          <h2 class="heading-lg">Hire data talent with confidence</h2>
+          <p class="body-md" style="font-size:16px;line-height:1.75;color:var(--text);">Scale your data capabilities with carefully selected independent experts, matched to your technical environment and project needs. We provide fast access to experienced data professionals — with a structured layer of selection, coordination, and follow-up throughout every engagement.</p>
+        </div>
+        <ul class="benefits-list">
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Access to selected, experienced data experts</li>
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Fast onboarding aligned to your project needs</li>
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Flexible staff augmentation — short or long-term</li>
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Single point of coordination and invoicing</li>
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Continuous follow-up throughout engagements</li>
+          <li><div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Ability to adjust or replace profiles when needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR MODEL -->
+  <section class="section dark-section">
+    <div class="container">
+      <div class="model-layout">
+        <div class="model-text">
+          <span class="eyebrow">Our Model</span>
+          <h2 class="heading-lg">A flexible way to scale data teams</h2>
+          <p class="body-lg">Semantic sits between traditional staffing and consulting. We don't just introduce profiles — we ensure the right match and support continuity throughout every engagement.</p>
+          <ul class="model-bullets">
+            <li><div class="dot-marker"></div>The flexibility of independent specialists</li>
+            <li><div class="dot-marker"></div>The structure of a consulting-style engagement layer</li>
+            <li><div class="dot-marker"></div>The speed of a modern talent platform</li>
+          </ul>
+        </div>
+        <div class="principle-cards">
+          <div class="principle-card">
+            <div class="principle-tag">Access</div>
+            <div class="heading-sm">A curated expert network</div>
+            <p class="body-md">Selected, experienced data specialists available on demand — across disciplines and seniority levels.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-tag">Fit</div>
+            <div class="heading-sm">Precision matching</div>
+            <p class="body-md">Selection based on technical expertise, seniority, domain context, and team communication fit.</p>
+          </div>
+          <div class="principle-card">
+            <div class="principle-tag">Continuity</div>
+            <div class="heading-sm">Ongoing support</div>
+            <p class="body-md">Coordination, follow-up, and adjustment throughout the engagement — not just at the point of hire.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Expertise</span>
+        <h2 class="heading-lg">Deep data specialisation</h2>
+        <p class="body-md">Our experts cover the full data stack — from architecture and engineering to analytics and AI.</p>
+      </div>
+      <div class="expertise-layout">
+        <div>
+          <div class="expertise-col-title">Disciplines</div>
+          <div class="tags-wrap">
+            <span class="tag">Data Management</span>
+            <span class="tag">Data Engineering</span>
+            <span class="tag">Data Science</span>
+            <span class="tag">Data Analytics</span>
+            <span class="tag">Analytics Engineering</span>
+            <span class="tag">Data Project Management</span>
+            <span class="tag">Master Data Management</span>
+            <span class="tag">AI &amp; Automation</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+        </div>
+        <div>
+          <div class="expertise-col-title">Technology Stack</div>
+          <div class="tags-wrap">
+            <span class="tag">Snowflake</span>
+            <span class="tag">dbt</span>
+            <span class="tag">Looker</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">Apache Airflow</span>
+            <span class="tag">Apache Spark</span>
+            <span class="tag">AWS</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Azure</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hub callout -->
+      <div class="hub-callout">
+        <div style="flex:1; min-width:0;">
+          <div class="hub-badge">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#818CF8"/></svg>
+            Beirut · Lebanon
+          </div>
+          <div class="heading-sm">Our core talent hub</div>
+          <p class="body-md" style="margin-top:8px;max-width:480px;">Our talent hub is based in Beirut, where we work closely with selected data professionals in a structured, collaborative environment focused on onboarding and continuous development.</p>
+        </div>
+        <button class="btn-white" onclick="openModal()" style="flex-shrink:0;white-space:nowrap;">Request a specialist →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="section" style="background:var(--surface);padding-top:80px;padding-bottom:80px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Typical Use Cases</span>
+        <h2 class="heading-lg">Built for high-impact initiatives</h2>
+      </div>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 14l4-4 3 3 5-7" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="16" height="16" rx="3" stroke="#6366F1" stroke-width="1.5"/></svg>
+          </div>
+          <div class="heading-sm">Data Migration &amp; Modernisation</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Legacy system migration, cloud data warehouse adoption, and full data platform modernisation programs.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="#6366F1" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="#6366F1" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="#6366F1" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="#6366F1" stroke-width="1.5"/></svg>
+          </div>
+          <div class="heading-sm">Data Platform Setup &amp; Scaling</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Architecture, build-out, and scaling of modern data platforms — from ingestion to consumption layers.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 4v8l-7 4-7-4V6z" stroke="#6366F1" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2v14M3 6l7 4 7-4" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Data Quality for AI</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Building the data foundations — governance, quality, and lineage — required for reliable AI and ML initiatives.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="13" width="3" height="4" rx="1" fill="#6366F1"/><rect x="8" y="9" width="3" height="8" rx="1" fill="#6366F1"/><rect x="13" y="5" width="3" height="12" rx="1" fill="#6366F1"/></svg>
+          </div>
+          <div class="heading-sm">BI &amp; Analytics Transformation</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Rebuilding analytics layers, migrating BI tools, and implementing self-serve analytics across the organisation.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="5" cy="5" r="2" stroke="#6366F1" stroke-width="1.5"/><circle cx="15" cy="5" r="2" stroke="#6366F1" stroke-width="1.5"/><circle cx="10" cy="15" r="2" stroke="#6366F1" stroke-width="1.5"/><path d="M7 5h6M6 7l3.5 6M14 7l-3.5 6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Data Model Redesign</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Optimising data models, refactoring semantic layers, and aligning data structures to business domains.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#6366F1" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Data Strategy &amp; Governance</div>
+          <p class="body-md" style="font-size:14px;margin-top:6px;">Frameworks, policies, and operating models to manage data as a strategic asset across the organisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How It Works</span>
+        <h2 class="heading-lg">A simple, structured process</h2>
+        <p class="body-md">From first contact to active delivery in days, not weeks.</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps-connector"></div>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="heading-sm">Share your needs</div>
+            <p class="body-md" style="font-size:14px;">Submit your project requirements, stack, and timeline through a short form.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="heading-sm">Alignment call</div>
+            <p class="body-md" style="font-size:14px;">We clarify scope, environment, and success criteria to ensure a precise match.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="heading-sm">Matched experts</div>
+            <p class="body-md" style="font-size:14px;">A shortlist of selected professionals aligned to your stack, seniority, and team fit.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="heading-sm">Start delivery</div>
+            <p class="body-md" style="font-size:14px;">Onboarding, coordination, and invoicing all handled so your team stays focused on delivery.</p>
+          </div>
+        </div>
+      </div>
+      <div class="how-note">
+        <div>
+          <div class="heading-sm">Engagement model</div>
+          <p class="body-md" style="font-size:14px;margin-top:4px;">Experts integrate directly into your teams with clear scope, flexible duration, and a single point of coordination via Semantic.</p>
+        </div>
+        <div class="badge-row">
+          <span class="badge">Fast start</span>
+          <span class="badge">Single invoice</span>
+          <span class="badge">Adjustable scope</span>
+          <span class="badge">Ongoing support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="heading-lg">Ready to scale your data capabilities?</h2>
+      <p class="body-lg">Tell us what you need — we'll handle the rest.</p>
+      <button class="btn-white" onclick="openModal()">Request your first expert →</button>
+    </div>
+  </section>
+
+</div><!-- /companies -->
+
+<!-- ══ PAGE: FOR TALENTS ═══════════════════════════ -->
+<div id="talents" class="page">
+
+  <!-- HERO -->
+  <section class="hero hero-talents">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container hero-content">
+      <div class="hero-label"><span></span>Talent Network · Beirut &amp; Beyond</div>
+      <h1 class="heading-xl">Build your data career with structure</h1>
+      <p class="body-lg">Join a curated network of experienced data professionals. Work on meaningful projects, stay independent, and grow with real support behind you.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal('talent')">
+          Apply to join
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M1.5 6.5h10M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn-outline-white" onclick="document.getElementById('talent-profiles').scrollIntoView({behavior:'smooth'})">Who we look for</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY JOIN -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Why Join Semantic</span>
+        <h2 class="heading-lg">Independence with structure that works</h2>
+        <p class="body-md">Great projects, no admin burden, and a community that has your back.</p>
+      </div>
+      <div class="benefits-grid-3">
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v5c0 5 4 8.4 8 9.5 4-1.1 8-4.5 8-9.5V6z" stroke="#6366F1" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="heading-sm">Curated client access</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">Work with vetted companies on meaningful data projects — no cold outreach, no unstructured freelance chaos.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#6366F1" stroke-width="1.5"/><path d="M7 11h8M7 7h4M7 15h6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Admin-free engagement</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">We handle contracts, invoicing, and coordination. You stay focused on the work that matters.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="#6366F1" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Clear scope and terms</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">Every engagement starts with clear expectations, defined timelines, and structured onboarding — no ambiguity.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="7" cy="9" r="3" stroke="#6366F1" stroke-width="1.5"/><circle cx="15" cy="9" r="3" stroke="#6366F1" stroke-width="1.5"/><path d="M1 19c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="heading-sm">Community and collaboration</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">Be part of a data professionals community in Beirut and beyond — shared learning and peer support included.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11l5 5 9-9" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="heading-sm">Ongoing support</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">We stay involved throughout your engagements — providing follow-up, feedback, and coordination support.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="bc-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="3" stroke="#6366F1" stroke-width="1.5"/></svg>
+          </div>
+          <div class="heading-sm">Grow your expertise</div>
+          <p class="body-md" style="font-size:14px;margin-top:8px;">Work across diverse industries, tools, and domains. Every engagement is a chance to sharpen your skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILES -->
+  <section id="talent-profiles" class="section" style="background:var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Who We're Looking For</span>
+        <h2 class="heading-lg">Specialists across the full data stack</h2>
+        <p class="body-md">We work with experienced, independent data professionals who have strong technical backgrounds and a proven track record of delivery.</p>
+      </div>
+      <div class="profiles-grid">
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Data Engineers</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Analytics Engineers</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Data Scientists</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Data Analysts</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">ML Engineers</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Data Architects</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">Data Project Managers</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">MDM &amp; Governance Specialists</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">BI Developers &amp; Analysts</div></div>
+        <div class="profile-item"><div class="p-dot"></div><div class="heading-sm">AI &amp; Automation Experts</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO JOIN -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How to Join</span>
+        <h2 class="heading-lg">Simple and straightforward</h2>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps-connector steps-conn-3"></div>
+        <div class="steps-grid steps-grid-3">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="heading-sm">Express interest</div>
+            <p class="body-md" style="font-size:14px;">Submit a short application with your background, expertise, and the types of projects you're looking for.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="heading-sm">Profile review &amp; call</div>
+            <p class="body-md" style="font-size:14px;">We review your profile and schedule a short call to understand your goals, availability, and preferred stack.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="heading-sm">Get matched to projects</div>
+            <p class="body-md" style="font-size:14px;">Once onboarded, we match you with relevant client opportunities that fit your expertise and schedule.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="heading-lg">Ready to join the network?</h2>
+      <p class="body-lg">Tell us about yourself — we'll be in touch.</p>
+      <button class="btn-white" onclick="openModal('talent')">Apply now →</button>
+    </div>
+  </section>
+
+</div><!-- /talents -->
+
+<!-- ══ PAGE: ABOUT US ══════════════════════════════ -->
+<div id="about" class="page">
+
+  <!-- HERO -->
+  <section class="hero" style="background:linear-gradient(140deg,#1E1B4B 0%,var(--ink) 60%);">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container hero-content">
+      <div class="hero-label"><span></span>Founded in Beirut · Global reach</div>
+      <h1 class="heading-xl">The data layer between talent and companies</h1>
+      <p class="body-lg" style="margin-bottom:0;">Semantic connects companies with experienced, independent data professionals — with the structure, curation, and continuity that neither staffing agencies nor freelance platforms provide.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="container" style="padding:0;">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">9<em>+</em></div>
+          <div class="stat-label">Data disciplines covered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12<em>+</em></div>
+          <div class="stat-label">Technologies in our stack</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<em>d</em></div>
+          <div class="stat-label">Avg. time to first match</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1<em>x</em></div>
+          <div class="stat-label">Single point of contact</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-text">
+          <span class="eyebrow">Who We Are</span>
+          <h2 class="heading-lg">Built to bridge a real gap</h2>
+          <p class="body-md" style="font-size:16px;">The data talent market is fragmented. Companies need experienced specialists quickly, but traditional staffing is too slow and generic. Freelance platforms lack structure and vetting. Consulting firms are expensive and inflexible.</p>
+          <p class="body-md" style="font-size:16px;">Semantic was built to sit precisely in that gap. We curate a network of experienced data professionals, match them to company needs with precision, and stay involved throughout the engagement — ensuring things go well, not just get started.</p>
+          <p class="body-md" style="font-size:16px;">Our core talent hub is based in Beirut — a city with a deep pool of technically strong, internationally experienced data professionals. We work closely with this community to maintain high standards and provide a structured, collaborative environment for growth.</p>
+        </div>
+        <div class="story-aside">
+          <div class="heading-sm">What makes us different</div>
+          <ul>
+            <li>
+              <div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              We curate, not just source. Every expert in our network is carefully reviewed.
+            </li>
+            <li>
+              <div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              We stay involved — providing ongoing coordination, not just placement.
+            </li>
+            <li>
+              <div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              One contact, one invoice — full coordination for both sides.
+            </li>
+            <li>
+              <div class="check-wrap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              We adapt — profiles can be adjusted or replaced when needed.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" style="background:var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Values</span>
+        <h2 class="heading-lg">How we operate</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="heading-sm">Precision over volume</div>
+          <p class="body-md" style="font-size:15px;margin-top:10px;">We'd rather match one expert perfectly than send five profiles that don't fit. Quality curation is our core commitment.</p>
+        </div>
+        <div class="value-card">
+          <div class="heading-sm">Transparency from the start</div>
+          <p class="body-md" style="font-size:15px;margin-top:10px;">Clear scope, honest timelines, and direct communication — for both the companies and professionals we work with.</p>
+        </div>
+        <div class="value-card">
+          <div class="heading-sm">Continuity, not just placement</div>
+          <p class="body-md" style="font-size:15px;margin-top:10px;">We measure success by engagement quality, not numbers. We stay involved because the outcome matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="heading-lg">Let's work together</h2>
+      <p class="body-lg">Whether you need data talent or you are data talent — we're here.</p>
+      <div class="cta-dual">
+        <button class="btn-white" onclick="openModal()">Request a specialist →</button>
+        <button class="btn-white-ghost" onclick="openModal('talent')">Join our network</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /about -->
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="11" cy="16" r="8.5" fill="#6366F1" opacity="0.7"/>
+          <circle cx="21" cy="16" r="8.5" fill="#6366F1"/>
+          <circle cx="16" cy="16" r="3.8" fill="white"/>
+        </svg>
+        Semantic
+      </div>
+      <span class="footer-copy">© 2026 Semantic. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#" onclick="switchPage('companies');return false;">For Companies</a>
+        <a href="#" onclick="switchPage('talents');return false;">For Talents</a>
+        <a href="#" onclick="switchPage('about');return false;">About</a>
+        <a href="mailto:hello@semantic-data.io">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MODAL ════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div id="modalForm">
+      <div class="modal-title" id="modalTitle">Request a Data Expert</div>
+      <p class="modal-sub" id="modalSub">Tell us about your project and we'll get back to you within 24 hours.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Alex" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Smith" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Work email</label>
+        <input type="email" placeholder="alex@company.com" autocomplete="email">
+      </div>
+      <div class="form-group" id="companyField">
+        <label>Company</label>
+        <input type="text" placeholder="Your company name" autocomplete="organization">
+      </div>
+      <div class="form-group">
+        <label id="needLabel">What do you need?</label>
+        <select>
+          <option value="" disabled selected>Select a discipline</option>
+          <option>Data Engineering</option>
+          <option>Analytics Engineering</option>
+          <option>Data Science</option>
+          <option>Data Analytics</option>
+          <option>Data Architecture</option>
+          <option>Data Management / MDM</option>
+          <option>AI &amp; Machine Learning</option>
+          <option>Data Project Management</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label id="msgLabel">Tell us more</label>
+        <textarea id="msgArea" placeholder="Briefly describe your project, timeline, or any specific requirements..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Send request →</button>
     </div>
 
-    <a class="cta-button" onclick="scrollToForm()">Request Talent</a>
-  </nav>
-</div>
-
-<!-- PAGE: COMPANIES -->
-<div class="container" id="companies">
-
-  <div class="hero">Experienced data experts for your projects</div>
-  <div class="subhero">
-    Selected specialists, ready to integrate directly into your teams.
-  </div>
-
-  <a class="cta-button" href="#form">Request talent</a>
-
-  <div class="section-title">What We Offer</div>
-  <p class="subhero">
-    Hire your data talent with confidence. Scale your data capabilities with carefully selected independent experts.
-  </p>
-
-  <div class="grid">
-    <div class="card"><h3>Selected experts</h3><p>Access experienced data professionals aligned with your stack.</p></div>
-    <div class="card"><h3>Fast onboarding</h3><p>Experts integrate quickly into your environment.</p></div>
-    <div class="card"><h3>Flexible scaling</h3><p>Short or long-term staff augmentation.</p></div>
-    <div class="card"><h3>Single coordination</h3><p>One point of contact for everything.</p></div>
-  </div>
-
-  <div class="section-title">Expertise</div>
-  <div class="grid">
-    <div class="card"><h3>Data Engineering</h3><p>pipelines, architecture, cloud stacks</p></div>
-    <div class="card"><h3>Analytics</h3><p>BI, dashboards, decision support</p></div>
-    <div class="card"><h3>Data Science</h3><p>modeling, prediction, ML</p></div>
-    <div class="card"><h3>Data Quality</h3><p>governance, reliability, testing</p></div>
-  </div>
-
-  <div class="section-title">How it works</div>
-  <div class="grid">
-    <div class="card"><h3>1. Share needs</h3><p>Project scope, stack, timeline.</p></div>
-    <div class="card"><h3>2. Alignment</h3><p>We define success criteria.</p></div>
-    <div class="card"><h3>3. Matching</h3><p>Shortlist of experts ready to start.</p></div>
-  </div>
-
-</div>
-
-<!-- PAGE: TALENTS -->
-<div class="container hidden" id="talents">
-  <div class="hero">Work with leading data teams</div>
-  <div class="subhero">
-    Join selected projects with high-impact companies across Europe and the Middle East.
-  </div>
-
-  <div class="grid">
-    <div class="card"><h3>High-quality projects</h3><p>Work on modern data stacks and real business impact.</p></div>
-    <div class="card"><h3>Flexible missions</h3><p>Short or long-term engagements.</p></div>
-    <div class="card"><h3>Structured support</h3><p>We handle coordination and clients.</p></div>
+    <div class="form-success" id="modalSuccess" style="display:none;">
+      <div class="form-success-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14l5 5 11-11" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="heading-sm" style="margin-bottom:8px;">We got your message</div>
+      <p class="body-md" style="font-size:15px;">We'll review your request and be in touch within 24 hours.</p>
+      <button class="btn-primary" style="margin-top:24px;" onclick="closeModal()">Close</button>
+    </div>
   </div>
 </div>
 
-<!-- PAGE: ABOUT -->
-<div class="container hidden" id="about">
-  <div class="hero">Semantic</div>
-  <div class="subhero">
-    A data talent network built to bridge top independent experts with companies scaling their data capabilities.
-  </div>
-
-  <div class="card">
-    <h3>Beirut-based talent hub</h3>
-    <p>We work closely with selected data professionals in Beirut and internationally distributed teams.</p>
-  </div>
-</div>
-
-<!-- FORM -->
-<div class="container" id="form">
-  <div class="section-title">Request Talent</div>
-
-  <form class="form">
-    <input type="text" placeholder="Company name" />
-    <input type="email" placeholder="Email" />
-    <textarea placeholder="Describe your needs (stack, timeline, role...)"></textarea>
-    <button class="cta-button" type="submit">Submit request</button>
-  </form>
-</div>
-
+<!-- ══ SCRIPTS ══════════════════════════════════════ -->
 <script>
-  const pages = ["companies", "talents", "about"];
-  const pill = document.getElementById("pill");
-  const items = document.querySelectorAll(".nav-item");
+  /* ── Page switching ─────────────────────────── */
+  function switchPage(target) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-page-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.mobile-nav-btn').forEach(b => b.classList.remove('active'));
 
-  function showPage(id, index) {
-    pages.forEach(p => {
-      document.getElementById(p).classList.add("hidden");
-    });
+    document.getElementById(target).classList.add('active');
 
-    document.getElementById(id).classList.remove("hidden");
+    const dBtn = document.querySelector('.nav-page-btn[data-page="' + target + '"]');
+    const mBtn = document.querySelector('.mobile-nav-btn[data-page="' + target + '"]');
+    if (dBtn) dBtn.classList.add('active');
+    if (mBtn) mBtn.classList.add('active');
 
-    items.forEach(i => i.classList.remove("active"));
-    items[index].classList.add("active");
-
-    pill.style.left = (6 + index * 120) + "px";
+    updatePill();
+    window.scrollTo({ top: 0 });
   }
 
-  function scrollToForm() {
-    document.getElementById("form").scrollIntoView({ behavior: "smooth" });
+  /* ── Sliding pill ───────────────────────────── */
+  function updatePill() {
+    var pill      = document.getElementById('navPill');
+    var navCenter = document.getElementById('navCenter');
+    var activeBtn = document.querySelector('.nav-page-btn.active');
+    if (!pill || !navCenter || !activeBtn) return;
+
+    var bR = activeBtn.getBoundingClientRect();
+    var nR = navCenter.getBoundingClientRect();
+    pill.style.left  = (bR.left - nR.left) + 'px';
+    pill.style.width = bR.width + 'px';
   }
+
+  window.addEventListener('load',   updatePill);
+  window.addEventListener('resize', updatePill);
+
+  /* ── Mobile menu ────────────────────────────── */
+  function toggleMobileMenu() {
+    document.getElementById('mobileNavMenu').classList.toggle('open');
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('mobileNavMenu').classList.remove('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('mobileNavMenu');
+    var btn  = document.getElementById('mobileMenuBtn');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  /* ── Modal ──────────────────────────────────── */
+  function openModal(type) {
+    var title      = document.getElementById('modalTitle');
+    var sub        = document.getElementById('modalSub');
+    var company    = document.getElementById('companyField');
+    var needLabel  = document.getElementById('needLabel');
+    var msgArea    = document.getElementById('msgArea');
+    var formEl     = document.getElementById('modalForm');
+    var successEl  = document.getElementById('modalSuccess');
+
+    formEl.style.display    = '';
+    successEl.style.display = 'none';
+
+    if (type === 'talent') {
+      title.textContent      = 'Join Our Network';
+      sub.textContent        = 'Tell us about yourself and we\'ll be in touch.';
+      company.style.display  = 'none';
+      needLabel.textContent  = 'Your specialisation';
+      msgArea.placeholder    = 'Tell us about your background, stack, and the types of projects you\'re interested in...';
+    } else {
+      title.textContent      = 'Request a Data Expert';
+      sub.textContent        = 'Tell us about your project and we\'ll get back to you within 24 hours.';
+      company.style.display  = '';
+      needLabel.textContent  = 'What do you need?';
+      msgArea.placeholder    = 'Briefly describe your project, timeline, or any specific requirements...';
+    }
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === e.currentTarget) closeModal();
+  }
+
+  function handleSubmit() {
+    document.getElementById('modalForm').style.display    = 'none';
+    document.getElementById('modalSuccess').style.display = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
-
 </body>
 </html>
