@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Semantic — Data Services</title>
   <meta name="description" content="Semantic connects companies with experienced, independent data professionals. Selected specialists, ready to integrate directly into your teams.">
+  <meta property="og:title" content="Semantic — Data Services">
+  <meta property="og:description" content="Semantic connects companies with experienced, independent data professionals. Selected specialists, ready to integrate directly into your teams.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.workwithsemantic.com/">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -14,14 +19,14 @@
 
 <!-- ══ NAVBAR ══════════════════════════════════════ -->
 <nav class="navbar">
-  <div class="nav-logo" onclick="switchPage('companies')">
+  <button class="nav-logo" type="button" onclick="switchPage('companies')" aria-label="Go to Semantic home">
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <circle cx="11" cy="16" r="8.5" fill="#6366F1" opacity="0.7"/>
       <circle cx="21" cy="16" r="8.5" fill="#6366F1"/>
       <circle cx="16" cy="16" r="3.8" fill="white"/>
     </svg>
     Semantic
-  </div>
+  </button>
 
   <div class="nav-center" id="navCenter">
     <div class="nav-pill" id="navPill"></div>
@@ -35,7 +40,7 @@
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M1.5 6.5h10M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open navigation">
+  <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNavMenu">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <path d="M3 6h16M3 11h16M3 16h16" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round"/>
     </svg>
@@ -574,35 +579,35 @@
 
 <!-- ══ MODAL ════════════════════════════════════════ -->
 <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
-  <div class="modal-box" id="modalBox">
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSub">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
 
-    <div id="modalForm">
+    <form id="modalForm" onsubmit="handleSubmit(event)">
       <div class="modal-title" id="modalTitle">Request a Data Expert</div>
       <p class="modal-sub" id="modalSub">Tell us about your project and we'll get back to you within 24 hours.</p>
       <div class="form-row">
         <div class="form-group">
-          <label>First name</label>
-          <input type="text" placeholder="Alex" autocomplete="given-name">
+          <label for="firstName">First name</label>
+          <input id="firstName" name="firstName" type="text" placeholder="Alex" autocomplete="given-name" required>
         </div>
         <div class="form-group">
-          <label>Last name</label>
-          <input type="text" placeholder="Smith" autocomplete="family-name">
+          <label for="lastName">Last name</label>
+          <input id="lastName" name="lastName" type="text" placeholder="Smith" autocomplete="family-name" required>
         </div>
       </div>
       <div class="form-group">
-        <label>Work email</label>
-        <input type="email" placeholder="alex@company.com" autocomplete="email">
+        <label for="workEmail">Work email</label>
+        <input id="workEmail" name="email" type="email" placeholder="alex@company.com" autocomplete="email" required>
       </div>
       <div class="form-group" id="companyField">
-        <label>Company</label>
-        <input type="text" placeholder="Your company name" autocomplete="organization">
+        <label for="companyName">Company</label>
+        <input id="companyName" name="company" type="text" placeholder="Your company name" autocomplete="organization">
       </div>
       <div class="form-group">
-        <label id="needLabel">What do you need?</label>
-        <select>
+        <label id="needLabel" for="discipline">What do you need?</label>
+        <select id="discipline" name="discipline" required>
           <option value="" disabled selected>Select a discipline</option>
           <option>Data Engineering</option>
           <option>Analytics Engineering</option>
@@ -617,17 +622,17 @@
       </div>
       <div class="form-group">
         <label id="msgLabel">Tell us more</label>
-        <textarea id="msgArea" placeholder="Briefly describe your project, timeline, or any specific requirements..."></textarea>
+        <textarea id="msgArea" name="message" placeholder="Briefly describe your project, timeline, or any specific requirements..." required></textarea>
       </div>
-      <button class="form-submit" onclick="handleSubmit()">Send request →</button>
-    </div>
+      <button class="form-submit" type="submit">Send request →</button>
+    </form>
 
     <div class="form-success" id="modalSuccess" style="display:none;">
       <div class="form-success-icon">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14l5 5 11-11" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="heading-sm" style="margin-bottom:8px;">We got your message</div>
-      <p class="body-md" style="font-size:15px;">We'll review your request and be in touch within 24 hours.</p>
+      <div class="heading-sm" style="margin-bottom:8px;">Your email is ready</div>
+      <p class="body-md" style="font-size:15px;">Your email client should open with the message. Send it from there and we'll be in touch.</p>
       <button class="btn-primary" style="margin-top:24px;" onclick="closeModal()">Close</button>
     </div>
   </div>

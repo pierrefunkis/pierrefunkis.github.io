@@ -46,13 +46,15 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
+      background: transparent;
+      border: 0;
       color: var(--ink);
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.03em;
       cursor: pointer;
+      padding: 0;
     }
 
     .nav-center {
