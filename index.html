@@ -2,40 +2,304 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work With Semantic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Semantic — Data Talent & Engineering</title>
+
   <style>
-    body {
+    :root {
+      --bg: #0b0f17;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #4f46e5;
+      --accent2: #22c55e;
+      --pill: rgba(79, 70, 229, 0.15);
+    }
+
+    * {
       margin: 0;
-      height: 100vh;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111827, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    .nav-container {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 23, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
+      padding: 14px 20px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      position: relative;
+      display: flex;
+      gap: 10px;
+      background: rgba(255,255,255,0.03);
+      padding: 6px;
+      border-radius: 999px;
+    }
+
+    .nav-pill {
+      position: absolute;
+      height: 34px;
+      width: 110px;
+      border-radius: 999px;
+      background: var(--pill);
+      transition: all 0.3s ease;
+      top: 6px;
+      left: 6px;
+      z-index: 0;
+    }
+
+    .nav-item {
+      position: relative;
+      z-index: 1;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--muted);
+      user-select: none;
+    }
+
+    .nav-item.active {
       color: white;
-      text-align: center;
     }
 
-    .box {
-      padding: 40px;
+    .cta-button {
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s;
     }
 
-    h1 {
+    .cta-button:hover {
+      opacity: 0.85;
+    }
+
+    /* PAGE */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .hero {
       font-size: 42px;
-      margin-bottom: 10px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
-    p {
-      font-size: 18px;
-      opacity: 0.8;
+    .subhero {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 30px;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .section-title {
+      margin-top: 50px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* FORM */
+    .form {
+      margin-top: 30px;
+      display: grid;
+      gap: 10px;
+      max-width: 500px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.2);
+      color: white;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
   </style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>🚧 Website under construction</h1>
-    <p>WorkWithSemantic is coming soon.</p>
+
+<div class="nav-container">
+  <nav>
+    <div class="logo">Semantic<span>.</span></div>
+
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="pill"></div>
+      <div class="nav-item active" onclick="showPage('companies', 0)">For Companies</div>
+      <div class="nav-item" onclick="showPage('talents', 1)">For Talents</div>
+      <div class="nav-item" onclick="showPage('about', 2)">About Us</div>
+    </div>
+
+    <a class="cta-button" onclick="scrollToForm()">Request Talent</a>
+  </nav>
+</div>
+
+<!-- PAGE: COMPANIES -->
+<div class="container" id="companies">
+
+  <div class="hero">Experienced data experts for your projects</div>
+  <div class="subhero">
+    Selected specialists, ready to integrate directly into your teams.
   </div>
+
+  <a class="cta-button" href="#form">Request talent</a>
+
+  <div class="section-title">What We Offer</div>
+  <p class="subhero">
+    Hire your data talent with confidence. Scale your data capabilities with carefully selected independent experts.
+  </p>
+
+  <div class="grid">
+    <div class="card"><h3>Selected experts</h3><p>Access experienced data professionals aligned with your stack.</p></div>
+    <div class="card"><h3>Fast onboarding</h3><p>Experts integrate quickly into your environment.</p></div>
+    <div class="card"><h3>Flexible scaling</h3><p>Short or long-term staff augmentation.</p></div>
+    <div class="card"><h3>Single coordination</h3><p>One point of contact for everything.</p></div>
+  </div>
+
+  <div class="section-title">Expertise</div>
+  <div class="grid">
+    <div class="card"><h3>Data Engineering</h3><p>pipelines, architecture, cloud stacks</p></div>
+    <div class="card"><h3>Analytics</h3><p>BI, dashboards, decision support</p></div>
+    <div class="card"><h3>Data Science</h3><p>modeling, prediction, ML</p></div>
+    <div class="card"><h3>Data Quality</h3><p>governance, reliability, testing</p></div>
+  </div>
+
+  <div class="section-title">How it works</div>
+  <div class="grid">
+    <div class="card"><h3>1. Share needs</h3><p>Project scope, stack, timeline.</p></div>
+    <div class="card"><h3>2. Alignment</h3><p>We define success criteria.</p></div>
+    <div class="card"><h3>3. Matching</h3><p>Shortlist of experts ready to start.</p></div>
+  </div>
+
+</div>
+
+<!-- PAGE: TALENTS -->
+<div class="container hidden" id="talents">
+  <div class="hero">Work with leading data teams</div>
+  <div class="subhero">
+    Join selected projects with high-impact companies across Europe and the Middle East.
+  </div>
+
+  <div class="grid">
+    <div class="card"><h3>High-quality projects</h3><p>Work on modern data stacks and real business impact.</p></div>
+    <div class="card"><h3>Flexible missions</h3><p>Short or long-term engagements.</p></div>
+    <div class="card"><h3>Structured support</h3><p>We handle coordination and clients.</p></div>
+  </div>
+</div>
+
+<!-- PAGE: ABOUT -->
+<div class="container hidden" id="about">
+  <div class="hero">Semantic</div>
+  <div class="subhero">
+    A data talent network built to bridge top independent experts with companies scaling their data capabilities.
+  </div>
+
+  <div class="card">
+    <h3>Beirut-based talent hub</h3>
+    <p>We work closely with selected data professionals in Beirut and internationally distributed teams.</p>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="container" id="form">
+  <div class="section-title">Request Talent</div>
+
+  <form class="form">
+    <input type="text" placeholder="Company name" />
+    <input type="email" placeholder="Email" />
+    <textarea placeholder="Describe your needs (stack, timeline, role...)"></textarea>
+    <button class="cta-button" type="submit">Submit request</button>
+  </form>
+</div>
+
+<script>
+  const pages = ["companies", "talents", "about"];
+  const pill = document.getElementById("pill");
+  const items = document.querySelectorAll(".nav-item");
+
+  function showPage(id, index) {
+    pages.forEach(p => {
+      document.getElementById(p).classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+
+    items.forEach(i => i.classList.remove("active"));
+    items[index].classList.add("active");
+
+    pill.style.left = (6 + index * 120) + "px";
+  }
+
+  function scrollToForm() {
+    document.getElementById("form").scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
 </body>
 </html>
