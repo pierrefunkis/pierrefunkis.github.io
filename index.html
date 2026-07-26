@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F172A">
   <title>Semantic — Data Services</title>
   <meta name="description" content="Semantic connects companies with experienced, independent data professionals. Selected specialists, ready to integrate directly into your teams.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +36,16 @@
       line-height: 1.6;
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* ── NAVBAR ─────────────────────────────────── */
@@ -64,7 +75,15 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       cursor: pointer;
+      /* keeps the wordmark from being squeezed under the CTA on narrow screens */
+      flex-shrink: 0;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      padding: 0;
     }
+
+    .nav-logo svg { flex-shrink: 0; }
 
     .nav-center {
       display: flex;
@@ -120,6 +139,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .nav-cta-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
@@ -130,6 +151,7 @@
       border: none;
       cursor: pointer;
       padding: 8px;
+      flex-shrink: 0;
     }
 
     .mobile-nav-menu {
@@ -757,7 +779,9 @@
       position: relative;
       box-shadow: 0 32px 80px rgba(0,0,0,0.22);
       max-height: 90vh;
+      max-height: 90dvh; /* accounts for mobile browser chrome */
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .modal-close {
@@ -777,7 +801,7 @@
 
     .modal-close:hover { background: var(--border); }
 
-    .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 6px; }
+    .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 6px; padding-right: 40px; }
     .modal-sub   { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
 
     .form-group { margin-bottom: 16px; }
@@ -813,6 +837,15 @@
 
     .form-group input::placeholder,
     .form-group textarea::placeholder { color: var(--muted); }
+
+    /* appearance:none strips the native arrow — put one back */
+    .form-group select {
+      padding-right: 40px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394A3B8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      cursor: pointer;
+    }
 
     .form-group textarea { resize: vertical; min-height: 90px; }
 
@@ -852,11 +885,26 @@
 
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 900px) {
-      .navbar { padding: 0 24px; }
+      .navbar { padding: 0 24px; gap: 12px; }
       .nav-center { display: none; }
-      .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
       .container { padding: 0 24px; }
       .section { padding: 72px 0; }
+
+      /* Compact the navbar so logo + CTA + burger fit without colliding */
+      .nav-logo { font-size: 16px; gap: 8px; min-height: 44px; }
+      .nav-logo svg { width: 28px; height: 28px; }
+      .nav-cta-btn { padding: 0 16px; font-size: 13px; min-height: 44px; }
+      .nav-cta-btn svg { display: none; }
+
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        margin-right: -10px; /* 44px tap target, edge stays visually aligned */
+      }
 
       .offer-layout,
       .model-layout,
@@ -891,10 +939,47 @@
       .steps-grid,
       .steps-grid-3 { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-outline-white { justify-content: center; }
       .hub-callout { padding: 28px 24px; }
+      .hub-callout .btn-white { width: 100%; justify-content: center; }
+      .modal-overlay { padding: 12px; }
       .modal-box { padding: 32px 22px; }
       .stat-item { padding: 32px 24px; }
+
+      /* 16px minimum stops iOS Safari zooming the page on field focus */
+      .form-group input,
+      .form-group select,
+      .form-group textarea { font-size: 16px; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-copy { order: 3; }
+      .footer-links { flex-wrap: wrap; gap: 4px 20px; }
+      .footer-links a { display: inline-block; padding: 10px 0; }
+    }
+
+    /* Below ~360px the CTA can no longer sit beside the logo; the mobile menu carries it */
+    @media (max-width: 359px) {
+      .nav-cta-btn { display: none; }
+    }
+
+    /* On touch screens :hover sticks after a tap — neutralise the moving states */
+    @media (hover: none) {
+      .btn-primary:hover,
+      .btn-white:hover,
+      .btn-white-ghost:hover,
+      .btn-outline-white:hover,
+      .nav-cta-btn:hover,
+      .form-submit:hover,
+      .usecase-card:hover,
+      .benefit-card:hover { transform: none; }
+
+      .usecase-card:hover { border-color: var(--border); box-shadow: none; }
+      .benefit-card:hover { box-shadow: none; }
+      .tag:hover { background: var(--surface); border-color: var(--border); color: var(--ink); }
+      .profile-item:hover { border-color: var(--border); background: var(--surface); }
+      .principle-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(255,255,255,0.1); }
     }
   </style>
 </head>
@@ -902,14 +987,14 @@
 
 <!-- ══ NAVBAR ══════════════════════════════════════ -->
 <nav class="navbar">
-  <div class="nav-logo" onclick="switchPage('companies')">
+  <button class="nav-logo" onclick="switchPage('companies')" aria-label="Semantic — go to For Companies">
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <circle cx="11" cy="16" r="8.5" fill="#6366F1" opacity="0.7"/>
       <circle cx="21" cy="16" r="8.5" fill="#6366F1"/>
       <circle cx="16" cy="16" r="3.8" fill="white"/>
     </svg>
     Semantic
-  </div>
+  </button>
 
   <div class="nav-center" id="navCenter">
     <div class="nav-pill" id="navPill"></div>
@@ -1537,7 +1622,8 @@
     if (mBtn) mBtn.classList.add('active');
 
     updatePill();
-    window.scrollTo({ top: 0 });
+    /* 'instant' — otherwise html{scroll-behavior:smooth} animates the whole page height */
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   /* ── Sliding pill ───────────────────────────── */
@@ -1554,7 +1640,11 @@
   }
 
   window.addEventListener('load',   updatePill);
-  window.addEventListener('resize', updatePill);
+  window.addEventListener('resize', function () {
+    updatePill();
+    /* rotating to landscape crosses the breakpoint and would strand the open menu */
+    if (window.innerWidth > 900) closeMobileMenu();
+  });
 
   /* ── Mobile menu ────────────────────────────── */
   function toggleMobileMenu() {
