@@ -516,6 +516,9 @@ body {
 .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -529,6 +532,14 @@ body {
 }
 
 .tag:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+
+/* Brand logo inside a tag: fixed height, natural width */
+.tag-logo {
+  height: 18px;
+  width: auto;
+  max-width: 32px;
+  flex-shrink: 0;
+}
 
 /* ── HUB CALLOUT ─────────────────────────────── */
 .hub-callout {
