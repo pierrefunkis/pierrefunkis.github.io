@@ -5,21 +5,18 @@
   'use strict';
 
   /* --------------------------------------------------------------------
-     Lead form endpoint.
+     Lead form: Web3Forms.
 
-     Paste an endpoint here and the modal posts to it directly, keeping the
-     site's own form. Any service that accepts a plain POST works, e.g.
-     Formspree (https://formspree.io/f/xxxxxxxx) or Web3Forms.
+     Submissions POST as JSON to the endpoint below and are delivered to the
+     address registered against the access key. The key is public by design,
+     the same way it is in Web3Forms' own copy-paste HTML snippet, so it
+     belongs in this file rather than in a secret store. Restrict it to the
+     site's domain in the Web3Forms dashboard to stop it being reused.
 
-     Left empty, the form falls back to opening the visitor's mail client
-     with the answers pre-filled. That fallback depends on them having a
-     mail client configured and then actually pressing send, so it is a
-     stopgap rather than a solution.
-
-     The form already posts a `_gotcha` honeypot field, which Formspree and
-     Web3Forms both treat as a spam signal.
+     Clear FORM_ENDPOINT to fall back to opening the visitor's mail client.
      -------------------------------------------------------------------- */
-  var FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxxx'
+  var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  var ACCESS_KEY = '6092d285-4b44-4798-9e7f-bb4429798754';
   var CONTACT_EMAIL = 'pierre@workwithsemantic.com';
 
   /* ── Mobile menu ──────────────────────────────────────────────────── */
@@ -157,12 +154,13 @@
             '<label for="msg" id="msgLabel">Tell us more</label>' +
             '<textarea id="msg" name="message"></textarea>' +
           '</div>' +
-          /* Honeypot: off-screen and hidden from assistive tech, so only a bot
-             filling every field will complete it. Submissions with it set are
-             dropped silently rather than rejected, so the bot learns nothing. */
+          /* Honeypot. Named botcheck because Web3Forms rejects submissions
+             carrying it, so a bot that gets past this browser is stopped
+             again server-side. Off-screen and hidden from assistive tech, so
+             only something filling every field will tick it. */
           '<div class="hp-field" aria-hidden="true">' +
             '<label for="hp">Do not fill this in</label>' +
-            '<input type="text" id="hp" name="_gotcha" tabindex="-1" autocomplete="off">' +
+            '<input type="checkbox" id="hp" name="botcheck" tabindex="-1" autocomplete="off">' +
           '</div>' +
           '<button class="form-submit" type="submit" id="formSubmit">Send request →</button>' +
         '</form>' +
@@ -220,25 +218,48 @@
     e.preventDefault();
     if (!form.reportValidity()) return;
 
-    /* Bot: show the same success state it would have got, and send nothing. */
-    if (form.querySelector('#hp').value) { showSuccess(); return; }
+    /* Bot: show the same success state it would have got, and send nothing,
+       so it gets no signal that it was caught. */
+    if (form.querySelector('#hp').checked) { showSuccess(); return; }
 
     var data = new FormData(form);
-    data.append('formType', 'Client enquiry');
+    var payload = {};
+    data.forEach(function (v, k) { if (v) payload[k] = v; });
+
+    var name = ((payload.firstName || '') + ' ' + (payload.lastName || '')).trim();
 
     if (FORM_ENDPOINT) {
       var btn = overlay.querySelector('#formSubmit');
       btn.disabled = true;
       btn.textContent = 'Sending…';
-      fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+
+      payload.access_key = ACCESS_KEY;
+      payload.subject = 'New enquiry from workwithsemantic.com'
+        + (payload.discipline ? ': ' + payload.discipline : '');
+      payload.from_name = name || 'Semantic website';
+      /* So a reply goes to the enquirer rather than back to the form */
+      if (payload.email) payload.replyto = payload.email;
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      })
         .then(function (r) {
-          if (!r.ok) throw new Error('Request failed');
-          showSuccess();
+          /* Web3Forms answers 200 with success:false for a rejected
+             submission, so the status alone is not enough. */
+          return r.json().then(function (body) { return { ok: r.ok, status: r.status, body: body }; });
         })
-        .catch(function () {
+        .then(function (res) {
+          if (res.ok && res.body && res.body.success) { showSuccess(); return; }
+          throw new Error(res.status === 429 ? 'rate-limited' : 'rejected');
+        })
+        .catch(function (err) {
           btn.disabled = false;
           btn.textContent = COPY.submit + ' →';
-          alert('Sorry, something went wrong sending that. Please email ' + CONTACT_EMAIL + ' instead.');
+          alert(err && err.message === 'rate-limited'
+            ? 'Too many messages have been sent from here just now. Please try again shortly, or email ' + CONTACT_EMAIL + '.'
+            : 'Sorry, something went wrong sending that. Please email ' + CONTACT_EMAIL + ' instead.');
         });
       return;
     }
@@ -246,7 +267,9 @@
     /* No endpoint configured: hand off to the visitor's mail client so the
        enquiry is not simply dropped. */
     var lines = [];
-    data.forEach(function (v, k) { if (v && k !== '_gotcha') lines.push(k + ': ' + v); });
+    Object.keys(payload).forEach(function (k) {
+      if (k !== 'botcheck') lines.push(k + ': ' + payload[k]);
+    });
     window.location.href = 'mailto:' + CONTACT_EMAIL +
       '?subject=' + encodeURIComponent(COPY.title) +
       '&body=' + encodeURIComponent(lines.join('\n'));

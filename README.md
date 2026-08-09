@@ -47,19 +47,35 @@ Then visit http://127.0.0.1:8080/.
 
 ## Contact form
 
-The modal form is **not yet wired to a backend**. Until it is, submitting opens
-the visitor's mail client with the answers pre-filled, so enquiries still reach
-you rather than disappearing.
-
-To take real submissions, create a form at [formspree.io](https://formspree.io)
-(or any equivalent) and set the endpoint at the top of `main.js`:
+The modal form posts to [Web3Forms](https://web3forms.com), which emails each
+submission to the address registered against the access key. Both live at the
+top of `main.js`:
 
 ```js
-var FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
+var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+var ACCESS_KEY    = '6092d285-4b44-4798-9e7f-bb4429798754';
 ```
 
-The submit handler already POSTs the form data and shows the success state on a
-2xx response, so nothing else needs changing.
+The access key is public by design, exactly as in Web3Forms' own copy-paste
+snippet, so it belongs in this file rather than in a secret store. Restrict it
+to this domain in the Web3Forms dashboard so it cannot be reused elsewhere.
+
+The handler posts JSON and adds `access_key`, `subject`, `from_name` and
+`replyto` (set to the enquirer's address, so replying in your mail client goes
+to them). Web3Forms answers `200` with `success: false` for a rejected
+submission, so the handler checks the body rather than the status alone, and
+gives a distinct message on `429`.
+
+Spam is filtered by a honeypot checkbox named `botcheck`, which the browser
+drops before sending and which Web3Forms also rejects server-side.
+
+Clearing `FORM_ENDPOINT` reverts to the mail-client fallback, which shows its
+own "we opened your email app" message rather than claiming the message was
+received.
+
+The free tier allows 250 submissions a month. Spam POSTed straight at the
+endpoint counts towards that, since it never loads the page and so never sees
+the honeypot.
 
 ## SEO checklist for new pages
 
