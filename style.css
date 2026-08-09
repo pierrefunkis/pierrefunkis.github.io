@@ -1064,6 +1064,15 @@ footer { background: var(--ink); padding: 48px 0; }
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
+/* Honeypot. Off-screen rather than display:none, since some bots skip fields
+   that are not rendered at all. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+
 .form-submit {
   width: 100%;
   padding: 14px;

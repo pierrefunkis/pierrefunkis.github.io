@@ -83,6 +83,7 @@ exactly 1200x630. Regenerate it whenever the home headline changes, and keep the
 
 ## Known follow-ups
 
-- The contact address is `hello@workwithsemantic.com`, matching `CNAME`. The
-  mailbox has to exist, or enquiries from the form will bounce.
+- Every address on the site is `pierre@workwithsemantic.com`: the footer
+  Contact link, the Careers apply CTAs, the Organization schema, and the
+  contact form's fallback. That mailbox has to exist.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.
