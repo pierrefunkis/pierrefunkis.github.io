@@ -80,7 +80,8 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `sitemap.xml` and
   to match the current headline.
 - The client logos in `logos/` are typographic placeholders. See `logos/README.md`
   for how to swap in the real files.
-- `CNAME` is `www.workwithsemantic.com` but the contact address on the site is
-  `hello@semantic-data.io`. Confirm the mailbox before switching the address, so
-  the contact form does not start sending to somewhere undeliverable.
+- The contact address is `hello@workwithsemantic.com`, matching `CNAME`. The
+  mailbox has to exist, or enquiries from the form will bounce.
+- The founder photo is expected at `/pierre-sarkis.jpg`. Until that file is
+  committed, `main.js` swaps the image for a "PS" monogram of the same size.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.

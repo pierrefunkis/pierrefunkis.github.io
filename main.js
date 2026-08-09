@@ -13,7 +13,7 @@
      any equivalent) and paste its endpoint URL here.
      -------------------------------------------------------------------- */
   var FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxxx'
-  var CONTACT_EMAIL = 'hello@semantic-data.io';
+  var CONTACT_EMAIL = 'hello@workwithsemantic.com';
 
   /* ── Mobile menu ──────────────────────────────────────────────────── */
   var menu = document.getElementById('mobileNavMenu');
@@ -58,6 +58,29 @@
     /* rotating past the breakpoint would otherwise strand the open menu */
     if (window.innerWidth > 900) closeMobileMenu();
   });
+
+  /* ── Founder photo fallback ───────────────────────────────────────── */
+  /* Until the photograph is committed, swap the broken image for a monogram
+     of the same size so the card never renders as a missing-file icon. */
+  var founderPhoto = document.getElementById('founderPhoto');
+
+  if (founderPhoto) {
+    var showMonogram = function () {
+      if (!founderPhoto.parentNode) return;
+      var mono = document.createElement('div');
+      mono.className = founderPhoto.className;
+      mono.setAttribute('aria-hidden', 'true');
+      mono.textContent = founderPhoto.getAttribute('data-monogram') || '';
+      founderPhoto.replaceWith(mono);
+    };
+
+    founderPhoto.addEventListener('error', showMonogram);
+
+    /* This script is deferred, so a missing photo may already have failed
+       before the listener above was attached. A finished load with no
+       intrinsic width is that case. */
+    if (founderPhoto.complete && founderPhoto.naturalWidth === 0) showMonogram();
+  }
 
   /* ── Modal ────────────────────────────────────────────────────────── */
   /* Built here rather than duplicated into every page: it cannot work

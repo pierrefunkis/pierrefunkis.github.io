@@ -246,6 +246,9 @@ body {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  /* Evens out the line lengths so headlines don't end on a single short word.
+     Ignored by browsers that don't support it, which just wrap as before. */
+  text-wrap: balance;
 }
 
 .heading-lg {
@@ -409,6 +412,43 @@ body {
 .hero .body-lg    { color: rgba(255,255,255,0.62); max-width: 520px; margin-bottom: 44px; }
 
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── HERO WITH ILLUSTRATION ──────────────────── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 64px;
+  align-items: center;
+}
+
+/* The column already constrains the measure, so the shared caps would only
+   narrow the text further. */
+.hero-grid .heading-xl { max-width: none; }
+.hero-grid .body-lg { max-width: 480px; }
+
+.hero-visual { width: 100%; height: auto; display: block; }
+
+/* ── PRINCIPLE / VALUE CARD ICONS ────────────── */
+.pc-icon {
+  width: 38px; height: 38px;
+  background: rgba(99,102,241,0.16);
+  border: 1px solid rgba(129,140,248,0.28);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.vc-icon {
+  width: 42px; height: 42px;
+  background: var(--primary-light);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
 
 /* ── HERO VARIANTS ───────────────────────────── */
 .hero-talents { background: linear-gradient(140deg, #1E1B4B 0%, var(--ink) 60%); }
@@ -816,6 +856,8 @@ body {
 .story-aside li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text); line-height: 1.5; }
 
 /* ── FOUNDER ─────────────────────────────────── */
+/* .founder-avatar styles both the <img> photo and the monogram fallback that
+   replaces it when the photo is missing, so the layout does not shift. */
 .founder-card {
   display: grid;
   grid-template-columns: 132px 1fr;
@@ -1090,6 +1132,13 @@ footer { background: var(--ink); padding: 48px 0; }
   .founder-avatar { width: 96px; height: 96px; font-size: 34px; }
 
   .hero { padding-top: calc(var(--nav-h) + 56px); padding-bottom: 72px; }
+}
+
+/* The illustration competes with the headline before there is room for two
+   real columns, so it stands down first. */
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero-visual-wrap { display: none; }
 }
 
 @media (max-width: 600px) {
