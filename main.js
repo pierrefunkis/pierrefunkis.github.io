@@ -85,25 +85,16 @@
   /* ── Modal ────────────────────────────────────────────────────────── */
   /* Built here rather than duplicated into every page: it cannot work
      without JS, and nothing inside it needs to be crawlable. */
+  /* Client enquiries only. Applications go straight to email from the
+     Careers CTAs, so there is no second variant of this form. */
   var COPY = {
-    company: {
-      title: 'Tell us about your data challenge',
-      sub: 'Tell us what you are facing and we will come back within one business day.',
-      needLabel: 'What do you need help with?',
-      needPlaceholder: 'Select an area',
-      msgLabel: 'The challenge',
-      msgPlaceholder: 'What is breaking, what stack it sits on, and what a good outcome looks like...',
-      submit: 'Send'
-    },
-    talent: {
-      title: 'Join the team',
-      sub: 'Tell us about yourself and we\'ll be in touch.',
-      needLabel: 'Your specialisation',
-      needPlaceholder: 'Select your specialisation',
-      msgLabel: 'About you',
-      msgPlaceholder: 'Your background, your stack, and the problems you want to be working on...',
-      submit: 'Send application'
-    }
+    title: 'Tell us about your data challenge',
+    sub: 'Tell us what you are facing and we will come back within one business day.',
+    needLabel: 'What do you need help with?',
+    needPlaceholder: 'Select an area',
+    msgLabel: 'The challenge',
+    msgPlaceholder: 'What is breaking, what stack it sits on, and what a good outcome looks like...',
+    submit: 'Send'
   };
 
   var DISCIPLINES = [
@@ -114,7 +105,7 @@
     'Data Project Management', 'Other'
   ];
 
-  var overlay, form, successBox, lastFocused, currentType = 'company';
+  var overlay, form, successBox, lastFocused;
 
   function buildModal() {
     overlay = document.createElement('div');
@@ -184,19 +175,16 @@
     form.addEventListener('submit', handleSubmit);
   }
 
-  function openModal(type) {
+  function openModal() {
     if (!overlay) buildModal();
-    currentType = type === 'talent' ? 'talent' : 'company';
-    var c = COPY[currentType];
 
-    overlay.querySelector('#modalTitle').textContent = c.title;
-    overlay.querySelector('#modalSub').textContent = c.sub;
-    overlay.querySelector('#needLabel').textContent = c.needLabel;
-    overlay.querySelector('#needPlaceholder').textContent = c.needPlaceholder;
-    overlay.querySelector('#msgLabel').textContent = c.msgLabel;
-    overlay.querySelector('#msg').placeholder = c.msgPlaceholder;
-    overlay.querySelector('#formSubmit').textContent = c.submit + ' →';
-    overlay.querySelector('#companyField').style.display = currentType === 'talent' ? 'none' : '';
+    overlay.querySelector('#modalTitle').textContent = COPY.title;
+    overlay.querySelector('#modalSub').textContent = COPY.sub;
+    overlay.querySelector('#needLabel').textContent = COPY.needLabel;
+    overlay.querySelector('#needPlaceholder').textContent = COPY.needPlaceholder;
+    overlay.querySelector('#msgLabel').textContent = COPY.msgLabel;
+    overlay.querySelector('#msg').placeholder = COPY.msgPlaceholder;
+    overlay.querySelector('#formSubmit').textContent = COPY.submit + ' →';
 
     form.hidden = false;
     successBox.hidden = true;
@@ -219,7 +207,7 @@
     if (!form.reportValidity()) return;
 
     var data = new FormData(form);
-    data.append('formType', currentType === 'talent' ? 'Careers application' : 'Client enquiry');
+    data.append('formType', 'Client enquiry');
 
     if (FORM_ENDPOINT) {
       var btn = overlay.querySelector('#formSubmit');
@@ -232,7 +220,7 @@
         })
         .catch(function () {
           btn.disabled = false;
-          btn.textContent = COPY[currentType].submit + ' →';
+          btn.textContent = COPY.submit + ' →';
           alert('Sorry, something went wrong sending that. Please email ' + CONTACT_EMAIL + ' instead.');
         });
       return;
@@ -243,7 +231,7 @@
     var lines = [];
     data.forEach(function (v, k) { if (v) lines.push(k + ': ' + v); });
     window.location.href = 'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent(COPY[currentType].title) +
+      '?subject=' + encodeURIComponent(COPY.title) +
       '&body=' + encodeURIComponent(lines.join('\n'));
     showSuccess();
   }
@@ -259,7 +247,7 @@
     if (!trigger) return;
     e.preventDefault();
     closeMobileMenu();
-    openModal(trigger.getAttribute('data-modal'));
+    openModal();
   });
 
   document.addEventListener('keydown', function (e) {
