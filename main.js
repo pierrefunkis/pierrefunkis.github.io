@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Semantic — site behaviour
+   Semantic site behaviour
    ========================================================================== */
 (function () {
   'use strict';
@@ -13,7 +13,7 @@
      any equivalent) and paste its endpoint URL here.
      -------------------------------------------------------------------- */
   var FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxxx'
-  var CONTACT_EMAIL = 'hello@semantic-data.io';
+  var CONTACT_EMAIL = 'hello@workwithsemantic.com';
 
   /* ── Mobile menu ──────────────────────────────────────────────────── */
   var menu = document.getElementById('mobileNavMenu');
@@ -59,33 +59,58 @@
     if (window.innerWidth > 900) closeMobileMenu();
   });
 
+  /* ── Founder photo fallback ───────────────────────────────────────── */
+  /* Until the photograph is committed, swap the broken image for a monogram
+     of the same size so the card never renders as a missing-file icon. */
+  var founderPhoto = document.getElementById('founderPhoto');
+
+  if (founderPhoto) {
+    var showMonogram = function () {
+      if (!founderPhoto.parentNode) return;
+      var mono = document.createElement('div');
+      mono.className = founderPhoto.className;
+      mono.setAttribute('aria-hidden', 'true');
+      mono.textContent = founderPhoto.getAttribute('data-monogram') || '';
+      founderPhoto.replaceWith(mono);
+    };
+
+    founderPhoto.addEventListener('error', showMonogram);
+
+    /* This script is deferred, so a missing photo may already have failed
+       before the listener above was attached. A finished load with no
+       intrinsic width is that case. */
+    if (founderPhoto.complete && founderPhoto.naturalWidth === 0) showMonogram();
+  }
+
   /* ── Modal ────────────────────────────────────────────────────────── */
   /* Built here rather than duplicated into every page: it cannot work
      without JS, and nothing inside it needs to be crawlable. */
   var COPY = {
     company: {
-      title: 'Request a Data Expert',
-      sub: 'Tell us about your project and we\'ll get back to you within one business day.',
-      needLabel: 'What do you need?',
-      needPlaceholder: 'Select a discipline',
-      msgLabel: 'Tell us more',
-      msgPlaceholder: 'Briefly describe your project, stack, timeline, or any specific requirements...',
-      submit: 'Send request'
+      title: 'Tell us about your data challenge',
+      sub: 'Tell us what you are facing and we will come back within one business day.',
+      needLabel: 'What do you need help with?',
+      needPlaceholder: 'Select an area',
+      msgLabel: 'The challenge',
+      msgPlaceholder: 'What is breaking, what stack it sits on, and what a good outcome looks like...',
+      submit: 'Send'
     },
     talent: {
-      title: 'Join Our Network',
+      title: 'Join the team',
       sub: 'Tell us about yourself and we\'ll be in touch.',
       needLabel: 'Your specialisation',
       needPlaceholder: 'Select your specialisation',
       msgLabel: 'About you',
-      msgPlaceholder: 'Tell us about your background, stack, and the kinds of projects you\'re interested in...',
+      msgPlaceholder: 'Your background, your stack, and the problems you want to be working on...',
       submit: 'Send application'
     }
   };
 
   var DISCIPLINES = [
-    'Data Engineering', 'Analytics Engineering', 'Data Science', 'Data Analytics',
-    'Data Architecture', 'Data Management / MDM', 'AI & Machine Learning',
+    'Data Quality & Reliability', 'Data Governance', 'Data Engineering',
+    'Analytics Engineering', 'Advanced Analytics & Data Science',
+    'Data Modelling & Architecture', 'Master Data Management',
+    'Business Intelligence', 'Machine Learning', 'AI & Automation',
     'Data Project Management', 'Other'
   ];
 
@@ -101,7 +126,7 @@
           '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/></svg>' +
         '</button>' +
         '<form id="modalForm" novalidate>' +
-          '<h2 class="modal-title" id="modalTitle">Request a Data Expert</h2>' +
+          '<h2 class="modal-title" id="modalTitle">Tell us about your data challenge</h2>' +
           '<p class="modal-sub" id="modalSub"></p>' +
           '<div class="form-row">' +
             '<div class="form-group">' +
@@ -194,7 +219,7 @@
     if (!form.reportValidity()) return;
 
     var data = new FormData(form);
-    data.append('formType', currentType === 'talent' ? 'Talent application' : 'Expert request');
+    data.append('formType', currentType === 'talent' ? 'Careers application' : 'Client enquiry');
 
     if (FORM_ENDPOINT) {
       var btn = overlay.querySelector('#formSubmit');
@@ -208,7 +233,7 @@
         .catch(function () {
           btn.disabled = false;
           btn.textContent = COPY[currentType].submit + ' →';
-          alert('Sorry — something went wrong sending that. Please email ' + CONTACT_EMAIL + ' instead.');
+          alert('Sorry, something went wrong sending that. Please email ' + CONTACT_EMAIL + ' instead.');
         });
       return;
     }
