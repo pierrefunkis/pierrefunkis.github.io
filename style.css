@@ -661,6 +661,10 @@ body {
 .client-logo--tall { height: 44px; }
 .client-logo--wide { height: 22px; }
 
+/* Thin outline marks all but disappear at the shared opacity, so they carry
+   more of it to sit at the same visual weight as the solid ones. */
+.client-logo--light { opacity: 0.8; }
+
 /* No pointer cursor and no link wrapper: the reveal is decorative, so it must
    not suggest the logos are clickable. */
 .client-logos li:hover .client-logo { filter: grayscale(0); opacity: 1; }

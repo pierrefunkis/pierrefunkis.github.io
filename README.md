@@ -74,14 +74,15 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `sitemap.xml` and
 - The nav labels are Services / Careers / About. The Careers page still lives at
   `/for-talents/` so existing inbound links keep working; only the label changed.
 
+## Social preview image
+
+`og-image.png` is 1200x630 and is generated, not hand-drawn: a small HTML card
+using the site's own fonts and hero illustration, screenshotted headlessly at
+exactly 1200x630. Regenerate it whenever the home headline changes, and keep the
+`og:image:width` / `og:image:height` meta values in step with the real file.
+
 ## Known follow-ups
 
-- `og-image.png` still carries the previous positioning. It needs regenerating
-  to match the current headline.
-- The client logos in `logos/` are typographic placeholders. See `logos/README.md`
-  for how to swap in the real files.
 - The contact address is `hello@workwithsemantic.com`, matching `CNAME`. The
   mailbox has to exist, or enquiries from the form will bounce.
-- The founder photo is expected at `/pierre-sarkis.png`. Until that file is
-  committed, `main.js` swaps the image for a "PS" monogram of the same size.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.
