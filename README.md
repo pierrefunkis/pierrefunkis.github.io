@@ -1,19 +1,20 @@
-# Semantic — workwithsemantic.com
+# Semantic, workwithsemantic.com
 
 Marketing site for Semantic, served by GitHub Pages from this repository.
-Static HTML, CSS and vanilla JS — no build step, no dependencies. Push to the
+Static HTML, CSS and vanilla JS, with no build step and no dependencies. Push to the
 default branch and it deploys.
 
 ## Structure
 
 ```
-index.html             /               → For Companies (home)
-for-talents/index.html /for-talents/   → For Talents
-about/index.html       /about/         → About Us
+index.html             /               → Services (home)
+for-talents/index.html /for-talents/   → Careers (path kept for existing links)
+about/index.html       /about/         → About
 404.html                               → GitHub Pages serves this on unknown URLs
 style.css                              → all styles
 main.js                                → mobile menu, nav pill, contact modal
 favicon.svg
+logos/                                 → client logos for the home page strip
 og-image.png                           → 1200x630 social preview
 robots.txt  sitemap.xml
 CNAME                                  → www.workwithsemantic.com
@@ -36,10 +37,10 @@ Then visit http://127.0.0.1:8080/.
 
 ## Editing
 
-- **Copy and page content** — edit the relevant `.html` file directly.
-- **Styles** — `style.css`. Design tokens are the CSS custom properties in
+- **Copy and page content**: edit the relevant `.html` file directly.
+- **Styles**: `style.css`. Design tokens are the CSS custom properties in
   `:root` at the top; responsive rules live in the media queries at the bottom.
-- **Adding a page** — copy an existing page, update `<title>`, the meta
+- **Adding a page**: copy an existing page, update `<title>`, the meta
   description, `<link rel="canonical">`, the Open Graph/Twitter tags and the
   JSON-LD block, then add the link to the nav and footer of every page and a
   new `<url>` entry in `sitemap.xml`.
@@ -67,8 +68,19 @@ description (under ~160), a self-referencing canonical URL, Open Graph and
 Twitter tags, exactly one `<h1>`, and a JSON-LD block. `sitemap.xml` and
 `robots.txt` both point at `https://www.workwithsemantic.com`.
 
+## House style
+
+- No em dashes in visible copy. Use commas, colons or a full stop instead.
+- The nav labels are Services / Careers / About. The Careers page still lives at
+  `/for-talents/` so existing inbound links keep working; only the label changed.
+
 ## Known follow-ups
 
+- `og-image.png` still carries the previous positioning. It needs regenerating
+  to match the current headline.
+- The client logos in `logos/` are typographic placeholders. See `logos/README.md`
+  for how to swap in the real files.
 - `CNAME` is `www.workwithsemantic.com` but the contact address on the site is
-  `hello@semantic-data.io`. Confirm which is correct and align them.
+  `hello@semantic-data.io`. Confirm the mailbox before switching the address, so
+  the contact form does not start sending to somewhere undeliverable.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.
