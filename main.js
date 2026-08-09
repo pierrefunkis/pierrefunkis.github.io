@@ -7,13 +7,20 @@
   /* --------------------------------------------------------------------
      Lead form endpoint.
 
-     Until this is set, the form falls back to opening the visitor's mail
-     client with the answers pre-filled, so enquiries are never silently
-     dropped. To take real submissions, create a form at formspree.io (or
-     any equivalent) and paste its endpoint URL here.
+     Paste an endpoint here and the modal posts to it directly, keeping the
+     site's own form. Any service that accepts a plain POST works, e.g.
+     Formspree (https://formspree.io/f/xxxxxxxx) or Web3Forms.
+
+     Left empty, the form falls back to opening the visitor's mail client
+     with the answers pre-filled. That fallback depends on them having a
+     mail client configured and then actually pressing send, so it is a
+     stopgap rather than a solution.
+
+     The form already posts a `_gotcha` honeypot field, which Formspree and
+     Web3Forms both treat as a spam signal.
      -------------------------------------------------------------------- */
   var FORM_ENDPOINT = '';           // e.g. 'https://formspree.io/f/xxxxxxxx'
-  var CONTACT_EMAIL = 'hello@workwithsemantic.com';
+  var CONTACT_EMAIL = 'pierre@workwithsemantic.com';
 
   /* ── Mobile menu ──────────────────────────────────────────────────── */
   var menu = document.getElementById('mobileNavMenu');
@@ -150,14 +157,21 @@
             '<label for="msg" id="msgLabel">Tell us more</label>' +
             '<textarea id="msg" name="message"></textarea>' +
           '</div>' +
+          /* Honeypot: off-screen and hidden from assistive tech, so only a bot
+             filling every field will complete it. Submissions with it set are
+             dropped silently rather than rejected, so the bot learns nothing. */
+          '<div class="hp-field" aria-hidden="true">' +
+            '<label for="hp">Do not fill this in</label>' +
+            '<input type="text" id="hp" name="_gotcha" tabindex="-1" autocomplete="off">' +
+          '</div>' +
           '<button class="form-submit" type="submit" id="formSubmit">Send request →</button>' +
         '</form>' +
         '<div class="form-success" id="modalSuccess" hidden>' +
           '<div class="form-success-icon">' +
             '<svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 14l5 5 11-11" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
           '</div>' +
-          '<h2 class="heading-sm" style="margin-bottom:8px;">We got your message</h2>' +
-          '<p class="body-md" style="font-size:15px;">We\'ll review it and be in touch within one business day.</p>' +
+          '<h2 class="heading-sm" id="successTitle" style="margin-bottom:8px;">We got your message</h2>' +
+          '<p class="body-md" id="successBody" style="font-size:15px;">We\'ll review it and be in touch within one business day.</p>' +
           '<button class="btn-primary" type="button" id="successClose" style="margin-top:24px;">Close</button>' +
         '</div>' +
       '</div>';
@@ -206,6 +220,9 @@
     e.preventDefault();
     if (!form.reportValidity()) return;
 
+    /* Bot: show the same success state it would have got, and send nothing. */
+    if (form.querySelector('#hp').value) { showSuccess(); return; }
+
     var data = new FormData(form);
     data.append('formType', 'Client enquiry');
 
@@ -227,16 +244,23 @@
     }
 
     /* No endpoint configured: hand off to the visitor's mail client so the
-       enquiry actually reaches us rather than disappearing. */
+       enquiry is not simply dropped. */
     var lines = [];
-    data.forEach(function (v, k) { if (v) lines.push(k + ': ' + v); });
+    data.forEach(function (v, k) { if (v && k !== '_gotcha') lines.push(k + ': ' + v); });
     window.location.href = 'mailto:' + CONTACT_EMAIL +
       '?subject=' + encodeURIComponent(COPY.title) +
       '&body=' + encodeURIComponent(lines.join('\n'));
-    showSuccess();
+    showSuccess(true);
   }
 
-  function showSuccess() {
+  /* handedOff means we only opened the visitor's mail client. Nothing has
+     reached us yet and it may never, so do not claim that it has. */
+  function showSuccess(handedOff) {
+    overlay.querySelector('#successTitle').textContent =
+      handedOff ? 'Almost there' : 'We got your message';
+    overlay.querySelector('#successBody').textContent = handedOff
+      ? 'We have opened your email app with the details filled in. Send that message and we will come back within one business day. If nothing opened, email us at ' + CONTACT_EMAIL + '.'
+      : 'We\'ll review it and be in touch within one business day.';
     form.hidden = true;
     successBox.hidden = false;
   }
@@ -257,7 +281,9 @@
 
     /* Keep focus inside the dialog while it is open */
     if (e.key !== 'Tab') return;
-    var f = overlay.querySelectorAll('button, input, select, textarea, a[href]');
+    /* :not(#hp) keeps the honeypot out of the trap; it is rendered off-screen
+       rather than hidden, so it would otherwise qualify as focusable. */
+    var f = overlay.querySelectorAll('button, input:not(#hp), select, textarea, a[href]');
     var visible = Array.prototype.filter.call(f, function (el) {
       return el.offsetParent !== null && !el.disabled;
     });
