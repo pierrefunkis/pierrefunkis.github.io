@@ -6,18 +6,17 @@ Each file here is loaded by the client strip on the home page:
 <img class="client-logo" src="/logos/back-market.svg" alt="Back Market" ...>
 ```
 
-| File | Client | Status |
-| --- | --- | --- |
-| `pernod-ricard.svg` | Pernod Ricard | real logo |
-| `back-market.svg` | Back Market | real logo |
-| `pawp.svg` | Pawp | real logo |
-| `med-surg-solutions.svg` | Med Surg Solutions | **placeholder** |
-| `shelt.svg` | Shelt | **placeholder** |
+| File | Client |
+| --- | --- |
+| `pernod-ricard.svg` | Pernod Ricard |
+| `back-market.svg` | Back Market |
+| `pawp.svg` | Pawp |
+| `med-surg-solutions.png` | Med Surg Solutions |
+| `shelt.png` | Shelt |
 
-The placeholders are plain typographic wordmarks. To swap one out, replace the
-file at the same path and keep the same filename, then update the `width` and
-`height` attributes on its `<img>` in `index.html` to the new intrinsic size so
-the browser reserves the right space before the file loads.
+To replace one, drop in the new file and update the `src`, `width` and `height`
+on its `<img>` in `index.html`. The dimensions should be the file's real
+intrinsic size so the browser reserves the right space before it loads.
 
 ## Sizing
 
@@ -28,13 +27,16 @@ Two modifier classes handle shapes that do not suit the shared height:
   undersized at the shared height. Pernod Ricard uses it.
 - `.client-logo--wide` for long wordmarks, which look oversized at the shared
   height. Back Market uses it.
+- `.client-logo--light` for thin outline marks, which fade out at the shared
+  opacity. Shelt uses it.
 
 Judge this by eye after adding a logo rather than by matching numbers.
 
 ## Preparing a replacement file
 
-- **SVG is strongly preferred.** PNG works too, but then change the extension in
-  the `src` and supply a 2x file so it stays sharp on retina screens.
+- **SVG is preferred** where the client provides one: sharp at any size and a
+  fraction of the weight. PNG is fine otherwise, at roughly 2x the displayed
+  size so it stays sharp on retina screens, with a transparent background.
 - Trim the artboard to the logo itself. Built-in padding makes a logo look
   smaller than its neighbours.
 - Full colour is correct. The strip desaturates in CSS and restores colour on
