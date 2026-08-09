@@ -134,6 +134,8 @@ body {
   transition: background 0.2s, transform 0.15s;
   flex-shrink: 0;
   white-space: nowrap;
+  /* also used on the <a> Apply CTA, which would otherwise be underlined */
+  text-decoration: none;
 }
 
 .nav-cta-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
@@ -288,6 +290,8 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
+  /* also used on <a> CTAs, which would otherwise be underlined */
+  text-decoration: none;
 }
 
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
@@ -325,6 +329,7 @@ body {
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.15s;
+  text-decoration: none;
 }
 
 .btn-white:hover { transform: translateY(-2px); }
@@ -343,6 +348,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: border-color 0.2s, transform 0.15s;
+  text-decoration: none;
 }
 
 .btn-white-ghost:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
@@ -640,7 +646,7 @@ body {
      safety net for an unusually wide logo, not the usual constraint. */
   height: 26px;
   width: auto;
-  max-width: 200px;
+  max-width: 240px;
   object-fit: contain;
   /* Desaturated by default so the row reads as one band rather than five
      competing brand palettes; colour returns on hover. */
@@ -648,6 +654,12 @@ body {
   opacity: 0.55;
   transition: filter 0.25s, opacity 0.25s;
 }
+
+/* Logos are balanced optically rather than mathematically: a stacked lockup
+   at the same height as a long wordmark reads much smaller, and a long
+   wordmark at the shared height reads much heavier. */
+.client-logo--tall { height: 44px; }
+.client-logo--wide { height: 22px; }
 
 /* No pointer cursor and no link wrapper: the reveal is decorative, so it must
    not suggest the logos are clickable. */
@@ -1126,7 +1138,9 @@ footer { background: var(--ink); padding: 48px 0; }
   .profiles-grid { grid-template-columns: 1fr; }
 
   .client-logos { gap: 22px 40px; }
-  .client-logo { height: 22px; max-width: 165px; }
+  .client-logo { height: 22px; max-width: 190px; }
+  .client-logo--tall { height: 36px; }
+  .client-logo--wide { height: 19px; }
 
   .founder-card { grid-template-columns: 1fr; gap: 24px; padding: 36px 28px; }
   .founder-avatar { width: 96px; height: 96px; font-size: 34px; }

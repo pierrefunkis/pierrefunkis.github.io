@@ -82,6 +82,6 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `sitemap.xml` and
   for how to swap in the real files.
 - The contact address is `hello@workwithsemantic.com`, matching `CNAME`. The
   mailbox has to exist, or enquiries from the form will bounce.
-- The founder photo is expected at `/pierre-sarkis.jpg`. Until that file is
+- The founder photo is expected at `/pierre-sarkis.png`. Until that file is
   committed, `main.js` swaps the image for a "PS" monogram of the same size.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.
