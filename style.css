@@ -479,7 +479,8 @@ body {
 }
 
 /* ── OFFER SECTION ───────────────────────────── */
-.offer-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+/* Bullets on the right sit vertically centred against the text block on the left */
+.offer-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
 .offer-text .heading-lg { margin-bottom: 20px; }
 
