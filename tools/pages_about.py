@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, LINKEDIN, cta_band
+from plates import CONSTELLATION
 
 TEAM_AREAS = [
     ('Data product', 'Framing the problem, defining the outcome, and keeping delivery pointed at it.'),
@@ -55,6 +56,11 @@ ABOUT = '''
             the US and the Middle East. He is the counterpart on every engagement, and the
             person you speak to first.</p>
 
+          <dl class="facts facts--pair" style="margin-top:36px;">
+            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" decoding="async"></dd></div>
+            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
+          </dl>
+
           <a class="link" href="{linkedin}" rel="noopener" style="margin-top:28px;">Connect on LinkedIn {arrow}</a>
         </div>
       </div>
@@ -64,7 +70,7 @@ ABOUT = '''
   <!-- WHY SEMANTIC -->
   <section class="section section--mint" aria-labelledby="why-h">
     <div class="container">
-      <div class="split">
+      <div class="section-head section-head--wide">
         <div>
           <p class="eyebrow">Why Semantic</p>
           <h2 class="h-xl" id="why-h">A third option</h2>
@@ -74,8 +80,13 @@ ABOUT = '''
             a data problem in the abstract. They have a specific, expensive one: a number two
             teams calculate differently, a pipeline nobody trusts before a board meeting, an
             AI initiative stalled because the data underneath it will not hold weight.</p>
+        </div>
+      </div>
 
-          <p class="body" style="margin-top:20px;">Large consulting organisations bring real
+      <div class="with-plate--lead with-plate">
+        <div class="plate-slot">{plate_why}</div>
+        <div>
+          <p class="body">Large consulting organisations bring real
             capacity and a wide bench, but the senior person who scoped the work is not
             usually the one doing it. Freelance marketplaces bring capable individuals, but
             no structure behind them and no cover when one moves on. Both models work for
@@ -87,14 +98,15 @@ ABOUT = '''
             person accountable for solving it, and there is a dedicated team behind them
             with the capacity to deliver it properly.</p>
 
-          <ul class="points" style="margin-top:36px;">
-            <li>Senior-led. The people who scope the work are involved in doing it.</li>
-            <li>Embedded, not adjacent. We work in your tools, your stack and your rituals.</li>
-            <li>A counterpart who challenges you, including when the answer is that you do not need us.</li>
-            <li>Accountable for the outcome, with regular service reviews and continuity we own rather than pass to you.</li>
-          </ul>
         </div>
       </div>
+
+      <ul class="points points--2up" style="margin-top:48px;">
+        <li>Senior-led. The people who scope the work are involved in doing it.</li>
+        <li>Embedded, not adjacent. We work in your tools, your stack and your rituals.</li>
+        <li>A counterpart who challenges you, including when the answer is that you do not need us.</li>
+        <li>Accountable for the outcome, with regular service reviews and continuity we own rather than pass to you.</li>
+      </ul>
     </div>
   </section>
 
@@ -110,7 +122,7 @@ ABOUT = '''
           problem.</p>
       </div>
 
-      <div class="capabilities">
+      <div class="capabilities capabilities--2up">
 {areas}
       </div>
 
@@ -132,13 +144,14 @@ def _areas():
           <span class="capability-index">{idx:02d}</span>
           <h3>{title}</h3>
         </div>
-        <div><p class="body">{body}</p></div>
+        <p class="body">{body}</p>
       </div>'''.format(idx=i, title=title, body=body))
     return '\n'.join(out)
 
 
 ABOUT = ABOUT.format(
     linkedin=LINKEDIN,
+    plate_why=CONSTELLATION,
     arrow=ARROW,
     areas=_areas(),
     cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),

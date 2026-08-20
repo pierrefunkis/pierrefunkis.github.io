@@ -14,6 +14,27 @@ Each file here is loaded by the client strip on the home page:
 | `med-surg-solutions.png` | Med Surg Solutions |
 | `shelt.png` | Shelt |
 
+## Credential marks
+
+`amazon.svg` is not a client logo. It sits in the founder credentials row on
+the home page and on About ("Previously"), and is Amazon's official
+single-colour form, taken from [simple-icons](https://simpleicons.org) (CC0).
+It is filled `#111111` rather than `currentColor`, because it is loaded through
+an `<img>` and so has no colour context to inherit.
+
+**HEC Paris has no file yet.** "Educated at" renders as a typographic
+`<span class="fact-word">HEC Paris</span>` standing in for the mark. To swap it
+in, drop `hec-paris.svg` here and replace that span in `tools/pages_home.py` and
+`tools/pages_about.py` with:
+
+```html
+<img class="fact-mark" src="/logos/hec-paris.svg" alt="HEC Paris"
+     width="..." height="..." loading="lazy" decoding="async">
+```
+
+`.fact-mark` sizes by height, so the file only needs a trimmed artboard and the
+right intrinsic dimensions.
+
 To replace one, drop in the new file and update the `src`, `width` and `height`
 on its `<img>` in `index.html`. The dimensions should be the file's real
 intrinsic size so the browser reserves the right space before it loads.
@@ -50,3 +71,9 @@ Judge this by eye after adding a logo rather than by matching numbers.
 Displaying a client's logo usually needs their sign-off, and several of these
 brands publish specific logo usage guidelines. Confirm permission for each one
 before this goes live.
+
+The same applies to the credential marks, and more sharply: Amazon's trademark
+guidelines restrict use of their marks where it could imply a partnership or
+endorsement. A factual "previously worked here" credential on a founder
+biography is the normal use of this pattern, but it is worth a look at their
+current guidelines before launch.

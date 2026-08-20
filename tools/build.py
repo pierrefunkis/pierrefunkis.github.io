@@ -186,7 +186,7 @@ contact_ld = json.dumps({
     '@type': 'ContactPage',
     '@id': SITE + '/contact/#webpage',
     'url': SITE + '/contact/',
-    'name': 'Talk to Pierre | Semantic',
+    'name': 'Contact | Semantic',
     'description': 'Start with a free advisory conversation about the data problem you are '
                    'trying to solve.',
     'inLanguage': 'en',
@@ -196,7 +196,7 @@ contact_ld = json.dumps({
 
 PAGES.append((
     'contact/index.html', '/contact/',
-    'Talk to Pierre | Semantic',
+    'Contact Semantic | Book a free diagnosis session',
     'Start with a free advisory conversation. Tell us the data problem you are trying to '
     'solve and we will tell you what it takes to fix it.',
     None, None, contact_ld, CONTACT,

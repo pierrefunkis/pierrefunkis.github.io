@@ -32,7 +32,7 @@ what-we-do/index.html         /what-we-do/     → Expertise, technology, delive
 insights/index.html           /insights/       → Editorial index
 insights/<slug>/index.html    /insights/<slug>/→ One article each
 about/index.html              /about/          → Founder, why Semantic, the team
-contact/index.html            /contact/        → Talk to Pierre, booking form
+contact/index.html            /contact/        → Contact, booking form
 for-talents/index.html        /for-talents/    → Careers (path kept for inbound links)
 404.html                                       → GitHub Pages serves this on unknown URLs
 style.css                                      → all styles
@@ -69,7 +69,7 @@ That rewrites every page, `404.html` and `sitemap.xml` from:
 | `tools/pages_contact.py` | first-session copy, form, next steps |
 | `tools/pages_careers.py` | careers page and the 404 body |
 | `tools/tech.py` | the 22 technology tags, as inline SVG |
-| `tools/figure.py` | the home page diagram |
+| `tools/plates.py` | the three line illustrations |
 
 Nav and footer are emitted into every page rather than injected by script: the
 links have to be in the HTML for search engines to follow them.
@@ -112,6 +112,22 @@ top; responsive rules live in the media queries at the bottom.
   Fonts with a system fallback stack.
 - Corners are 3px. Sections are separated by hairlines, tinted grounds and
   whitespace rather than by cards.
+
+Illustrations live in `tools/plates.py` as three line drawings: a fan of
+sources converging to one answer (home hero), an oblique stack of planes (the
+delivery model band), and a group of nodes around one lead (About). They are
+strokes, arcs and dots only, with no frame and no ground of their own, so they
+read as drawing rather than as an embedded image. Nothing built from filled
+grey rectangles belongs here: an earlier hero was, and it read as a loading
+skeleton. Below 1040px the plates are hidden and the copy takes the column.
+
+Headings never sit alone in their own column. A heading in the left half of a
+two-column block ends up stranded at the top of several hundred pixels of
+nothing, because the row's height comes from the other column. Use
+`.section-head--wide`, which sets the heading and its intro side by side and
+lets the content run full width below. The same applies to a capability row:
+title above its own body, one left edge, `.capabilities--2up` when the bodies
+are short enough to pair.
 
 ## Local preview
 
@@ -173,8 +189,9 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `404.html` is
 ## House style
 
 - No em dashes in visible copy. Use commas, colons or a full stop instead.
-- Nav labels are What We Do / Insights / About, with **Talk to Pierre** as the
-  CTA. There is no "Home" nav item; the wordmark links home.
+- Nav labels are What We Do / Insights / About, with **Get in touch** as the
+  CTA. There is no "Home" nav item; the wordmark links home. The CTA label is
+  `CTA_LABEL` in `tools/shared.py`; the footer and breadcrumb say "Contact".
 - Do not invent clients, metrics, team size, certifications or years of
   experience. Where content is missing, say so plainly or leave a placeholder.
 

@@ -32,7 +32,7 @@ NAV_ITEMS = [
     ('/about/', 'About'),
 ]
 
-CTA_LABEL = 'Talk to Pierre'
+CTA_LABEL = 'Get in touch'
 CTA_HREF = '/contact/'
 
 
@@ -162,7 +162,7 @@ FOOTER = '''
           <li><a href="/what-we-do/">What We Do</a></li>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Talk to Pierre</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">

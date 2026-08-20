@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, cta_band
+from plates import CONVERGENCE
 
 CLIENT_STRIP = '''
   <section class="clients" aria-labelledby="clients-h">
@@ -50,7 +51,7 @@ def _capability_rows(items):
           <span class="capability-index">{idx}</span>
           <h3>{title}</h3>
         </div>
-        <div><p class="body">{body}</p></div>
+        <p class="body">{body}</p>
       </article>'''.format(idx=idx, title=title, body=body))
     return '\n'.join(out)
 
@@ -69,16 +70,19 @@ def _steps(items, ink=False):
 HOME = '''
   <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
-      <div class="hero-body">
-        <p class="lede">Semantic helps enterprises solve complex data problems, from
-          diagnosis to implementation.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="/contact/">Book a free diagnosis session {arrow}</a>
-          <a class="btn btn--ghost" href="/what-we-do/">Explore our expertise</a>
+    <div class="container with-plate">
+      <div>
+        <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
+        <div class="hero-body">
+          <p class="lede">Semantic helps enterprises solve complex data problems, from
+            diagnosis to implementation.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="/contact/">Book a free diagnosis session {arrow}</a>
+            <a class="btn btn--ghost" href="/what-we-do/">Explore our expertise</a>
+          </div>
         </div>
       </div>
+      <div class="plate-slot">{plate}</div>
     </div>
   </section>
 {clients}
@@ -97,7 +101,7 @@ HOME = '''
         </div>
       </div>
 
-      <div class="capabilities">
+      <div class="capabilities capabilities--2up">
 {capabilities}
       </div>
     </div>
@@ -119,8 +123,8 @@ HOME = '''
             than an inconvenience. Since then Semantic has worked with data teams at companies
             including Pernod Ricard and Back Market.</p>
           <dl class="facts" style="margin-top:32px;">
-            <div class="fact"><dt>Founder</dt><dd>Pierre Sarkis, ex-Amazon</dd></div>
-            <div class="fact"><dt>Education</dt><dd>HEC Paris</dd></div>
+            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" decoding="async"></dd></div>
+            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
             <div class="fact"><dt>Working across</dt><dd>Europe, US, Middle East</dd></div>
           </dl>
           <a class="link" href="/about/" style="margin-top:28px;">Who is behind Semantic {arrow}</a>
@@ -149,6 +153,7 @@ HOME = '''
   </section>
 {cta}'''.format(
     arrow=ARROW,
+    plate=CONVERGENCE,
     clients=CLIENT_STRIP,
     capabilities=_capability_rows(HOME_CAPABILITIES),
     steps=_steps(STEPS),

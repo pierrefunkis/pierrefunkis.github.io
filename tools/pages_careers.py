@@ -76,22 +76,23 @@ CAREERS = '''
 
   <section class="section section--mint" aria-labelledby="roles-h">
     <div class="container">
-      <div class="split">
+      <div class="section-head section-head--wide">
         <div>
           <p class="eyebrow">Who We Look For</p>
           <h2 class="h-lg" id="roles-h">Specialists across the data stack</h2>
         </div>
         <div>
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">We take on
+          <p class="body">We take on
             experienced data professionals with strong technical foundations and a track
             record of shipping. We also take on exceptional earlier-career specialists,
             always paired with a senior lead and never staffed alone on a client
             engagement.</p>
-          <ul class="tags" style="margin-top:32px;">
-{roles}
-          </ul>
         </div>
       </div>
+
+      <ul class="tags">
+{roles}
+      </ul>
     </div>
   </section>
 {cta}'''
@@ -132,7 +133,7 @@ NOT_FOUND = '''
       </div>
       <div class="actions">
         <a class="btn btn--primary" href="/">Back to home {arrow}</a>
-        <a class="btn btn--ghost" href="/contact/">Talk to Pierre</a>
+        <a class="btn btn--ghost" href="/contact/">Get in touch</a>
       </div>
     </div>
   </section>
@@ -145,31 +146,31 @@ NOT_FOUND = '''
             <span class="capability-index">01</span>
             <h3><a href="/what-we-do/" style="text-decoration:none;">What We Do</a></h3>
           </div>
-          <div><p class="body">The full set of Semantic capabilities, the technology we build
-            in, and how engagements are run.</p></div>
+          <p class="body">The full set of Semantic capabilities, the technology we build
+            in, and how engagements are run.</p>
         </div>
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">02</span>
             <h3><a href="/insights/" style="text-decoration:none;">Insights</a></h3>
           </div>
-          <div><p class="body">Short pieces on data quality, AI readiness and migration.</p></div>
+          <p class="body">Short pieces on data quality, AI readiness and migration.</p>
         </div>
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">03</span>
             <h3><a href="/about/" style="text-decoration:none;">About</a></h3>
           </div>
-          <div><p class="body">Who is behind Semantic, why it exists, and how the team
-            works.</p></div>
+          <p class="body">Who is behind Semantic, why it exists, and how the team
+            works.</p>
         </div>
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">04</span>
-            <h3><a href="/contact/" style="text-decoration:none;">Talk to Pierre</a></h3>
+            <h3><a href="/contact/" style="text-decoration:none;">Contact</a></h3>
           </div>
-          <div><p class="body">Book a free advisory conversation about the problem you are
-            trying to solve.</p></div>
+          <p class="body">Book a free advisory conversation about the problem you are
+            trying to solve.</p>
         </div>
       </div>
     </div>
