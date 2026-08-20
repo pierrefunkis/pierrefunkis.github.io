@@ -20,15 +20,16 @@ intrinsic size so the browser reserves the right space before it loads.
 
 ## Sizing
 
-The strip sizes logos by height, not width, so they share one optical scale.
-Two modifier classes handle shapes that do not suit the shared height:
+The strip sizes logos by height, not width, so they share one optical scale,
+and each sits in a fixed-height row box so marks of different proportions share
+a baseline. Modifier classes handle shapes that do not suit the shared height:
 
 - `.client-logo--tall` for stacked lockups (symbol above wordmark), which look
   undersized at the shared height. Pernod Ricard uses it.
 - `.client-logo--wide` for long wordmarks, which look oversized at the shared
   height. Back Market uses it.
-- `.client-logo--light` for thin outline marks, which fade out at the shared
-  opacity. Shelt uses it.
+- `.client-logo--dense` for solid, heavily inked lockups, which sit heavier than
+  wordmarks at the shared height. Med Surg Solutions uses it.
 
 Judge this by eye after adding a logo rather than by matching numbers.
 
@@ -39,9 +40,10 @@ Judge this by eye after adding a logo rather than by matching numbers.
   size so it stays sharp on retina screens, with a transparent background.
 - Trim the artboard to the logo itself. Built-in padding makes a logo look
   smaller than its neighbours.
-- Full colour is correct. The strip desaturates in CSS and restores colour on
-  hover, so a colour source file is what you want.
-- Logos sit on a white background, so avoid artwork that is white or very light.
+- Full colour is correct, and it is what visitors see: the strip no longer
+  desaturates anything.
+- Logos sit on the warm off-white ground, so avoid artwork that is white or
+  very light.
 
 ## Usage rights
 

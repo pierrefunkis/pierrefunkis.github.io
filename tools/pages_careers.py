@@ -74,7 +74,7 @@ CAREERS = '''
     </div>
   </section>
 
-  <section class="section section--paper" aria-labelledby="roles-h">
+  <section class="section section--mint" aria-labelledby="roles-h">
     <div class="container">
       <div class="split">
         <div>

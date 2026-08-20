@@ -104,7 +104,7 @@ HOME = '''
   </section>
 
   <!-- CREDIBILITY -->
-  <section class="section section--paper" aria-labelledby="cred-h">
+  <section class="section section--mint" aria-labelledby="cred-h">
     <div class="container">
       <p class="eyebrow">Credibility</p>
       <h2 class="h-lg" id="cred-h" style="margin-bottom:36px;">Backed by serious enterprise experience</h2>

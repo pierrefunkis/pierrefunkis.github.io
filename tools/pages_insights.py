@@ -110,7 +110,7 @@ def article_page(a, others):
     </section>
   </article>
 
-  <section class="section section--paper" aria-labelledby="more-h">
+  <section class="section section--mint" aria-labelledby="more-h">
     <div class="container container--narrow">
       <div class="section-head" style="margin-bottom:16px;">
         <p class="eyebrow">More from Insights</p>

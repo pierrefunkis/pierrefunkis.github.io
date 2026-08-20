@@ -96,14 +96,22 @@ the section becomes a proper work page.
 `style.css`. The design tokens are the CSS custom properties in `:root` at the
 top; responsive rules live in the media queries at the bottom.
 
-- Near-black `#111111` on warm off-white `#F7F6F2`, neutral gray `#6F6F6A`,
-  hairline `#E4E2DC`.
-- One accent, muted dark green `#304A43`, used only for links, hover states,
-  CTA hover and the odd rule. The site is never predominantly green.
+- Near-black `#111111` for headings, `#3D3D39` for running copy, neutral gray
+  `#6F6F6A` for labels and captions, hairline `#E4E2DC`.
+- Two grounds: warm off-white `#F7F6F2` and a soft green tint `#EDF2EE`, used
+  in alternating bands so the page is not a run of white blocks.
+- Brand green `#304A43` carries primary buttons and links, `#3E6157` is its
+  hover, and deep green `#1F332C` is the ground for dark bands. Dark sections
+  are green rather than black: black read as heavy and colourless.
+- The footer is a light ground with a green rule on top. A dark footer under a
+  dark CTA band gave every page a black slab at the bottom.
+- Client and technology logos are shown in their own colours, always. Colour on
+  hover only throws away recognisability, and the reveal depends on a hover the
+  row often never gets.
 - Schibsted Grotesk for headings, Inter for running text, both from Google
   Fonts with a system fallback stack.
-- Corners are 3px. Sections are separated by hairlines and whitespace rather
-  than by cards.
+- Corners are 3px. Sections are separated by hairlines, tinted grounds and
+  whitespace rather than by cards.
 
 ## Local preview
 

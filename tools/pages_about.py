@@ -62,7 +62,7 @@ ABOUT = '''
   </section>
 
   <!-- WHY SEMANTIC -->
-  <section class="section section--paper" aria-labelledby="why-h">
+  <section class="section section--mint" aria-labelledby="why-h">
     <div class="container">
       <div class="split">
         <div>
