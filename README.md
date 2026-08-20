@@ -1,55 +1,126 @@
 # Semantic, workwithsemantic.com
 
-Marketing site for Semantic, served by GitHub Pages from this repository.
-Static HTML, CSS and vanilla JS, with no build step and no dependencies. Push to the
-default branch and it deploys.
+Marketing site for Semantic, served by GitHub Pages from this repository. Static
+HTML, CSS and vanilla JS, with no runtime dependencies and no build step at
+deploy time. Push to the default branch and it deploys.
+
+## Positioning
+
+> **SEMANTIC**
+> Senior data expertise, delivered by a dedicated team.
+
+Semantic is a boutique data consultancy for enterprises. Pierre Sarkis is the
+founder and principal, but the site is branded around Semantic: Pierre appears
+on About, in one short credibility block on the home page, and as the person
+behind the contact CTA. He does not appear anywhere else.
+
+Each page answers exactly one question, and no page repeats another's answer:
+
+| Page | Answers |
+| --- | --- |
+| `/` | What is Semantic? |
+| `/what-we-do/` | What can Semantic do? |
+| `/insights/` | Does Semantic have something intelligent to say? |
+| `/about/` | Who is behind Semantic? |
+| `/contact/` | How do I start working with Semantic? |
 
 ## Structure
 
 ```
-index.html             /               → Services (home)
-for-talents/index.html /for-talents/   → Careers (path kept for existing links)
-about/index.html       /about/         → About
-404.html                               → GitHub Pages serves this on unknown URLs
-style.css                              → all styles
-main.js                                → mobile menu, nav pill, contact modal
-favicon.svg
-logos/                                 → client logos for the home page strip
-og-image.png                           → 1200x630 social preview
-robots.txt  sitemap.xml
-CNAME                                  → www.workwithsemantic.com
+index.html                    /                → Home
+what-we-do/index.html         /what-we-do/     → Expertise, technology, delivery model
+insights/index.html           /insights/       → Editorial index
+insights/<slug>/index.html    /insights/<slug>/→ One article each
+about/index.html              /about/          → Founder, why Semantic, the team
+contact/index.html            /contact/        → Talk to Pierre, booking form
+for-talents/index.html        /for-talents/    → Careers (path kept for inbound links)
+404.html                                       → GitHub Pages serves this on unknown URLs
+style.css                                      → all styles
+main.js                                        → mobile menu, nav state, contact form
+favicon.svg  og-image.png  robots.txt  sitemap.xml
+logos/                                         → client logos for the home page strip
+pierre-sarkis.jpeg                             → founder photograph
+tools/                                         → the generator that writes the HTML
+CNAME                                          → www.workwithsemantic.com
 ```
 
-Nav and footer are repeated in each page on purpose: the links have to be in
-the HTML for search engines to follow them. The contact modal is built in
-`main.js` instead, since it cannot work without JS and nothing in it needs to
-be indexed.
+`/for-talents/` is linked from the footer rather than the main nav. The main nav
+is for clients; the path is unchanged so existing inbound links keep working.
+
+## Editing
+
+The HTML files are generated from `tools/`, so edit the source and rebuild
+rather than editing the emitted HTML by hand:
+
+```
+python3 tools/build.py
+```
+
+That rewrites every page, `404.html` and `sitemap.xml` from:
+
+| File | Holds |
+| --- | --- |
+| `tools/shared.py` | `<head>`, navbar, footer, CTA band, Organization schema |
+| `tools/pages_home.py` | home page, client strip, the four home capabilities |
+| `tools/pages_wwd.py` | the five capabilities in full, delivery model, selected work |
+| `tools/pages_insights.py` | insights index and article layouts |
+| `tools/articles.py` | **article content**: one dict per piece |
+| `tools/pages_about.py` | founder, why Semantic, the team |
+| `tools/pages_contact.py` | first-session copy, form, next steps |
+| `tools/pages_careers.py` | careers page and the 404 body |
+| `tools/tech.py` | the 22 technology tags, as inline SVG |
+| `tools/figure.py` | the home page diagram |
+
+Nav and footer are emitted into every page rather than injected by script: the
+links have to be in the HTML for search engines to follow them.
+
+Python 3 only, standard library only. There is nothing to install.
+
+### Adding an article
+
+Add a dict to `ARTICLES` in `tools/articles.py` (slug, category, ISO date,
+display date, title, excerpt, meta description, body HTML) and rebuild. The
+first entry in the list is the featured piece on `/insights/`. The page,
+the index card, the JSON-LD and the sitemap entry all follow from it.
+
+### Adding a case study
+
+`/what-we-do/` currently states that we do not publish client case studies. A
+commented-out `<article class="capability">` template sits in
+`tools/pages_wwd.py` under **Selected Work**: fill one block per engagement
+(client or context, challenge, approach, outcome), drop the copy above it, and
+the section becomes a proper work page.
+
+### Styles
+
+`style.css`. The design tokens are the CSS custom properties in `:root` at the
+top; responsive rules live in the media queries at the bottom.
+
+- Near-black `#111111` on warm off-white `#F7F6F2`, neutral gray `#6F6F6A`,
+  hairline `#E4E2DC`.
+- One accent, muted dark green `#304A43`, used only for links, hover states,
+  CTA hover and the odd rule. The site is never predominantly green.
+- Schibsted Grotesk for headings, Inter for running text, both from Google
+  Fonts with a system fallback stack.
+- Corners are 3px. Sections are separated by hairlines and whitespace rather
+  than by cards.
 
 ## Local preview
 
 Serve from the repo root so root-relative paths (`/style.css`) resolve:
 
 ```
-npx http-server -p 8080
+python3 -m http.server 8080
 ```
 
 Then visit http://127.0.0.1:8080/.
 
-## Editing
-
-- **Copy and page content**: edit the relevant `.html` file directly.
-- **Styles**: `style.css`. Design tokens are the CSS custom properties in
-  `:root` at the top; responsive rules live in the media queries at the bottom.
-- **Adding a page**: copy an existing page, update `<title>`, the meta
-  description, `<link rel="canonical">`, the Open Graph/Twitter tags and the
-  JSON-LD block, then add the link to the nav and footer of every page and a
-  new `<url>` entry in `sitemap.xml`.
-
 ## Contact form
 
-The modal form posts to [Web3Forms](https://web3forms.com), which emails each
-submission to the address registered against the access key. Both live at the
-top of `main.js`:
+`/contact/` carries an inline form (name, company, role, work email, what are
+you trying to solve) that posts to [Web3Forms](https://web3forms.com), which
+emails each submission to the address registered against the access key. Both
+live at the top of `main.js`:
 
 ```js
 var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
@@ -77,29 +148,43 @@ The free tier allows 250 submissions a month. Spam POSTed straight at the
 endpoint counts towards that, since it never loads the page and so never sees
 the honeypot.
 
-## SEO checklist for new pages
+### Adding a booking calendar
 
-Every page should carry a unique `<title>` (under ~60 characters), a unique meta
+There is no scheduling tool connected. If one is adopted, its embed drops into
+the marked comment above the form in `tools/pages_contact.py`; the form then
+becomes the fallback for people who would rather write than book a slot.
+
+## SEO
+
+Every page carries a unique `<title>` (under ~60 characters), a unique meta
 description (under ~160), a self-referencing canonical URL, Open Graph and
-Twitter tags, exactly one `<h1>`, and a JSON-LD block. `sitemap.xml` and
+Twitter tags, exactly one `<h1>`, and a JSON-LD block. `404.html` is
+`noindex`, since GitHub Pages serves it for any unknown URL. `sitemap.xml` and
 `robots.txt` both point at `https://www.workwithsemantic.com`.
 
 ## House style
 
 - No em dashes in visible copy. Use commas, colons or a full stop instead.
-- The nav labels are Services / Careers / About. The Careers page still lives at
-  `/for-talents/` so existing inbound links keep working; only the label changed.
+- Nav labels are What We Do / Insights / About, with **Talk to Pierre** as the
+  CTA. There is no "Home" nav item; the wordmark links home.
+- Do not invent clients, metrics, team size, certifications or years of
+  experience. Where content is missing, say so plainly or leave a placeholder.
 
 ## Social preview image
 
-`og-image.png` is 1200x630 and is generated, not hand-drawn: a small HTML card
-using the site's own fonts and hero illustration, screenshotted headlessly at
+`og-image.png` is 1200x630 and is generated, not hand-drawn: `tools/og-card.html`
+is a card using the site's own fonts and palette, screenshotted headlessly at
 exactly 1200x630. Regenerate it whenever the home headline changes, and keep the
 `og:image:width` / `og:image:height` meta values in step with the real file.
 
 ## Known follow-ups
 
 - Every address on the site is `pierre@workwithsemantic.com`: the footer
-  Contact link, the Careers apply CTAs, the Organization schema, and the
+  contact link, the Careers apply CTAs, the Organization schema, and the
   contact form's fallback. That mailbox has to exist.
+- Client logos are shown with the clients' permission in mind: several of these
+  brands publish logo usage guidelines. Confirm sign-off for each before this
+  goes live (see `logos/README.md`).
+- The three articles under `/insights/` are drafts written to give the section
+  a real shape. Review the voice before promoting them.
 - Submit `sitemap.xml` in Google Search Console once the domain is verified.
