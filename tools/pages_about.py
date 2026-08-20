@@ -16,21 +16,26 @@ ABOUT = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>About</span>
       </nav>
       <p class="eyebrow">About</p>
-      <h1 class="display">Who is behind Semantic</h1>
-      <p class="lede">A boutique data consultancy: senior expertise you speak to directly,
-        with the execution capacity of a dedicated team behind it.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">Who is behind Semantic</h1>
+        </div>
+        <div>
+          <p class="lede">A boutique data consultancy: senior expertise you speak to directly,
+            with the execution capacity of a dedicated team behind it.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOUNDER -->
-  <section class="section section--tight" aria-labelledby="founder-h">
+  <section class="section section--tight section--flush" aria-labelledby="founder-h">
     <div class="container">
       <div class="founder">
         <img class="founder-photo" id="founderPhoto" src="/pierre-sarkis.jpeg"
              alt="Pierre Sarkis, founder of Semantic" width="576" height="576"
              data-monogram="PS" loading="lazy" decoding="async">
         <div>
-          <p class="eyebrow" style="margin-bottom:14px;">Founder</p>
           <h2 class="h-lg" id="founder-h">Pierre Sarkis</h2>
           <p class="founder-role">Founder &amp; Principal</p>
 
@@ -123,8 +128,10 @@ def _areas():
     out = []
     for i, (title, body) in enumerate(TEAM_AREAS, start=1):
         out.append('''      <div class="capability">
-        <div class="capability-index">{idx:02d}</div>
-        <div><h3>{title}</h3></div>
+        <div class="capability-head">
+          <span class="capability-index">{idx:02d}</span>
+          <h3>{title}</h3>
+        </div>
         <div><p class="body">{body}</p></div>
       </div>'''.format(idx=i, title=title, body=body))
     return '\n'.join(out)

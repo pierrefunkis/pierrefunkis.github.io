@@ -44,10 +44,16 @@ CAREERS = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>Careers</span>
       </nav>
       <p class="eyebrow">Careers</p>
-      <h1 class="display">Work on data problems worth solving</h1>
-      <p class="lede">Semantic works with a curated team of data specialists on demanding
-        enterprise problems. Training, certifications and conferences are funded as part of
-        the job, not treated as a perk you have to justify.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">Work on data problems worth solving</h1>
+        </div>
+        <div>
+          <p class="lede">Semantic works with a curated team of data specialists on demanding
+            enterprise problems. Training, certifications and conferences are funded as part of
+            the job, not treated as a perk you have to justify.</p>
+        </div>
+      </div>
       <div class="actions">
         <a class="btn btn--primary" href="{apply}">Apply to join {arrow}</a>
         <a class="btn btn--ghost" href="/what-we-do/">See the work</a>
@@ -55,7 +61,7 @@ CAREERS = '''
     </div>
   </section>
 
-  <section class="section section--tight" aria-labelledby="why-h">
+  <section class="section section--tight section--flush" aria-labelledby="why-h">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Why Semantic</p>
@@ -115,9 +121,15 @@ NOT_FOUND = '''
   <section class="hero hero--page">
     <div class="container">
       <p class="eyebrow">404</p>
-      <h1 class="display">That page is not here</h1>
-      <p class="lede">The link may be out of date, or the page may have moved. These are
-        the ones that exist.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">That page is not here</h1>
+        </div>
+        <div>
+          <p class="lede">The link may be out of date, or the page may have moved. These are
+            the ones that exist.</p>
+        </div>
+      </div>
       <div class="actions">
         <a class="btn btn--primary" href="/">Back to home {arrow}</a>
         <a class="btn btn--ghost" href="/contact/">Talk to Pierre</a>
@@ -129,25 +141,33 @@ NOT_FOUND = '''
     <div class="container">
       <div class="capabilities">
         <div class="capability">
-          <div class="capability-index">01</div>
-          <div><h3><a href="/what-we-do/" style="text-decoration:none;">What We Do</a></h3></div>
+          <div class="capability-head">
+            <span class="capability-index">01</span>
+            <h3><a href="/what-we-do/" style="text-decoration:none;">What We Do</a></h3>
+          </div>
           <div><p class="body">The full set of Semantic capabilities, the technology we build
             in, and how engagements are run.</p></div>
         </div>
         <div class="capability">
-          <div class="capability-index">02</div>
-          <div><h3><a href="/insights/" style="text-decoration:none;">Insights</a></h3></div>
+          <div class="capability-head">
+            <span class="capability-index">02</span>
+            <h3><a href="/insights/" style="text-decoration:none;">Insights</a></h3>
+          </div>
           <div><p class="body">Short pieces on data quality, AI readiness and migration.</p></div>
         </div>
         <div class="capability">
-          <div class="capability-index">03</div>
-          <div><h3><a href="/about/" style="text-decoration:none;">About</a></h3></div>
+          <div class="capability-head">
+            <span class="capability-index">03</span>
+            <h3><a href="/about/" style="text-decoration:none;">About</a></h3>
+          </div>
           <div><p class="body">Who is behind Semantic, why it exists, and how the team
             works.</p></div>
         </div>
         <div class="capability">
-          <div class="capability-index">04</div>
-          <div><h3><a href="/contact/" style="text-decoration:none;">Talk to Pierre</a></h3></div>
+          <div class="capability-head">
+            <span class="capability-index">04</span>
+            <h3><a href="/contact/" style="text-decoration:none;">Talk to Pierre</a></h3>
+          </div>
           <div><p class="body">Book a free advisory conversation about the problem you are
             trying to solve.</p></div>
         </div>

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, cta_band
-from figure import HERO_FIGURE
 
 CLIENT_STRIP = '''
   <section class="clients" aria-labelledby="clients-h">
@@ -47,8 +46,10 @@ def _capability_rows(items):
     out = []
     for idx, title, body in items:
         out.append('''      <article class="capability">
-        <div class="capability-index">{idx}</div>
-        <div><h3>{title}</h3></div>
+        <div class="capability-head">
+          <span class="capability-index">{idx}</span>
+          <h3>{title}</h3>
+        </div>
         <div><p class="body">{body}</p></div>
       </article>'''.format(idx=idx, title=title, body=body))
     return '\n'.join(out)
@@ -68,23 +69,15 @@ def _steps(items, ink=False):
 HOME = '''
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="hero-brand">Semantic</p>
-        <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
-        <p class="lede">Semantic helps enterprises solve complex data problems,
-          from diagnosis to implementation.</p>
+    <div class="container">
+      <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
+      <div class="hero-body">
+        <p class="lede">Semantic helps enterprises solve complex data problems, from
+          diagnosis to implementation.</p>
         <div class="actions">
           <a class="btn btn--primary" href="/contact/">Book a free diagnosis session {arrow}</a>
           <a class="btn btn--ghost" href="/what-we-do/">Explore our expertise</a>
         </div>
-        <p class="hero-note">A boutique data consultancy working with enterprise data teams</p>
-      </div>
-
-      <div class="figure">
-        {figure}
-        <p class="figure-caption">Sources are checked against rules before anything
-          reaches a decision. The point of monitoring is that it catches things.</p>
       </div>
     </div>
   </section>
@@ -92,12 +85,16 @@ HOME = '''
   <!-- WHAT WE DO -->
   <section class="section" aria-labelledby="wwd-h">
     <div class="container">
-      <div class="section-head section-head--split">
+      <div class="section-head section-head--wide">
         <div>
           <p class="eyebrow">What We Do</p>
           <h2 class="h-xl" id="wwd-h">Where enterprises most often need senior help</h2>
         </div>
-        <a class="link" href="/what-we-do/">Explore our expertise {arrow}</a>
+        <div>
+          <p class="body">Four of the five areas we work in. We take on the problems that
+            need senior judgement to frame and a team to execute.</p>
+          <a class="link" href="/what-we-do/" style="margin-top:18px;">Explore our expertise {arrow}</a>
+        </div>
       </div>
 
       <div class="capabilities">
@@ -109,23 +106,24 @@ HOME = '''
   <!-- CREDIBILITY -->
   <section class="section section--paper" aria-labelledby="cred-h">
     <div class="container">
-      <div class="split">
+      <p class="eyebrow">Credibility</p>
+      <h2 class="h-lg" id="cred-h" style="margin-bottom:36px;">Backed by serious enterprise experience</h2>
+
+      <div class="credibility">
+        <img class="credibility-photo" src="/pierre-sarkis.jpeg" alt="Pierre Sarkis, founder of Semantic"
+             width="576" height="576" loading="lazy" decoding="async">
         <div>
-          <p class="eyebrow">Credibility</p>
-          <h2 class="h-lg" id="cred-h">Backed by serious enterprise experience</h2>
-        </div>
-        <div>
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">Semantic was founded
-            by Pierre Sarkis, who spent his career in data at Amazon across the US and Europe,
-            at the kind of scale where unreliable data is an operational risk rather than an
-            inconvenience. Since then Semantic has worked with data teams at companies
+          <p class="body" style="font-size:18px;color:var(--ink-soft);max-width:70ch;">Semantic
+            was founded by Pierre Sarkis, who spent his career in data at Amazon across the US
+            and Europe, at the kind of scale where unreliable data is an operational risk rather
+            than an inconvenience. Since then Semantic has worked with data teams at companies
             including Pernod Ricard and Back Market.</p>
-          <dl class="facts" style="margin-top:40px;">
+          <dl class="facts" style="margin-top:32px;">
             <div class="fact"><dt>Founder</dt><dd>Pierre Sarkis, ex-Amazon</dd></div>
             <div class="fact"><dt>Education</dt><dd>HEC Paris</dd></div>
             <div class="fact"><dt>Working across</dt><dd>Europe, US, Middle East</dd></div>
           </dl>
-          <a class="link" href="/about/" style="margin-top:32px;">Who is behind Semantic {arrow}</a>
+          <a class="link" href="/about/" style="margin-top:28px;">Who is behind Semantic {arrow}</a>
         </div>
       </div>
     </div>
@@ -134,11 +132,15 @@ HOME = '''
   <!-- HOW WE WORK -->
   <section class="section section--ruled" aria-labelledby="how-h">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">How We Work</p>
-        <h2 class="h-xl" id="how-h">Four steps, and we are honest at each one</h2>
-        <p class="body">Every engagement starts the same way: a conversation, then a
-          diagnosis. If the answer is that you do not need us for this, we say so.</p>
+      <div class="section-head section-head--wide">
+        <div>
+          <p class="eyebrow">How We Work</p>
+          <h2 class="h-xl" id="how-h">Four steps, and we are honest at each one</h2>
+        </div>
+        <div>
+          <p class="body">Every engagement starts the same way: a conversation, then a
+            diagnosis. If the answer is that you do not need us for this, we say so.</p>
+        </div>
       </div>
       <div class="steps">
 {steps}
@@ -147,7 +149,6 @@ HOME = '''
   </section>
 {cta}'''.format(
     arrow=ARROW,
-    figure=HERO_FIGURE,
     clients=CLIENT_STRIP,
     capabilities=_capability_rows(HOME_CAPABILITIES),
     steps=_steps(STEPS),
