@@ -31,14 +31,20 @@ def insights_index():
         <a href="/">Home</a><span aria-hidden="true">/</span><span>Insights</span>
       </nav>
       <p class="eyebrow">Insights</p>
-      <h1 class="display">Notes from inside enterprise data work</h1>
-      <p class="lede">Short pieces on the problems we keep running into: quality that does
-        not hold, AI programmes that stall, migrations that lose the room. Written by the
-        people doing the work.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">Notes from inside enterprise data work</h1>
+        </div>
+        <div>
+          <p class="lede">Short pieces on the problems we keep running into: quality that does
+            not hold, AI programmes that stall, migrations that lose the room. Written by the
+            people doing the work.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section section--tight" aria-labelledby="articles-h">
+  <section class="section section--tight section--flush" aria-labelledby="articles-h">
     <div class="container">
       <h2 class="visually-hidden" id="articles-h">Articles</h2>
 
@@ -104,7 +110,7 @@ def article_page(a, others):
     </section>
   </article>
 
-  <section class="section section--paper" aria-labelledby="more-h">
+  <section class="section section--mint" aria-labelledby="more-h">
     <div class="container container--narrow">
       <div class="section-head" style="margin-bottom:16px;">
         <p class="eyebrow">More from Insights</p>

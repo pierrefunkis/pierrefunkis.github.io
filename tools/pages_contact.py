@@ -23,9 +23,15 @@ CONTACT = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>Talk to Pierre</span>
       </nav>
       <p class="eyebrow">Talk to Pierre</p>
-      <h1 class="display">Have a data problem you're trying to solve?</h1>
-      <p class="lede">Start with a free advisory conversation. Tell us roughly what is
-        going on and we will find a time to talk it through properly.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">Have a data problem you're trying to solve?</h1>
+        </div>
+        <div>
+          <p class="lede">Start with a free advisory conversation. Tell us roughly what is
+            going on and we will find a time to talk it through properly.</p>
+        </div>
+      </div>
     </div>
   </section>
 

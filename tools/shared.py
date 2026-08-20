@@ -22,11 +22,6 @@ MARK = ('<svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden
         '<circle cx="21" cy="16" r="8.5" fill="#111111"/>'
         '<circle cx="16" cy="16" r="3.6" fill="#FFFFFF"/></svg>')
 
-MARK_LIGHT = ('<svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">'
-              '<circle cx="11" cy="16" r="8.5" fill="#7FA396" opacity="0.7"/>'
-              '<circle cx="21" cy="16" r="8.5" fill="#FFFFFF"/>'
-              '<circle cx="16" cy="16" r="3.6" fill="#111111"/></svg>')
-
 ARROW = ('<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">'
          '<path d="M1.5 6.5h10M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -189,7 +184,7 @@ FOOTER = '''
 <script src="/main.js" defer></script>
 </body>
 </html>
-'''.format(mark=MARK_LIGHT, email=EMAIL, linkedin=LINKEDIN)
+'''.format(mark=MARK, email=EMAIL, linkedin=LINKEDIN)
 
 
 ORG_LD = '''{

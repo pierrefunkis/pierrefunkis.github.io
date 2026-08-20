@@ -67,13 +67,15 @@ MODEL_POINTS = [
 def _capabilities():
     out = []
     for idx, title, body, bullets in CAPABILITIES:
-        items = '\n'.join('            <li class="tag">%s</li>' % b for b in bullets)
+        items = '\n'.join('            <li>%s</li>' % b for b in bullets)
         out.append('''      <article class="capability">
-        <div class="capability-index">{idx}</div>
-        <div><h3>{title}</h3></div>
+        <div class="capability-head">
+          <span class="capability-index">{idx}</span>
+          <h3>{title}</h3>
+        </div>
         <div>
           <p class="body">{body}</p>
-          <ul class="tags" style="margin-top:22px;">
+          <ul class="capability-list">
 {items}
           </ul>
         </div>
@@ -88,14 +90,20 @@ WHAT_WE_DO = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>What We Do</span>
       </nav>
       <p class="eyebrow">What We Do</p>
-      <h1 class="display">Complex data problems, solved properly</h1>
-      <p class="lede">Five areas where enterprises most often need senior help. We work
-        across all of them, and we are direct when a problem is not ours to take.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="display">Complex data problems, solved properly</h1>
+        </div>
+        <div>
+          <p class="lede">Five areas where enterprises most often need senior help. We work
+            across all of them, and we are direct when a problem is not ours to take.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- EXPERTISE -->
-  <section class="section section--tight" aria-labelledby="expertise-h">
+  <section class="section section--tight section--flush" aria-labelledby="expertise-h">
     <div class="container">
       <h2 class="visually-hidden" id="expertise-h">Our expertise</h2>
       <div class="capabilities">
@@ -172,8 +180,10 @@ WHAT_WE_DO = '''
            and the section becomes a proper work page:
 
       <article class="capability">
-        <div class="capability-index">01</div>
-        <div><h3>Client or context</h3></div>
+        <div class="capability-head">
+          <span class="capability-index">01</span>
+          <h3>Client or context</h3>
+        </div>
         <div>
           <p class="body"><strong>Challenge.</strong> ...</p>
           <p class="body"><strong>Approach.</strong> ...</p>
