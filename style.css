@@ -352,6 +352,26 @@ a { color: inherit; }
 }
 .hero-cols .lede { margin-top: 0; padding-bottom: 6px; }
 
+/* ── LINE PLATES ─────────────────────────────────────────────────────────── */
+/* Section illustrations. Line work only, with no frame and no ground of their
+   own: they sit directly on the section background so they read as drawing
+   rather than as an embedded image or a UI card. */
+
+.plate { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* A drawing beside a column of text. It is secondary to the copy, so it never
+   takes the larger half, and it centres against the block. */
+.with-plate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+  gap: 72px;
+  align-items: center;
+}
+.with-plate--lead { grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr); }
+.with-plate--lead .plate-slot { order: -1; }
+
+.plate-slot { min-width: 0; }
+
 /* ── CLIENT STRIP ────────────────────────────────────────────────────────── */
 
 .clients {
@@ -400,19 +420,37 @@ a { color: inherit; }
 .client-logo--wide { height: 17px; }
 
 /* ── CAPABILITY LIST ─────────────────────────────────────────────────────── */
-/* Rules rather than cards: each item is separated by a hairline, with the
-   title and the description in two columns on wide screens. */
+/* Rules rather than cards. Each item is a single column: the title sits
+   directly above its own description, sharing one left edge with it.
+
+   These were two columns, title left and body right. Because the row's height
+   is set by the body, the title ended up alone at the top of a half-width
+   column with several hundred pixels of nothing under it, which read as a
+   layout fault rather than as whitespace. */
 
 .capabilities { border-top: 1px solid var(--line); }
 
 .capability {
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
-  gap: 48px;
-  align-items: start;
-  padding: 30px 0;
+  padding: 26px 0;
   border-bottom: 1px solid var(--line);
 }
+
+.capability-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* Short bodies side by side, so a list of four does not become a column of
+   four near-empty rows. */
+.capabilities--2up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 56px;
+  border-top: 0;
+}
+.capabilities--2up .capability { border-top: 1px solid var(--line); border-bottom: 0; }
 
 .capability-head { display: flex; align-items: baseline; gap: 16px; }
 
@@ -490,6 +528,13 @@ a { color: inherit; }
   gap: 16px;
 }
 .points li:last-child { border-bottom: 1px solid var(--line); }
+.points--2up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 56px;
+}
+.points--2up li:last-child { border-bottom: 0; }
+.points--2up li:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
 .points li::before {
   content: "";
   width: 6px; height: 6px;
@@ -918,6 +963,11 @@ a { color: inherit; }
   .hero-cols { grid-template-columns: 1fr; gap: 22px; }
   .hero-cols .lede { padding-bottom: 0; }
   .split { grid-template-columns: 1fr; gap: 40px; }
+  /* The drawing is decoration; below this width the copy needs the whole
+     column, so it goes rather than shrinking to nothing. */
+  .with-plate, .with-plate--lead { grid-template-columns: 1fr; gap: 40px; }
+  .points--2up { grid-template-columns: 1fr; column-gap: 0; }
+  .with-plate .plate-slot { display: none; }
   .split--even { grid-template-columns: 1fr; gap: 40px; }
   /* Once the columns stack, the form should not sit below a screen and a half
      of explanation. */
@@ -936,10 +986,8 @@ a { color: inherit; }
   .nav-spacer { flex: 1; }
   .nav-cta { display: none; }
 
-  .capability { grid-template-columns: 1fr; gap: 12px; padding: 26px 0; }
   .capability-list { grid-template-columns: 1fr; }
-  .capability-index { padding-top: 0; }
-  .capability:hover { background: transparent; }
+  .capabilities--2up { grid-template-columns: 1fr; column-gap: 0; }
   .article-item { grid-template-columns: 1fr; gap: 14px; }
   .article-item:hover { background: transparent; }
   .facts { grid-template-columns: 1fr; gap: 24px; }

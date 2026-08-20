@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, cta_band
+from plates import strata
 from tech import TECH_ITEMS
 
 # The five capabilities in full. Each carries a short list of what the work
@@ -73,12 +74,10 @@ def _capabilities():
           <span class="capability-index">{idx}</span>
           <h3>{title}</h3>
         </div>
-        <div>
-          <p class="body">{body}</p>
-          <ul class="capability-list">
+        <p class="body">{body}</p>
+        <ul class="capability-list">
 {items}
-          </ul>
-        </div>
+        </ul>
       </article>'''.format(idx=idx, title=title, body=body, items=items))
     return '\n'.join(out)
 
@@ -115,19 +114,23 @@ WHAT_WE_DO = '''
   <!-- THE SEMANTIC MODEL -->
   <section class="section section--ink" aria-labelledby="model-h">
     <div class="container">
-      <div class="split">
+      <div class="section-head section-head--wide">
         <div>
           <p class="eyebrow">The Semantic Model</p>
           <h2 class="h-xl" id="model-h">Senior expertise, backed by a dedicated team</h2>
-          <p class="body" style="margin-top:24px;">You are not buying an individual, and you
-            are not buying a pyramid. You get a senior counterpart who owns the problem, and a
-            team behind them with the capacity to execute it.</p>
         </div>
         <div>
-          <ul class="points">
-{points}
-          </ul>
+          <p class="body">You are not buying an individual, and you are not buying a
+            pyramid. You get a senior counterpart who owns the problem, and a team behind
+            them with the capacity to execute it.</p>
         </div>
+      </div>
+
+      <div class="with-plate">
+        <ul class="points">
+{points}
+        </ul>
+        <div class="plate-slot">{plate}</div>
       </div>
     </div>
   </section>
@@ -195,6 +198,7 @@ WHAT_WE_DO = '''
   </section>
 {cta}'''.format(
     capabilities=_capabilities(),
+    plate=strata(on_forest=True),
     points='\n'.join('            <li>%s</li>' % p for p in MODEL_POINTS),
     tech=TECH_ITEMS.strip('\n'),
     arrow=ARROW,
