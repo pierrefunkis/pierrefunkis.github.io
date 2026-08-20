@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from shared import ARROW, LINKEDIN, cta_band
+from shared import credential, ARROW, LINKEDIN, cta_band
 from plates import CONSTELLATION
 
 TEAM_AREAS = [
@@ -57,8 +57,8 @@ ABOUT = '''
             person you speak to first.</p>
 
           <dl class="facts facts--pair" style="margin-top:36px;">
-            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" decoding="async"></dd></div>
-            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
+            <div class="fact"><dt>Previously</dt><dd>{mark_amazon}</dd></div>
+            <div class="fact"><dt>Educated at</dt><dd>{mark_hec}</dd></div>
           </dl>
 
           <a class="link" href="{linkedin}" rel="noopener" style="margin-top:28px;">Connect on LinkedIn {arrow}</a>
@@ -152,6 +152,8 @@ def _areas():
 ABOUT = ABOUT.format(
     linkedin=LINKEDIN,
     plate_why=CONSTELLATION,
+    mark_amazon=credential('amazon', 'Amazon', 'Amazon'),
+    mark_hec=credential('hec-paris', 'HEC Paris', 'HEC Paris'),
     arrow=ARROW,
     areas=_areas(),
     cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
