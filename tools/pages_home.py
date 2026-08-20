@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from shared import ARROW, cta_band
+from shared import credential, ARROW, cta_band
 from plates import CONVERGENCE
 
 CLIENT_STRIP = '''
@@ -123,8 +123,8 @@ HOME = '''
             than an inconvenience. Since then Semantic has worked with data teams at companies
             including Pernod Ricard and Back Market.</p>
           <dl class="facts" style="margin-top:32px;">
-            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" decoding="async"></dd></div>
-            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
+            <div class="fact"><dt>Previously</dt><dd>{mark_amazon}</dd></div>
+            <div class="fact"><dt>Educated at</dt><dd>{mark_hec}</dd></div>
             <div class="fact"><dt>Working across</dt><dd>Europe, US, Middle East</dd></div>
           </dl>
           <a class="link" href="/about/" style="margin-top:28px;">Who is behind Semantic {arrow}</a>
@@ -154,6 +154,8 @@ HOME = '''
 {cta}'''.format(
     arrow=ARROW,
     plate=CONVERGENCE,
+    mark_amazon=credential('amazon', 'Amazon', 'Amazon'),
+    mark_hec=credential('hec-paris', 'HEC Paris', 'HEC Paris'),
     clients=CLIENT_STRIP,
     capabilities=_capability_rows(HOME_CAPABILITIES),
     steps=_steps(STEPS),

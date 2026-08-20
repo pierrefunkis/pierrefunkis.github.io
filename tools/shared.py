@@ -7,6 +7,9 @@ across seven hand-edited pages; running build.py rewrites the HTML files that
 are actually committed and served.
 """
 
+import os
+import re
+
 SITE = 'https://www.workwithsemantic.com'
 EMAIL = 'pierre@workwithsemantic.com'
 LINKEDIN = 'https://www.linkedin.com/in/pierresarkis/'
@@ -215,3 +218,47 @@ ORG_LD = '''{
       "AI Readiness", "Business Intelligence", "Master Data Management"
     ]
   }''' % (SITE, SITE, SITE, EMAIL, LINKEDIN)
+
+
+# ── Founder credentials ─────────────────────────────────────────────────────
+
+LOGO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, 'logos')
+
+
+def _intrinsic(path):
+    """The file's own pixel dimensions, so the <img> reserves the right box and
+    the row does not shift as the mark loads."""
+    if path.endswith('.png'):
+        with open(path, 'rb') as fh:
+            head = fh.read(33)
+        # IHDR width and height are the two big-endian longs at offset 16
+        return int.from_bytes(head[16:20], 'big'), int.from_bytes(head[20:24], 'big')
+
+    svg = open(path).read(4096)
+    box = re.search(r'viewBox="[\d.+-]+\s+[\d.+-]+\s+([\d.]+)\s+([\d.]+)"', svg)
+    if box:
+        return int(round(float(box.group(1)))), int(round(float(box.group(2))))
+    w = re.search(r'\bwidth="([\d.]+)', svg)
+    h = re.search(r'\bheight="([\d.]+)', svg)
+    if w and h:
+        return int(round(float(w.group(1)))), int(round(float(h.group(1))))
+    # Square is the safest guess; .fact-mark sizes by height either way.
+    return 24, 24
+
+
+def credential(slug, alt, fallback):
+    """One founder credential: "Previously", "Educated at".
+
+    Renders the institution's own mark when logos/<slug>.svg or .png is present,
+    and a typographic stand-in when it is not. The check happens at build time
+    rather than being hardcoded, so dropping the file into logos/ and rebuilding
+    is the entire swap, with the right intrinsic dimensions picked up from the
+    file itself.
+    """
+    for ext in ('svg', 'png'):
+        path = os.path.join(LOGO_DIR, '%s.%s' % (slug, ext))
+        if os.path.exists(path):
+            w, h = _intrinsic(path)
+            return ('<img class="fact-mark" src="/logos/%s.%s" alt="%s" '
+                    'width="%d" height="%d" decoding="async">' % (slug, ext, alt, w, h))
+    return '<span class="fact-word">%s</span>' % fallback

@@ -22,18 +22,23 @@ single-colour form, taken from [simple-icons](https://simpleicons.org) (CC0).
 It is filled `#111111` rather than `currentColor`, because it is loaded through
 an `<img>` and so has no colour context to inherit.
 
-**HEC Paris has no file yet.** "Educated at" renders as a typographic
-`<span class="fact-word">HEC Paris</span>` standing in for the mark. To swap it
-in, drop `hec-paris.svg` here and replace that span in `tools/pages_home.py` and
-`tools/pages_about.py` with:
+**HEC Paris has no file yet.** "Educated at" falls back to a typographic
+stand-in, `<span class="fact-word">HEC Paris</span>`.
 
-```html
-<img class="fact-mark" src="/logos/hec-paris.svg" alt="HEC Paris"
-     width="..." height="..." loading="lazy" decoding="async">
+There is nothing to edit to fix that. `credential()` in `tools/shared.py`
+looks for the file at build time:
+
+```
+logos/hec-paris.svg   (or .png)
 ```
 
-`.fact-mark` sizes by height, so the file only needs a trimmed artboard and the
-right intrinsic dimensions.
+Drop it in, run `python3 tools/build.py`, and both the home page and About
+switch to the real mark. The intrinsic width and height are read out of the
+file, so the row reserves the right box and does not shift as the mark loads.
+
+The same applies to `amazon.svg`: replace the file and rebuild. `.fact-mark`
+sizes by height, so a file only needs a trimmed artboard, and either SVG or a
+transparent PNG at roughly 2x the displayed height works.
 
 To replace one, drop in the new file and update the `src`, `width` and `height`
 on its `<img>` in `index.html`. The dimensions should be the file's real

@@ -60,7 +60,7 @@ That rewrites every page, `404.html` and `sitemap.xml` from:
 
 | File | Holds |
 | --- | --- |
-| `tools/shared.py` | `<head>`, navbar, footer, CTA band, Organization schema |
+| `tools/shared.py` | `<head>`, navbar, footer, CTA band, Organization schema, founder credential marks |
 | `tools/pages_home.py` | home page, client strip, the four home capabilities |
 | `tools/pages_wwd.py` | the five capabilities in full, delivery model, selected work |
 | `tools/pages_insights.py` | insights index and article layouts |
