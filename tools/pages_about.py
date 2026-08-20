@@ -55,6 +55,11 @@ ABOUT = '''
             the US and the Middle East. He is the counterpart on every engagement, and the
             person you speak to first.</p>
 
+          <dl class="facts facts--pair" style="margin-top:36px;">
+            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" loading="lazy" decoding="async"></dd></div>
+            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
+          </dl>
+
           <a class="link" href="{linkedin}" rel="noopener" style="margin-top:28px;">Connect on LinkedIn {arrow}</a>
         </div>
       </div>

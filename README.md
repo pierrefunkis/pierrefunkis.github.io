@@ -32,7 +32,7 @@ what-we-do/index.html         /what-we-do/     → Expertise, technology, delive
 insights/index.html           /insights/       → Editorial index
 insights/<slug>/index.html    /insights/<slug>/→ One article each
 about/index.html              /about/          → Founder, why Semantic, the team
-contact/index.html            /contact/        → Talk to Pierre, booking form
+contact/index.html            /contact/        → Contact, booking form
 for-talents/index.html        /for-talents/    → Careers (path kept for inbound links)
 404.html                                       → GitHub Pages serves this on unknown URLs
 style.css                                      → all styles
@@ -173,8 +173,9 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `404.html` is
 ## House style
 
 - No em dashes in visible copy. Use commas, colons or a full stop instead.
-- Nav labels are What We Do / Insights / About, with **Talk to Pierre** as the
-  CTA. There is no "Home" nav item; the wordmark links home.
+- Nav labels are What We Do / Insights / About, with **Get in touch** as the
+  CTA. There is no "Home" nav item; the wordmark links home. The CTA label is
+  `CTA_LABEL` in `tools/shared.py`; the footer and breadcrumb say "Contact".
 - Do not invent clients, metrics, team size, certifications or years of
   experience. Where content is missing, say so plainly or leave a placeholder.
 

@@ -20,9 +20,9 @@ CONTACT = '''
   <section class="hero hero--page">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span aria-hidden="true">/</span><span>Talk to Pierre</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><span>Contact</span>
       </nav>
-      <p class="eyebrow">Talk to Pierre</p>
+      <p class="eyebrow">Contact</p>
       <div class="hero-cols">
         <div>
           <h1 class="display">Have a data problem you're trying to solve?</h1>

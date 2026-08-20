@@ -132,7 +132,7 @@ NOT_FOUND = '''
       </div>
       <div class="actions">
         <a class="btn btn--primary" href="/">Back to home {arrow}</a>
-        <a class="btn btn--ghost" href="/contact/">Talk to Pierre</a>
+        <a class="btn btn--ghost" href="/contact/">Get in touch</a>
       </div>
     </div>
   </section>
@@ -166,7 +166,7 @@ NOT_FOUND = '''
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">04</span>
-            <h3><a href="/contact/" style="text-decoration:none;">Talk to Pierre</a></h3>
+            <h3><a href="/contact/" style="text-decoration:none;">Contact</a></h3>
           </div>
           <div><p class="body">Book a free advisory conversation about the problem you are
             trying to solve.</p></div>

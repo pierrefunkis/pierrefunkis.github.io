@@ -119,8 +119,8 @@ HOME = '''
             than an inconvenience. Since then Semantic has worked with data teams at companies
             including Pernod Ricard and Back Market.</p>
           <dl class="facts" style="margin-top:32px;">
-            <div class="fact"><dt>Founder</dt><dd>Pierre Sarkis, ex-Amazon</dd></div>
-            <div class="fact"><dt>Education</dt><dd>HEC Paris</dd></div>
+            <div class="fact"><dt>Previously</dt><dd><img class="fact-mark" src="/logos/amazon.svg" alt="Amazon" width="24" height="22" loading="lazy" decoding="async"></dd></div>
+            <div class="fact"><dt>Educated at</dt><dd><span class="fact-word">HEC Paris</span></dd></div>
             <div class="fact"><dt>Working across</dt><dd>Europe, US, Middle East</dd></div>
           </dl>
           <a class="link" href="/about/" style="margin-top:28px;">Who is behind Semantic {arrow}</a>
