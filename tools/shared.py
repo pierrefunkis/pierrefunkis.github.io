@@ -259,6 +259,11 @@ def credential(slug, alt, fallback):
         path = os.path.join(LOGO_DIR, '%s.%s' % (slug, ext))
         if os.path.exists(path):
             w, h = _intrinsic(path)
-            return ('<img class="fact-mark" src="/logos/%s.%s" alt="%s" '
-                    'width="%d" height="%d" decoding="async">' % (slug, ext, alt, w, h))
+            # A stacked lockup carries its own second line, so at the height a
+            # single-line wordmark wants, that line stops being readable. Same
+            # judgement the client strip makes, from the file's own proportions:
+            # anything squarer than about 2.4:1 gets the taller box.
+            cls = 'fact-mark' if w / float(h) >= 2.4 else 'fact-mark fact-mark--tall'
+            return ('<img class="%s" src="/logos/%s.%s" alt="%s" '
+                    'width="%d" height="%d" decoding="async">' % (cls, slug, ext, alt, w, h))
     return '<span class="fact-word">%s</span>' % fallback
