@@ -789,6 +789,10 @@ a { color: inherit; }
   margin-top: 2px;
 }
 
+/* Stacked lockups, taller so their second line stays readable. Same
+   specificity as .fact-mark, so it has to sit after it. */
+.fact-mark--tall { height: 42px; margin-top: 0; }
+
 .fact-word {
   display: block;
   font-family: var(--font-display);

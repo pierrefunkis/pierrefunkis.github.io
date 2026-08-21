@@ -16,29 +16,23 @@ Each file here is loaded by the client strip on the home page:
 
 ## Credential marks
 
-`amazon.svg` is not a client logo. It sits in the founder credentials row on
-the home page and on About ("Previously"), and is Amazon's official
-single-colour form, taken from [simple-icons](https://simpleicons.org) (CC0).
-It is filled `#111111` rather than `currentColor`, because it is loaded through
-an `<img>` and so has no colour context to inherit.
+`amazon.svg` and `hec-paris.svg` are not client logos. They sit in the founder
+credentials row on the home page and on About, under "Previously" and
+"Educated at", and are the institutions' own artwork in their own colours.
 
-**HEC Paris has no file yet.** "Educated at" falls back to a typographic
-stand-in, `<span class="fact-word">HEC Paris</span>`.
+`credential()` in `tools/shared.py` resolves both at build time. To replace
+one, drop the new file in as `logos/<slug>.svg` (or `.png`) and run
+`python3 tools/build.py`. Nothing in the templates needs editing:
 
-There is nothing to edit to fix that. `credential()` in `tools/shared.py`
-looks for the file at build time:
+- the intrinsic width and height are read out of the file, so the row reserves
+  the right box and does not shift as the mark loads;
+- marks are sized by height, and anything squarer than about 2.4:1 is treated
+  as a stacked lockup and given the taller box, so its second line stays
+  readable. `hec-paris.svg` is 193x101 and gets that treatment; the Amazon
+  wordmark at 399x133 does not.
 
-```
-logos/hec-paris.svg   (or .png)
-```
-
-Drop it in, run `python3 tools/build.py`, and both the home page and About
-switch to the real mark. The intrinsic width and height are read out of the
-file, so the row reserves the right box and does not shift as the mark loads.
-
-The same applies to `amazon.svg`: replace the file and rebuild. `.fact-mark`
-sizes by height, so a file only needs a trimmed artboard, and either SVG or a
-transparent PNG at roughly 2x the displayed height works.
+If a file is ever missing, that credential falls back to a typographic
+stand-in rather than a broken image.
 
 To replace one, drop in the new file and update the `src`, `width` and `height`
 on its `<img>` in `index.html`. The dimensions should be the file's real
