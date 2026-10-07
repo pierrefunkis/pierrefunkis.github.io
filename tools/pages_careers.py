@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Careers page.
 
-Kept at /for-talents/ so existing inbound links keep working; only the label
-changed. It sits in the footer rather than the main nav, because the main nav
+Lives at /join-network/ (formerly /for-talents/, which now redirects here).
+It sits in the footer rather than the main nav, because the main nav
 is for clients.
 """
 from shared import ARROW, cta_band

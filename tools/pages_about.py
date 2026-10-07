@@ -130,7 +130,7 @@ ABOUT = '''
         <h3 class="h-md">Working with us as a specialist</h3>
         <p class="body" style="margin-top:14px;">We take on experienced data professionals
           and exceptional earlier-career specialists, always paired with a senior lead.</p>
-        <a class="link" href="/for-talents/" style="margin-top:20px;">Join the team {arrow}</a>
+        <a class="link" href="/join-network/" style="margin-top:20px;">Join the team {arrow}</a>
       </div>
     </div>
   </section>

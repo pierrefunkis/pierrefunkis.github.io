@@ -204,16 +204,25 @@ PAGES.append((
 
 # ── Careers ─────────────────────────────────────────────────────────────────
 PAGES.append((
-    'for-talents/index.html', '/for-talents/',
+    'join-network/index.html', '/join-network/',
     'Join the Semantic Network | Data Specialists',
     'Semantic works with a curated team of data specialists on demanding enterprise '
     'problems, with training, certifications and conferences funded.',
     None, None,
-    webpage_ld('/for-talents/', 'Join Network | Semantic',
+    webpage_ld('/join-network/', 'Join Network | Semantic',
                'Join a curated team of data specialists working on demanding enterprise '
                'problems.'),
     CAREERS,
 ))
+
+# Old URL: static redirect so inbound links and search results keep working.
+write('for-talents/index.html',
+      '<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8">'
+      '<title>Redirecting to Join Network</title>'
+      '<meta name="robots" content="noindex">'
+      '<link rel="canonical" href="%s/join-network/">'
+      '<meta http-equiv="refresh" content="0; url=/join-network/"></head>'
+      '<body><a href="/join-network/">Join Network</a></body></html>\n' % SITE)
 
 
 for filename, path, title, desc, og_t, og_d, ld, body in PAGES:
@@ -240,7 +249,7 @@ urls = [('/', '1.0', '2026-08-20'),
         ('/insights/', '0.8', '2026-08-20'),
         ('/about/', '0.7', '2026-08-20'),
         ('/contact/', '0.9', '2026-08-20'),
-        ('/for-talents/', '0.5', '2026-08-20')]
+        ('/join-network/', '0.5', '2026-08-20')]
 urls += [('/insights/%s/' % a['slug'], '0.6', a['iso']) for a in ARTICLES]
 
 sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
