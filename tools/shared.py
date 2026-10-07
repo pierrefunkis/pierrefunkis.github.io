@@ -163,7 +163,6 @@ FOOTER = '''
           enterprises solve complex data problems, from diagnosis to implementation.</p>
       </div>
       <div class="footer-col">
-        <h4>Semantic</h4>
         <ul>
           <li><a href="/what-we-do/">What We Do</a></li>
           <li><a href="/insights/">Insights</a></li>
@@ -172,7 +171,6 @@ FOOTER = '''
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Elsewhere</h4>
         <ul>
           <li><a href="/join-network/">Join Network</a></li>
           <li><a href="{linkedin}" rel="noopener">LinkedIn</a></li>
