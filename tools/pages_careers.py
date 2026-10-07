@@ -5,58 +5,47 @@ Kept at /for-talents/ so existing inbound links keep working; only the label
 changed. It sits in the footer rather than the main nav, because the main nav
 is for clients.
 """
-from shared import ARROW, EMAIL, cta_band
+from shared import ARROW, cta_band
+from plates import NETWORK, ICON_PROBLEM, ICON_GLOBAL, ICON_PAY
 
 BENEFITS = [
-    ('Genuinely challenging problems',
-     'The critical data challenges companies could not solve with their own teams. '
-     'No ticket queues, no busywork, no maintenance duty disguised as a project.'),
-    ('An international client portfolio',
+    (ICON_PROBLEM, 'Genuinely challenging data problems',
+     'We are embedded in our clients\' teams and step in on their most critical AI and '
+     'data projects. No ticket queues, no busywork, no maintenance duty disguised as a project.'),
+    (ICON_GLOBAL, 'An international client portfolio',
      'Engagements with companies across industries and across Europe, the US and the '
      'Middle East, from global consumer brands to healthcare to fast-growing marketplaces.'),
-    ('A senior peer group',
-     'You will work with specialists who have built this before. The fastest way to get '
-     'better at this is to be surrounded by people already better than you.'),
-    ('Certifications, funded',
-     'Snowflake, dbt, Databricks, AWS, GCP and Azure. We pay for the training and the '
-     'exam, and we give you the time to prepare properly.'),
-    ('Conferences and community',
-     'An annual budget for the conferences that matter in your field, with encouragement '
-     'to speak and write, not just attend.'),
-    ('Mentorship and progression',
-     'Every engagement is senior-led. Earlier-career specialists work alongside a senior '
-     'lead from day one, with a defined path from supporting delivery to owning it.'),
+    (ICON_PAY, 'Competitive compensation',
+     'We believe talent should be compensated fairly, and we do our best to match or exceed '
+     'your expectations.'),
 ]
 
 ROLES = [
     'Data Engineers', 'Analytics Engineers', 'Data Scientists', 'Data Analysts',
     'ML Engineers', 'Data Architects', 'Data Quality &amp; Governance Specialists',
     'MDM Specialists', 'BI Developers &amp; Analysts', 'AI &amp; Automation Experts',
-    'Data Project Managers',
+    'Data Project Managers', 'Data Product Managers',
 ]
 
-APPLY = 'mailto:%s?subject=%s' % (EMAIL, 'Application%20to%20join%20Semantic')
+JOIN = 'https://tally.so/r/5Byl5P'
 
 CAREERS = '''
   <section class="hero hero--page">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span aria-hidden="true">/</span><span>Careers</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><span>Join Network</span>
       </nav>
-      <p class="eyebrow">Careers</p>
-      <div class="hero-cols">
+      <div class="with-plate">
         <div>
           <h1 class="display">Work on data problems worth solving</h1>
+          <p class="lede" style="margin-top:24px;">Semantic is a data consulting company
+            operating from Lebanon and serving international clients. We work with a curated
+            network of data specialists on demanding enterprise problems.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="{join}" rel="noopener">Join Network {arrow}</a>
+          </div>
         </div>
-        <div>
-          <p class="lede">Semantic works with a curated team of data specialists on demanding
-            enterprise problems. Training, certifications and conferences are funded as part of
-            the job, not treated as a perk you have to justify.</p>
-        </div>
-      </div>
-      <div class="actions">
-        <a class="btn btn--primary" href="{apply}">Apply to join {arrow}</a>
-        <a class="btn btn--ghost" href="/what-we-do/">See the work</a>
+        <div class="plate-slot">{plate}</div>
       </div>
     </div>
   </section>
@@ -76,18 +65,12 @@ CAREERS = '''
 
   <section class="section section--mint" aria-labelledby="roles-h">
     <div class="container">
-      <div class="section-head section-head--wide">
-        <div>
-          <p class="eyebrow">Who We Look For</p>
-          <h2 class="h-lg" id="roles-h">Specialists across the data stack</h2>
-        </div>
-        <div>
-          <p class="body">We take on
-            experienced data professionals with strong technical foundations and a track
-            record of shipping. We also take on exceptional earlier-career specialists,
-            always paired with a senior lead and never staffed alone on a client
-            engagement.</p>
-        </div>
+      <div class="section-head">
+        <p class="eyebrow">Who We Look For</p>
+        <h2 class="h-lg" id="roles-h">Specialists across the data stack</h2>
+        <p class="body">We work with experienced data professionals, technical and
+          non-technical alike, from engineers and architects to project and product
+          managers, with strong foundations and a track record of delivery.</p>
       </div>
 
       <ul class="tags">
@@ -100,22 +83,24 @@ CAREERS = '''
 
 def _benefits():
     out = []
-    for title, body in BENEFITS:
+    for icon, title, body in BENEFITS:
         out.append('''        <div class="cell">
+          {icon}
           <h3 class="h-md">{title}</h3>
           <p class="body">{body}</p>
-        </div>'''.format(title=title, body=body))
+        </div>'''.format(icon=icon, title=title, body=body))
     return '\n'.join(out)
 
 
 CAREERS = CAREERS.format(
-    apply=APPLY,
+    join=JOIN,
     arrow=ARROW,
+    plate=NETWORK,
     benefits=_benefits(),
     roles='\n'.join('            <li class="tag">%s</li>' % r for r in ROLES),
     cta=cta_band('Think you would raise our bar?',
-                 'Send us your background and the problems you want to be working on. We read every application.',
-                 label='Apply to join', href=APPLY),
+                 'Simply fill our 2 min form and we\'ll reach out when we have opportunities for you.',
+                 label='Join Network', href=JOIN),
 )
 
 NOT_FOUND = '''

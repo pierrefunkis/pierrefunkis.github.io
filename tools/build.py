@@ -205,11 +205,11 @@ PAGES.append((
 # ── Careers ─────────────────────────────────────────────────────────────────
 PAGES.append((
     'for-talents/index.html', '/for-talents/',
-    'Careers at Semantic | Data Specialists',
+    'Join the Semantic Network | Data Specialists',
     'Semantic works with a curated team of data specialists on demanding enterprise '
     'problems, with training, certifications and conferences funded.',
     None, None,
-    webpage_ld('/for-talents/', 'Careers | Semantic',
+    webpage_ld('/for-talents/', 'Join Network | Semantic',
                'Join a curated team of data specialists working on demanding enterprise '
                'problems.'),
     CAREERS,

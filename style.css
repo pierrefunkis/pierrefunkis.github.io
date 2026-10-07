@@ -1028,3 +1028,6 @@ a { color: inherit; }
   .capability:hover, .article-item:hover { background: transparent; }
   .link:hover { gap: 7px; }
 }
+
+/* Small line mark above a card heading. */
+.icon-plate { width: 52px; height: 52px; display: block; margin-bottom: 22px; overflow: visible; }

@@ -115,3 +115,54 @@ def strata(on_forest=False):
     if on_forest:
         return STRATA.format(stroke=ON_FOREST, strong=ON_FOREST_STRONG)
     return STRATA.format(stroke=LINE, strong=ACCENT)
+
+
+# A hub with arcs reaching out to a ring of nodes. A small team at the centre,
+# a wider network around it.
+NETWORK = '''<svg class="plate" viewBox="0 0 480 340" fill="none" role="img"
+     aria-label="One central point connected by arcs to a wider network of nodes">
+  <g stroke="{line}" stroke-width="1.2" stroke-linecap="round">
+    <path d="M150 170C190 90 250 56 330 52"/>
+    <path d="M150 170C210 140 300 120 420 122"/>
+    <path d="M150 170C230 180 320 206 432 226"/>
+    <path d="M150 170C190 250 250 284 330 292"/>
+    <path d="M150 170C100 130 70 90 46 56"/>
+    <path d="M150 170C96 214 64 262 44 294"/>
+  </g>
+  <circle cx="150" cy="170" r="46" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
+  <g fill="#FFFFFF" stroke="{ink}" stroke-width="1">
+    <circle cx="330" cy="52" r="8"/>
+    <circle cx="420" cy="122" r="8"/>
+    <circle cx="432" cy="226" r="8"/>
+    <circle cx="330" cy="292" r="8"/>
+    <circle cx="46" cy="56" r="8"/>
+    <circle cx="44" cy="294" r="8"/>
+  </g>
+  <circle cx="150" cy="170" r="20" fill="{accent}"/>
+</svg>'''.format(line=LINE, ink=INK, accent=ACCENT)
+
+
+def _icon(label, body):
+    return ('<svg class="icon-plate" viewBox="0 0 64 64" fill="none" role="img" aria-label="%s"\n'
+            '     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">%s</svg>'
+            % (label, body))
+
+
+# Small marks for the three reasons to join. Ink line work, one accent detail.
+ICON_PROBLEM = _icon('A path climbing to a flag', '''
+  <path d="M6 54h52" stroke="{line}"/>
+  <path d="M8 54L26 30l10 12 20-30" stroke="{ink}"/>
+  <path d="M56 12v-6M56 6l-8 3 8 3" stroke="{accent}"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
+
+ICON_GLOBAL = _icon('A globe', '''
+  <circle cx="32" cy="32" r="24" stroke="{ink}"/>
+  <ellipse cx="32" cy="32" rx="10" ry="24" stroke="{line}"/>
+  <path d="M8 32h48M12 20h40M12 44h40" stroke="{line}"/>
+  <circle cx="44" cy="22" r="3.5" fill="{accent}" stroke="none"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
+
+ICON_PAY = _icon('Balanced scales', '''
+  <path d="M32 10v44M20 54h24" stroke="{ink}"/>
+  <path d="M12 18h40" stroke="{ink}"/>
+  <path d="M12 18L5 36h14zM52 18l-7 18h14z" stroke="{line}"/>
+  <path d="M5 36a7 5 0 0 0 14 0M45 36a7 5 0 0 0 14 0" stroke="{ink}"/>
+  <circle cx="32" cy="10" r="3.5" fill="{accent}" stroke="none"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
