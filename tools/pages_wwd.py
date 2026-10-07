@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, cta_band
 from plates import strata
+import re
 from tech import TECH_ITEMS
+
+# Second copy for the stream: ids are suffixed so the page keeps unique ids.
+TECH_COPY = re.sub(r'(SVG\w+)', r'\1b', TECH_ITEMS).strip('\n')
 
 # The five capabilities in full. Each carries a short list of what the work
 # concretely involves, so the page says what we do rather than what we believe.
@@ -144,9 +148,16 @@ WHAT_WE_DO = '''
         <p class="body">Tools follow the problem, not the other way round. This is the stack
           we build in most often.</p>
       </div>
-      <ul class="tech-list">
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="tech-list">
 {tech}
-      </ul>
+          </ul>
+          <ul class="tech-list" aria-hidden="true">
+{tech_copy}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -201,6 +212,7 @@ WHAT_WE_DO = '''
     plate=strata(on_forest=True),
     points='\n'.join('            <li>%s</li>' % p for p in MODEL_POINTS),
     tech=TECH_ITEMS.strip('\n'),
+    tech_copy=TECH_COPY,
     arrow=ARROW,
     cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
 )
