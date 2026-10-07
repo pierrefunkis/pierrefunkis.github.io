@@ -69,9 +69,8 @@ CAREERS = '''
       <div class="section-head">
         <p class="eyebrow">Who We Look For</p>
         <h2 class="h-lg" id="roles-h">Specialists across the data stack</h2>
-        <p class="body">We work with experienced data professionals, technical and
-          non-technical alike, from engineers and architects to project and product
-          managers, with strong foundations and a track record of delivery.</p>
+        <p class="body">We work with experienced data professionals, with strong
+          foundations and a track record of delivery.</p>
       </div>
 
       <ul class="tags">
