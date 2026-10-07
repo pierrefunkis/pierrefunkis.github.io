@@ -628,8 +628,8 @@ a { color: inherit; }
   animation: marquee-ltr 45s linear infinite;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee .tags { flex-wrap: nowrap; flex-shrink: 0; padding-right: 10px; }
-.marquee .tag { white-space: nowrap; }
+.marquee .tags, .marquee .tech-list { flex-wrap: nowrap; flex-shrink: 0; padding-right: 10px; }
+.marquee .tag, .marquee .tech { white-space: nowrap; }
 
 @keyframes marquee-ltr {
   from { transform: translateX(-50%); }
@@ -640,8 +640,8 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .marquee { -webkit-mask-image: none; mask-image: none; }
   .marquee-track { animation: none; width: auto; }
-  .marquee .tags { flex-wrap: wrap; padding-right: 0; }
-  .marquee .tags[aria-hidden="true"] { display: none; }
+  .marquee .tags, .marquee .tech-list { flex-wrap: wrap; padding-right: 0; }
+  .marquee [aria-hidden="true"] { display: none; }
 }
 
 /* ── EDITORIAL / INSIGHTS ────────────────────────────────────────────────── */
@@ -740,7 +740,7 @@ a { color: inherit; }
 
 .founder {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 210px minmax(0, 1fr);
   gap: 64px;
   align-items: start;
 }
@@ -749,7 +749,7 @@ a { color: inherit; }
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--r);
+  border-radius: 50%;
   background: var(--paper);
 }
 
@@ -1008,7 +1008,7 @@ a { color: inherit; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
   .featured { grid-template-columns: 1fr; gap: 32px; }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .founder { grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+  .founder { grid-template-columns: 170px minmax(0, 1fr); gap: 40px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
@@ -1042,7 +1042,7 @@ a { color: inherit; }
   .credibility { grid-template-columns: 1fr; gap: 22px; }
   .credibility-photo { width: 112px; height: 112px; }
   .founder { grid-template-columns: 1fr; gap: 28px; }
-  .founder-photo { max-width: 220px; }
+  .founder-photo { max-width: 160px; }
   .form-panel { padding: 26px 22px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
