@@ -615,6 +615,35 @@ a { color: inherit; }
 }
 .section--paper .tag, .section--mint .tag { background: var(--white); }
 
+/* Role tags streaming left to right. The list is rendered twice and the track
+   slides by exactly one copy, so the loop is seamless. The copy is aria-hidden. */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 45s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee .tags { flex-wrap: nowrap; flex-shrink: 0; padding-right: 10px; }
+.marquee .tag { white-space: nowrap; }
+
+@keyframes marquee-ltr {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* No motion: show the roles as a normal wrapped list, once. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; width: auto; }
+  .marquee .tags { flex-wrap: wrap; padding-right: 0; }
+  .marquee .tags[aria-hidden="true"] { display: none; }
+}
+
 /* ── EDITORIAL / INSIGHTS ────────────────────────────────────────────────── */
 
 .article-meta {

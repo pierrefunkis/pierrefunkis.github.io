@@ -74,9 +74,16 @@ CAREERS = '''
           managers, with strong foundations and a track record of delivery.</p>
       </div>
 
-      <ul class="tags">
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="tags">
 {roles}
-      </ul>
+          </ul>
+          <ul class="tags" aria-hidden="true">
+{roles}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 {cta}'''
