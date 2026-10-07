@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 ROOT = os.path.dirname(HERE)
 
-from shared import SITE, EMAIL, LINKEDIN, ORG_LD, head, nav, FOOTER  # noqa: E402
+from shared import SITE, LINKEDIN, ORG_LD, head, nav, FOOTER  # noqa: E402
 from pages_home import HOME  # noqa: E402
 from pages_wwd import WHAT_WE_DO  # noqa: E402
 from pages_about import ABOUT  # noqa: E402

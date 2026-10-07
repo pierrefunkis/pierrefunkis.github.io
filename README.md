@@ -204,9 +204,10 @@ exactly 1200x630. Regenerate it whenever the home headline changes, and keep the
 
 ## Known follow-ups
 
-- Every address on the site is `pierre@workwithsemantic.com`: the footer
-  contact link, the Careers apply CTAs, the Organization schema, and the
-  contact form's fallback. That mailbox has to exist.
+- No email address is published on the site. The only one in the code is the
+  contact form's fallback in `main.js` (`CONTACT_EMAIL`, currently
+  `pierre@side-hr.com`). Where form submissions actually go is set in the
+  Web3Forms dashboard against the access key, not in code.
 - Client logos are shown with the clients' permission in mind: several of these
   brands publish logo usage guidelines. Confirm sign-off for each before this
   goes live (see `logos/README.md`).

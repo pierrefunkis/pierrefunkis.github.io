@@ -11,7 +11,6 @@ import os
 import re
 
 SITE = 'https://www.workwithsemantic.com'
-EMAIL = 'pierre@workwithsemantic.com'
 LINKEDIN = 'https://www.linkedin.com/company/semantic-data-consulting/'
 
 FONTS = ('https://fonts.googleapis.com/css2?'
@@ -198,7 +197,6 @@ ORG_LD = '''{
     "logo": "%s/favicon.svg",
     "slogan": "Senior data expertise, delivered by a dedicated team.",
     "description": "Semantic is a boutique data consultancy that helps enterprises solve complex data problems, from diagnosis to implementation.",
-    "email": "%s",
     "founder": {
       "@type": "Person",
       "name": "Pierre Sarkis",
@@ -216,7 +214,7 @@ ORG_LD = '''{
       "Data Migration", "Analytics", "Decision Support", "Data Engineering",
       "AI Readiness", "Business Intelligence", "Master Data Management"
     ]
-  }''' % (SITE, SITE, SITE, EMAIL, LINKEDIN)
+  }''' % (SITE, SITE, SITE, LINKEDIN)
 
 
 # ── Founder credentials ─────────────────────────────────────────────────────
