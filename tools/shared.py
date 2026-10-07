@@ -12,7 +12,7 @@ import re
 
 SITE = 'https://www.workwithsemantic.com'
 EMAIL = 'pierre@workwithsemantic.com'
-LINKEDIN = 'https://www.linkedin.com/in/pierresarkis/'
+LINKEDIN = 'https://www.linkedin.com/company/semantic-data-consulting/'
 
 FONTS = ('https://fonts.googleapis.com/css2?'
          'family=Schibsted+Grotesk:wght@400;500;600'
@@ -172,14 +172,12 @@ FOOTER = '''
         <h4>Elsewhere</h4>
         <ul>
           <li><a href="/for-talents/">Join the team</a></li>
-          <li><a href="mailto:{email}">{email}</a></li>
           <li><a href="{linkedin}" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Semantic. All rights reserved.</span>
-      <span>Europe &middot; United States &middot; Middle East</span>
     </div>
   </div>
 </footer>
@@ -187,7 +185,7 @@ FOOTER = '''
 <script src="/main.js" defer></script>
 </body>
 </html>
-'''.format(mark=MARK, email=EMAIL, linkedin=LINKEDIN)
+'''.format(mark=MARK, linkedin=LINKEDIN)
 
 
 ORG_LD = '''{
