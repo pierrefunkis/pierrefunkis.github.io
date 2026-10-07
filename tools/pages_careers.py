@@ -6,6 +6,7 @@ It sits in the footer rather than the main nav, because the main nav
 is for clients.
 """
 from shared import ARROW, cta_band
+from pages_home import CLIENT_STRIP
 from plates import NETWORK, ICON_PROBLEM, ICON_GLOBAL, ICON_PAY
 
 BENEFITS = [
@@ -61,7 +62,7 @@ CAREERS = '''
       </div>
     </div>
   </section>
-
+{clients}
   <section class="section section--mint" aria-labelledby="roles-h">
     <div class="container">
       <div class="section-head">
@@ -96,6 +97,7 @@ CAREERS = CAREERS.format(
     arrow=ARROW,
     plate=NETWORK,
     benefits=_benefits(),
+    clients=CLIENT_STRIP,
     roles='\n'.join('            <li class="tag">%s</li>' % r for r in ROLES),
     cta=cta_band('Think you would raise our bar?',
                  'Simply fill our 2 min form and we\'ll reach out when we have opportunities for you.',
