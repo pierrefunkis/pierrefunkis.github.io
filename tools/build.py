@@ -205,10 +205,12 @@ PAGES.append((
 # ── Careers ─────────────────────────────────────────────────────────────────
 PAGES.append((
     'join-network/index.html', '/join-network/',
-    'Join the Semantic Network | Data Specialists',
-    'Semantic works with a curated team of data specialists on demanding enterprise '
-    'problems, with training, certifications and conferences funded.',
-    None, None,
+    'Join the Semantic Network | Data Professionals',
+    'Join Semantic\'s network of data professionals: challenging AI and data projects, '
+    'international clients and competitive compensation. Leave your details in two minutes.',
+    'Data problems worth solving. Join the Semantic network.',
+    'Challenging AI and data projects, international clients, competitive pay. '
+    'Leave your details in a 2-minute form and we will reach out when there is a fit.',
     webpage_ld('/join-network/', 'Join Network | Semantic',
                'Join a curated team of data specialists working on demanding enterprise '
                'problems.'),
@@ -225,13 +227,23 @@ write('for-talents/index.html',
       '<body><a href="/join-network/">Join Network</a></body></html>\n' % SITE)
 
 
+# Per-page link previews. Pages not listed use the default og-image.png.
+CARDS = {
+    '/join-network/': {
+        'og_image': '/og-join-network.png',
+        'og_alt': 'Data problems worth solving. Join the Semantic network: challenging work, '
+                  'international clients, competitive pay. Two-minute form.',
+    },
+}
+
 for filename, path, title, desc, og_t, og_d, ld, body in PAGES:
     active = path if any(path == href for href, _ in
                          [('/what-we-do/', 1), ('/insights/', 1), ('/about/', 1)]) else ''
     # Article pages keep Insights marked as the current section.
     if path.startswith('/insights/'):
         active = '/insights/'
-    write(filename, head(title, desc, path, og_t, og_d, ld) + nav(active) + body + FOOTER)
+    card = CARDS.get(path, {})
+    write(filename, head(title, desc, path, og_t, og_d, ld, **card) + nav(active) + body + FOOTER)
 
 # ── 404 ─────────────────────────────────────────────────────────────────────
 # noindex: GitHub Pages serves this for any unknown URL, so it must not be

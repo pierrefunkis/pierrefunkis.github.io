@@ -39,7 +39,9 @@ CTA_LABEL = 'Get in touch'
 CTA_HREF = '/contact/'
 
 
-def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra=''):
+def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra='',
+         og_image='/og-image.png',
+         og_alt='Semantic: senior data expertise, delivered by a dedicated team'):
     """<head> for one page. path is the site-root-relative URL, e.g. '/about/'."""
     canonical = SITE + path
     og_title = og_title or title
@@ -62,14 +64,14 @@ def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra=''):
   <meta property="og:url" content="{canonical}">
   <meta property="og:title" content="{og_title}">
   <meta property="og:description" content="{og_desc}">
-  <meta property="og:image" content="{site}/og-image.png">
+  <meta property="og:image" content="{site}{og_image}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Semantic: senior data expertise, delivered by a dedicated team">
+  <meta property="og:image:alt" content="{og_alt}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{og_title}">
   <meta name="twitter:description" content="{og_desc}">
-  <meta name="twitter:image" content="{site}/og-image.png">
+  <meta name="twitter:image" content="{site}{og_image}">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
@@ -83,7 +85,8 @@ def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra=''):
 
 <a class="skip-link" href="#main">Skip to content</a>
 '''.format(title=title, desc=desc, canonical=canonical, og_title=og_title,
-           og_desc=og_desc, site=SITE, fonts=FONTS, extra=extra, ld=ld)
+           og_desc=og_desc, site=SITE, fonts=FONTS, extra=extra, ld=ld,
+           og_image=og_image, og_alt=og_alt)
 
 
 def nav(active=''):
