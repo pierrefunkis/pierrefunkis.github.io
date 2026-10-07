@@ -33,7 +33,7 @@ insights/index.html           /insights/       → Editorial index
 insights/<slug>/index.html    /insights/<slug>/→ One article each
 about/index.html              /about/          → Founder, why Semantic, the team
 contact/index.html            /contact/        → Contact, booking form
-for-talents/index.html        /for-talents/    → Careers (path kept for inbound links)
+join-network/index.html        /join-network/    → Join Network
 404.html                                       → GitHub Pages serves this on unknown URLs
 style.css                                      → all styles
 main.js                                        → mobile menu, nav state, contact form
@@ -44,7 +44,7 @@ tools/                                         → the generator that writes the
 CNAME                                          → www.workwithsemantic.com
 ```
 
-`/for-talents/` is linked from the footer rather than the main nav. The main nav
+`/join-network/` is linked from the footer rather than the main nav. The main nav
 is for clients; the path is unchanged so existing inbound links keep working.
 
 ## Editing

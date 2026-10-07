@@ -171,7 +171,7 @@ FOOTER = '''
       <div class="footer-col">
         <h4>Elsewhere</h4>
         <ul>
-          <li><a href="/for-talents/">Join the team</a></li>
+          <li><a href="/join-network/">Join Network</a></li>
           <li><a href="{linkedin}" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
