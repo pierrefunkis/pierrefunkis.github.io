@@ -14,8 +14,8 @@ BENEFITS = [
      'We are embedded in our clients\' teams and step in on their most critical AI and '
      'data projects.'),
     (ICON_GLOBAL, 'An international client portfolio',
-     'Engagements with companies across industries and across Europe, the US and the '
-     'Middle East, from global consumer brands to healthcare to fast-growing marketplaces.'),
+     'Engagements with companies across the world, from global consumer brands to '
+     'fast-growing marketplaces.'),
     (ICON_PAY, 'Competitive compensation',
      'We believe talent should be compensated fairly, and we do our best to match or exceed '
      'your expectations.'),
