@@ -11,7 +11,7 @@ from plates import NETWORK, ICON_PROBLEM, ICON_GLOBAL, ICON_PAY
 BENEFITS = [
     (ICON_PROBLEM, 'Genuinely challenging data problems',
      'We are embedded in our clients\' teams and step in on their most critical AI and '
-     'data projects. No ticket queues, no busywork, no maintenance duty disguised as a project.'),
+     'data projects.'),
     (ICON_GLOBAL, 'An international client portfolio',
      'Engagements with companies across industries and across Europe, the US and the '
      'Middle East, from global consumer brands to healthcare to fast-growing marketplaces.'),
@@ -22,8 +22,8 @@ BENEFITS = [
 
 ROLES = [
     'Data Engineers', 'Analytics Engineers', 'Data Scientists', 'Data Analysts',
-    'ML Engineers', 'Data Architects', 'Data Quality &amp; Governance Specialists',
-    'MDM Specialists', 'BI Developers &amp; Analysts', 'AI &amp; Automation Experts',
+    'ML Engineers', 'Data Governance Managers',
+    'BI Developers &amp; Analysts', 'AI &amp; Automation Experts',
     'Data Project Managers', 'Data Product Managers',
 ]
 
@@ -55,7 +55,6 @@ CAREERS = '''
       <div class="section-head">
         <p class="eyebrow">Why Semantic</p>
         <h2 class="h-xl" id="why-h">A team worth joining</h2>
-        <p class="body">Small team, high bar, real work.</p>
       </div>
       <div class="grid grid--3">
 {benefits}

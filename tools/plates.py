@@ -149,10 +149,11 @@ def _icon(label, body):
 
 
 # Small marks for the three reasons to join. Ink line work, one accent detail.
-ICON_PROBLEM = _icon('A path climbing to a flag', '''
-  <path d="M6 54h52" stroke="{line}"/>
-  <path d="M8 54L26 30l10 12 20-30" stroke="{ink}"/>
-  <path d="M56 12v-6M56 6l-8 3 8 3" stroke="{accent}"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
+ICON_PROBLEM = _icon('A database with a crack running through it', '''
+  <ellipse cx="32" cy="14" rx="20" ry="7" stroke="{ink}"/>
+  <path d="M12 14v36c0 3.9 9 7 20 7s20-3.1 20-7V14" stroke="{ink}"/>
+  <path d="M12 32c0 3.9 9 7 20 7s20-3.1 20-7" stroke="{line}"/>
+  <path d="M36 21l-6 8 8 4-6 10" stroke="{accent}" stroke-width="2"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
 
 ICON_GLOBAL = _icon('A globe', '''
   <circle cx="32" cy="32" r="24" stroke="{ink}"/>
@@ -160,9 +161,9 @@ ICON_GLOBAL = _icon('A globe', '''
   <path d="M8 32h48M12 20h40M12 44h40" stroke="{line}"/>
   <circle cx="44" cy="22" r="3.5" fill="{accent}" stroke="none"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
 
-ICON_PAY = _icon('Balanced scales', '''
-  <path d="M32 10v44M20 54h24" stroke="{ink}"/>
-  <path d="M12 18h40" stroke="{ink}"/>
-  <path d="M12 18L5 36h14zM52 18l-7 18h14z" stroke="{line}"/>
-  <path d="M5 36a7 5 0 0 0 14 0M45 36a7 5 0 0 0 14 0" stroke="{ink}"/>
-  <circle cx="32" cy="10" r="3.5" fill="{accent}" stroke="none"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
+ICON_PAY = _icon('A banknote and a coin', '''
+  <rect x="4" y="14" width="48" height="30" rx="3" stroke="{ink}"/>
+  <circle cx="28" cy="29" r="8" stroke="{ink}"/>
+  <path d="M10 20v.01M46 38v.01" stroke="{line}" stroke-width="3"/>
+  <circle cx="48" cy="46" r="12" fill="#FFFFFF" stroke="{accent}" stroke-width="2"/>
+  <path d="M48 40v12M52 43.5c-1-1.5-8-2-8 1.5s8 1.5 8 5-7 3-8 1.5" stroke="{accent}"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
