@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from shared import ARROW, EMAIL
+from shared import ARROW
 
 SESSION_POINTS = [
     'Understand the problem, in your words and in business terms.',
@@ -55,9 +55,6 @@ CONTACT = '''
               AI programme that will not leave the pilot. Working out what the problem
               actually is happens to be the first part of the job.</p>
           </div>
-
-          <p class="body--tight" style="margin-top:32px;color:var(--muted);">Prefer email?
-            Write to <a class="link" href="mailto:{email}">{email}</a></p>
         </div>
 
         <div class="contact-form-col">
@@ -157,4 +154,4 @@ def _steps():
     return '\n'.join(out)
 
 
-CONTACT = CONTACT.format(points=_points(), steps=_steps(), email=EMAIL, arrow=ARROW)
+CONTACT = CONTACT.format(points=_points(), steps=_steps(), arrow=ARROW)

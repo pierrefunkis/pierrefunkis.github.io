@@ -21,7 +21,7 @@
      -------------------------------------------------------------------- */
   var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
   var ACCESS_KEY = '6092d285-4b44-4798-9e7f-bb4429798754';
-  var CONTACT_EMAIL = 'pierre@workwithsemantic.com';
+  var CONTACT_EMAIL = 'pierre@side-hr.com';
 
   /* ── Mobile menu ──────────────────────────────────────────────────── */
 
