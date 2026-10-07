@@ -56,6 +56,7 @@ CAREERS = '''
       <div class="section-head">
         <p class="eyebrow">Why Semantic</p>
         <h2 class="h-xl" id="why-h">A team worth joining</h2>
+        <p class="body">We know what matters to data specialists, and we make sure to provide it.</p>
       </div>
       <div class="grid grid--3">
 {benefits}
