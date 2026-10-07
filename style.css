@@ -628,7 +628,11 @@ a { color: inherit; }
   animation: marquee-ltr 45s linear infinite;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee .tags, .marquee .tech-list { flex-wrap: nowrap; flex-shrink: 0; padding-right: 10px; }
+.marquee .tags, .marquee .tech-list { flex-wrap: nowrap; flex-shrink: 0; }
+/* The gap after the last item of each copy lives on the item itself, so the
+   seam between the two copies is the same 10px as every other gap in every
+   browser, and each copy has exactly the same width (the loop moves by half). */
+.marquee li:last-child { margin-right: 10px; }
 .marquee .tag, .marquee .tech { white-space: nowrap; }
 
 @keyframes marquee-ltr {
@@ -640,7 +644,8 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .marquee { -webkit-mask-image: none; mask-image: none; }
   .marquee-track { animation: none; width: auto; }
-  .marquee .tags, .marquee .tech-list { flex-wrap: wrap; padding-right: 0; }
+  .marquee .tags, .marquee .tech-list { flex-wrap: wrap; }
+  .marquee li:last-child { margin-right: 0; }
   .marquee [aria-hidden="true"] { display: none; }
 }
 
