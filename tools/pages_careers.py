@@ -10,7 +10,7 @@ from pages_home import CLIENT_STRIP
 from plates import NETWORK, ICON_PROBLEM, ICON_GLOBAL, ICON_PAY
 
 BENEFITS = [
-    (ICON_PROBLEM, 'Genuinely challenging data problems',
+    (ICON_PROBLEM, 'Challenging data problems',
      'We are embedded in our clients\' teams and step in on their most critical AI and '
      'data projects.'),
     (ICON_GLOBAL, 'An international client portfolio',
