@@ -16,6 +16,7 @@ from pages_home import HOME  # noqa: E402
 from pages_wwd import WHAT_WE_DO  # noqa: E402
 from pages_about import ABOUT  # noqa: E402
 from pages_contact import CONTACT  # noqa: E402
+from pages_work import PERNOD  # noqa: E402
 from pages_careers import CAREERS, NOT_FOUND  # noqa: E402
 from pages_insights import insights_index, article_page  # noqa: E402
 from articles import ARTICLES  # noqa: E402
@@ -222,6 +223,19 @@ PAGES.append((
     None, None, contact_ld, CONTACT,
 ))
 
+# ── Case study ──────────────────────────────────────────────────────────────
+PAGES.append((
+    'work/pernod-ricard/index.html', '/work/pernod-ricard/',
+    'Pernod Ricard Case Study: Data Quality for AI | Semantic',
+    'How Semantic strengthened the data quality foundations of Pernod Ricard\'s D-STAR AI '
+    'sales engine, featured by Harvard Business School.',
+    None, None,
+    webpage_ld('/work/pernod-ricard/', 'Pernod Ricard case study | Semantic',
+               'Data quality tooling and global processes behind D-STAR, the AI recommendation '
+               'engine for Pernod Ricard sales teams.'),
+    PERNOD,
+))
+
 # ── Careers ─────────────────────────────────────────────────────────────────
 PAGES.append((
     'join-network/index.html', '/join-network/',
@@ -252,7 +266,8 @@ PLAIN_FOOTER = {'/contact/'}
 
 # Breadcrumb label per page (the home page already ships its own graph).
 CRUMBS = {'/what-we-do/': 'Our Expertise', '/about/': 'About Us',
-          '/contact/': 'Contact', '/join-network/': 'Join Network'}
+          '/contact/': 'Contact', '/join-network/': 'Join Network',
+          '/work/pernod-ricard/': 'Pernod Ricard Case Study'}
 
 # Per-page link previews. Pages not listed use the default og-image.png.
 CARDS = {
@@ -293,6 +308,7 @@ urls = [('/', '1.0', LASTMOD),
         ('/what-we-do/', '0.9', LASTMOD),
         ('/about/', '0.7', LASTMOD),
         ('/contact/', '0.9', LASTMOD),
+        ('/work/pernod-ricard/', '0.7', LASTMOD),
         ('/join-network/', '0.5', LASTMOD)]
 if SHOW_INSIGHTS:
     urls.insert(2, ('/insights/', '0.8', '2026-08-20'))
@@ -333,6 +349,7 @@ write('llms.txt', f"""# Semantic
 - [Home]({SITE}/): What Semantic does, how it works in four steps, and who it is for.
 - [Our Expertise]({SITE}/what-we-do/): Vetted data specialists (analysts, engineers, analytics engineers, managers, governance leads), the data stack they work in, and how Semantic stays accountable for outcomes.
 - [About Us]({SITE}/about/): The founder, Pierre Sarkis, and the principles behind the firm.
+- [Pernod Ricard case study]({SITE}/work/pernod-ricard/): How Semantic strengthened the data quality behind D-STAR, Pernod Ricard's AI sales recommendation engine, featured by Harvard Business School.
 - [Contact]({SITE}/contact/): Book a free diagnosis session about a data problem.
 - [Join the Network]({SITE}/join-network/): For data professionals who want to take on challenging AI and data projects with Semantic's international clients.
 

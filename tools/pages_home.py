@@ -15,6 +15,12 @@ CLIENT_STRIP = '''
         <li><img class="client-logo client-logo--dense" src="/logos/med-surg-solutions.png" alt="Med Surg Solutions" width="1804" height="670" loading="lazy" decoding="async"></li>
         <li><img class="client-logo client-logo--light" src="/logos/shelt.png" alt="Shelt" width="1291" height="380" loading="lazy" decoding="async"></li>
       </ul>
+      <a class="feature-banner" href="/work/pernod-ricard/">
+        <span class="feature-banner-tag">Featured by Harvard Business School</span>
+        <span class="feature-banner-text">How Semantic strengthened the data behind Pernod Ricard's
+          D-STAR, an AI program studied in a Harvard Business School case</span>
+        <span class="feature-banner-cta">Read the case study ''' + ARROW + '''</span>
+      </a>
     </div>
   </section>
 '''

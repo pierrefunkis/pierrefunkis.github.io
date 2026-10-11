@@ -7,6 +7,7 @@
 - [Home](https://www.workwithsemantic.com/): What Semantic does, how it works in four steps, and who it is for.
 - [Our Expertise](https://www.workwithsemantic.com/what-we-do/): Vetted data specialists (analysts, engineers, analytics engineers, managers, governance leads), the data stack they work in, and how Semantic stays accountable for outcomes.
 - [About Us](https://www.workwithsemantic.com/about/): The founder, Pierre Sarkis, and the principles behind the firm.
+- [Pernod Ricard case study](https://www.workwithsemantic.com/work/pernod-ricard/): How Semantic strengthened the data quality behind D-STAR, Pernod Ricard's AI sales recommendation engine, featured by Harvard Business School.
 - [Contact](https://www.workwithsemantic.com/contact/): Book a free diagnosis session about a data problem.
 - [Join the Network](https://www.workwithsemantic.com/join-network/): For data professionals who want to take on challenging AI and data projects with Semantic's international clients.
 
