@@ -54,7 +54,6 @@ CAREERS = '''
   <section class="section section--tight section--flush" aria-labelledby="why-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Why Semantic</p>
         <h2 class="h-xl" id="why-h">A team worth joining</h2>
         <p class="body">We know what matters to data professionals, and we make sure to deliver it.</p>
       </div>
@@ -67,7 +66,6 @@ CAREERS = '''
   <section class="section section--mint" aria-labelledby="roles-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Who We Look For</p>
         <h2 class="h-lg" id="roles-h">Specialists across the data stack</h2>
         <p class="body">We work with experienced data professionals, with strong
           foundations and a track record of delivery.</p>

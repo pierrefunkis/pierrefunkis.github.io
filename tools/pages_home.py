@@ -92,7 +92,6 @@ HOME = '''
   <section class="section" aria-labelledby="wwd-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">What We Do</p>
         <h2 class="h-xl" id="wwd-h">How we help</h2>
       </div>
 
@@ -108,7 +107,6 @@ HOME = '''
   <section class="section section--ruled" aria-labelledby="how-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">How We Work</p>
         <h2 class="h-xl" id="how-h">Four steps from problem to outcome</h2>
       </div>
       <div class="steps">

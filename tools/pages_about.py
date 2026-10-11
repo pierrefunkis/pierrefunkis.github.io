@@ -83,7 +83,6 @@ ABOUT = '''
   <section class="section section--mint" aria-labelledby="why-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Why Semantic</p>
         <h2 class="h-xl" id="why-h">A third option</h2>
         <p class="body">Complex data problems need senior judgment to frame and a team to
           execute. Most firms offer one or the other.</p>
@@ -103,7 +102,6 @@ ABOUT = '''
   <section class="section" aria-labelledby="team-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">The Team</p>
         <h2 class="h-xl" id="team-h">Vetted specialists, matched to your needs</h2>
         <p class="body">Every specialist is carefully vetted for proven capability, and
           selected to fit your specific needs and tooling.</p>
