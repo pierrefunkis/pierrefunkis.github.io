@@ -158,8 +158,8 @@ FOOTER = '''
     <div class="footer-top">
       <div>
         <a class="footer-brand" href="/" aria-label="Semantic home">{mark}Semantic</a>
-        <p class="footer-tag">Senior data expertise, delivered by a dedicated team. We help
-          enterprises solve complex data problems, from diagnosis to implementation.</p>
+        <p class="footer-tag">We help companies solve complex data challenges, from
+          diagnosis to implementation.</p>
       </div>
       <div class="footer-col">
         <ul>
