@@ -2,7 +2,7 @@
 from shared import credential, ARROW, LINKEDIN, cta_band
 
 from plates import (ICON_BIGFIRM, ICON_FREELANCE, ICON_SEMANTIC_LIGHT, ICON_SENIOR,
-                    ICON_EMBEDDED, ICON_HONEST, ICON_ACCOUNT, ICON_T_PRODUCT,
+                    ICON_EMBEDDED, ICON_HONEST, ICON_T_PRODUCT,
                     ICON_T_ANALYTICS, ICON_T_ENGINEERING, ICON_T_QUALITY,
                     ICON_T_MANAGEMENT)
 
@@ -24,8 +24,6 @@ PRINCIPLES = [
      'We work in your tools, your stack and your rituals.'),
     (ICON_HONEST, 'Honest',
      'A counterpart who challenges you, including when you do not need us.'),
-    (ICON_ACCOUNT, 'Accountable',
-     'We own the outcome, with regular service reviews and continuity.'),
 ]
 
 TEAM_AREAS = [
@@ -43,15 +41,7 @@ ABOUT = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>About</span>
       </nav>
       <p class="eyebrow">About</p>
-      <div class="hero-cols">
-        <div>
-          <h1 class="display">Senior expertise, with a team behind it</h1>
-        </div>
-        <div>
-          <p class="lede">We are a boutique data consultancy. The people who scope the work
-            stay involved in delivering it.</p>
-        </div>
-      </div>
+      <h1 class="display">Who is behind Semantic</h1>
     </div>
   </section>
 
@@ -66,18 +56,15 @@ ABOUT = '''
           <h2 class="h-lg" id="founder-h">Pierre Sarkis</h2>
           <p class="founder-role">Founder &amp; Principal</p>
 
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre spent his
-            career in data at Amazon, across the US and Europe, at a scale where unreliable
-            data is an operational risk, not an inconvenience. He founded Semantic to bring
-            that standard to companies that want to be data-driven without hiring an army.</p>
-
-          <p class="body" style="margin-top:20px;">A graduate of HEC Paris, he combines
-            technical data depth with business management training: technical decisions
-            made in business terms, and business decisions made with data that holds up.</p>
+          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre pairs the
+            technical data knowledge he built at Amazon, working in Paris and New York, with
+            the business perspective he gained through his studies at HEC Paris. He founded
+            Semantic to bring that rigor to companies that want to be data-driven without
+            hiring an army.</p>
 
           <dl class="facts facts--pair" style="margin-top:32px;">
-            <div class="fact"><dt>Previously</dt><dd>{mark_amazon}</dd></div>
-            <div class="fact"><dt>Educated at</dt><dd>{mark_hec}</dd></div>
+            <div class="fact"><dd>{mark_amazon}</dd></div>
+            <div class="fact"><dd>{mark_hec}</dd></div>
           </dl>
 
           <a class="link" href="{linkedin}" rel="noopener" style="margin-top:28px;">Connect on LinkedIn {arrow}</a>
@@ -100,7 +87,7 @@ ABOUT = '''
 {models}
       </div>
 
-      <div class="grid grid--4" style="margin-top:20px;">
+      <div class="grid grid--3" style="margin-top:20px;">
 {principles}
       </div>
     </div>
@@ -113,7 +100,7 @@ ABOUT = '''
         <p class="eyebrow">The Team</p>
         <h2 class="h-xl" id="team-h">A curated team, assembled around the problem</h2>
         <p class="body">A vetted team of data specialists, brought together by what the
-          diagnosis finds and always working alongside a senior lead.</p>
+          diagnosis finds.</p>
       </div>
 
       <div class="grid grid--5">
