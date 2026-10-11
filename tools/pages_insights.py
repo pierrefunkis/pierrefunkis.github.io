@@ -114,7 +114,6 @@ def article_page(a, others):
   <section class="section section--mint" aria-labelledby="more-h">
     <div class="container container--narrow">
       <div class="section-head" style="margin-bottom:16px;">
-        <p class="eyebrow">More from Insights</p>
         <h2 class="h-lg" id="more-h">Related reading</h2>
       </div>
       <ul class="article-list">

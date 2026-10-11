@@ -120,7 +120,6 @@ WHAT_WE_DO = '''
     <div class="container">
       <div class="section-head section-head--wide">
         <div>
-          <p class="eyebrow">The Semantic Model</p>
           <h2 class="h-xl" id="model-h">Senior expertise, embedded in your team</h2>
         </div>
         <div>
@@ -143,7 +142,6 @@ WHAT_WE_DO = '''
   <section class="section" aria-labelledby="tech-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Technology</p>
         <h2 class="h-lg" id="tech-h">We have the technical depth to execute</h2>
         <p class="body">Tools follow the problem, not the other way round. This is the stack
           we build in most often.</p>
@@ -165,7 +163,6 @@ WHAT_WE_DO = '''
   <section class="section section--paper" aria-labelledby="work-h">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Selected Work</p>
         <h2 class="h-lg" id="work-h">What engagements look like in practice</h2>
       </div>
 
