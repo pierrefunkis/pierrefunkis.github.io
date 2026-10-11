@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 SESSION_POINTS = [
     'Understand the problem and its business impact.',
-    'Review the context: who is affected and what has been tried.',
+    'Review who’s affected and what’s been tried.',
     'Identify the approaches worth pursuing.',
     'Give you an honest view on whether we are the right fit.',
 ]
