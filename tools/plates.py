@@ -292,3 +292,47 @@ ICON_SEMANTIC_LIGHT = _icon('The Semantic mark', '''
   <circle cx="22" cy="32" r="17" fill="#8FB3A5" opacity="0.7" stroke="none"/>
   <circle cx="42" cy="32" r="17" fill="#FFFFFF" stroke="none"/>
   <circle cx="32" cy="32" r="7" fill="#1F332C" stroke="none"/>''')
+
+
+# What We Do: one contact between the client and the specialists. A client on
+# the left, Semantic in the middle, the specialists fanning out to the right.
+# Drawn for the dark band only.
+CONTACT_HUB = '''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
+     aria-label="A client connected through Semantic to several specialists">
+  <rect x="10" y="118" width="84" height="84" rx="8" stroke="{strong}" stroke-width="1.6"/>
+  <path d="M30 144h44M30 160h44M30 176h28" stroke="{stroke}" stroke-width="1.6" stroke-linecap="round"/>
+
+  <path d="M94 160h92" stroke="{strong}" stroke-width="2.2" stroke-linecap="round"/>
+
+  <circle cx="240" cy="160" r="54" stroke="{stroke}" stroke-width="1" stroke-dasharray="3 5"/>
+  <circle cx="226" cy="160" r="28" fill="{strong}" opacity="0.7"/>
+  <circle cx="254" cy="160" r="28" fill="#FFFFFF"/>
+  <circle cx="240" cy="160" r="11" fill="#1F332C"/>
+
+  <g stroke="{stroke}" stroke-width="1.4" stroke-linecap="round">
+    <path d="M294 160C350 160 360 62 418 62"/>
+    <path d="M294 160h124"/>
+    <path d="M294 160C350 160 360 258 418 258"/>
+  </g>
+  <g fill="#1F332C" stroke="{strong}" stroke-width="2">
+    <circle cx="430" cy="62" r="11"/>
+    <circle cx="430" cy="160" r="11"/>
+    <circle cx="430" cy="258" r="11"/>
+  </g>
+</svg>'''
+
+
+def contact_hub():
+    return CONTACT_HUB.format(stroke=ON_FOREST, strong=ON_FOREST_STRONG)
+
+
+# Role icons for What We Do that the other pages do not already have.
+ICON_T_ANALYTICS_ENG = _i('Stacked layers of a data model', '''
+  <path d="M32 8l24 11-24 11L8 19z" stroke="{ink}"/>
+  <path d="M8 31l24 11 24-11" stroke="{line}"/>
+  <path d="M8 43l24 11 24-11" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_T_GOVERNANCE = _i('A document with a check mark', '''
+  <path d="M14 6h26l12 12v40H14z" stroke="{ink}"/>
+  <path d="M40 6v12h12" stroke="{line}"/>
+  <path d="M22 38l7 7 13-14" stroke="{accent}" stroke-width="2"/>''')
