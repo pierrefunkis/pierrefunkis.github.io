@@ -134,23 +134,33 @@ def strata(on_forest=False):
 NETWORK = '''<svg class="plate" viewBox="0 0 480 340" fill="none" role="img"
      aria-label="One central point connected by arcs to a wider network of nodes">
   <g stroke="{line}" stroke-width="1.2" stroke-linecap="round">
-    <path d="M150 170C190 90 250 56 330 52"/>
-    <path d="M150 170C210 140 300 120 420 122"/>
-    <path d="M150 170C230 180 320 206 432 226"/>
-    <path d="M150 170C190 250 250 284 330 292"/>
-    <path d="M150 170C100 130 70 90 46 56"/>
-    <path d="M150 170C96 214 64 262 44 294"/>
+    <path class="conv-draw" pathLength="1" style="--d:0.50s" d="M150 170C190 90 250 56 330 52"/>
+    <path class="conv-draw" pathLength="1" style="--d:0.70s" d="M150 170C210 140 300 120 420 122"/>
+    <path class="conv-draw" pathLength="1" style="--d:0.90s" d="M150 170C230 180 320 206 432 226"/>
+    <path class="conv-draw" pathLength="1" style="--d:1.10s" d="M150 170C190 250 250 284 330 292"/>
+    <path class="conv-draw" pathLength="1" style="--d:1.30s" d="M150 170C100 130 70 90 46 56"/>
+    <path class="conv-draw" pathLength="1" style="--d:1.50s" d="M150 170C96 214 64 262 44 294"/>
   </g>
-  <circle cx="150" cy="170" r="46" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
+  <circle class="conv-fade" style="--d:.1s" cx="150" cy="170" r="46" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
   <g fill="#FFFFFF" stroke="{ink}" stroke-width="1">
-    <circle cx="330" cy="52" r="8"/>
-    <circle cx="420" cy="122" r="8"/>
-    <circle cx="432" cy="226" r="8"/>
-    <circle cx="330" cy="292" r="8"/>
-    <circle cx="46" cy="56" r="8"/>
-    <circle cx="44" cy="294" r="8"/>
+    <circle class="conv-fade" style="--d:1.60s" cx="330" cy="52" r="8"/>
+    <circle class="conv-fade" style="--d:1.80s" cx="420" cy="122" r="8"/>
+    <circle class="conv-fade" style="--d:2.00s" cx="432" cy="226" r="8"/>
+    <circle class="conv-fade" style="--d:2.20s" cx="330" cy="292" r="8"/>
+    <circle class="conv-fade" style="--d:2.40s" cx="46" cy="56" r="8"/>
+    <circle class="conv-fade" style="--d:2.60s" cx="44" cy="294" r="8"/>
   </g>
-  <circle cx="150" cy="170" r="20" fill="{accent}"/>
+  <circle class="conv-fade" style="--d:0s" cx="150" cy="170" r="20" fill="{accent}"/>
+
+  <!-- the centre sends work out to each node in turn -->
+  <g class="flow-dots" fill="{accent}">
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="3.2s" repeatCount="indefinite" path="M150 170C190 90 250 56 330 52"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="3.2s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="3.9s" repeatCount="indefinite" path="M150 170C210 140 300 120 420 122"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="3.9s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="4.6s" repeatCount="indefinite" path="M150 170C230 180 320 206 432 226"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="4.6s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="5.3s" repeatCount="indefinite" path="M150 170C190 250 250 284 330 292"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="5.3s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="6.0s" repeatCount="indefinite" path="M150 170C100 130 70 90 46 56"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="6.0s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="6.7s" repeatCount="indefinite" path="M150 170C96 214 64 262 44 294"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="6.7s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>'''.format(line=LINE, ink=INK, accent=ACCENT)
 
 

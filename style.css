@@ -1122,7 +1122,7 @@ a.tag:hover { border-color: var(--ink); }
      column, so it goes rather than shrinking to nothing. */
   .with-plate, .with-plate--lead { grid-template-columns: 1fr; gap: 40px; }
   .points--2up { grid-template-columns: 1fr; column-gap: 0; }
-  .with-plate .plate-slot { display: none; }
+  .with-plate .plate-slot { max-width: 440px; margin: 0 auto; width: 100%; }
   .split--even, .split--contact { grid-template-columns: 1fr; gap: 40px; }
   /* Once the columns stack, the form should not sit below a screen and a half
      of explanation. */
