@@ -460,6 +460,16 @@ a { color: inherit; }
 /* Long wordmarks look oversized at it. */
 .client-logo--wide { height: 17px; }
 
+/* Case study page: sections sit closer together than the site default, so the
+   page reads as one story rather than a stack of separate blocks. */
+.case .section, .case .section--tight { padding: 56px 0; }
+.case .section--flush { padding-top: 0; }
+.case .section-head { margin-bottom: 28px; }
+@media (max-width: 640px) {
+  .case .section, .case .section--tight { padding: 40px 0; }
+  .case .section--flush { padding-top: 0; }
+}
+
 /* Link to the Pernod Ricard case study, under the logos. Harvard crimson is
    used sparingly (tag, left rule) so the banner stands out from the
    logo row without fighting the site's green. */
