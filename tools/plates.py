@@ -45,7 +45,6 @@ CONVERGENCE = '''<svg class="plate" viewBox="0 0 480 300" fill="none" role="img"
 
   <!-- the point where it is reconciled -->
   <circle class="conv-fade" style="--d:1s" cx="292" cy="150" r="22" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
-  <circle class="conv-pulse" cx="292" cy="150" r="22" stroke="{accent}" stroke-width="1"/>
   <circle class="conv-fade" style="--d:.9s" cx="292" cy="150" r="7" fill="{accent}"/>
 
   <!-- one answer out -->
