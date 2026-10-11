@@ -102,13 +102,8 @@ WHAT_WE_DO = '''
   <!-- ONE ACCOUNTABLE POINT OF CONTACT -->
   <section class="section section--ink" aria-labelledby="model-h">
     <div class="container">
-      <div class="section-head section-head--wide">
-        <div>
-          <h2 class="h-xl" id="model-h">One accountable point of contact</h2>
-        </div>
-        <div>
-          <p class="body">We stay your contact from the first call to the handover.</p>
-        </div>
+      <div class="section-head">
+        <h2 class="h-xl" id="model-h">One accountable point of contact</h2>
       </div>
 
       <div class="with-plate">
