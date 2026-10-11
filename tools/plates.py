@@ -213,3 +213,68 @@ ICON_BUILD = _i('Stacked building blocks', '''
 ICON_IMPROVE = _i('Rising steps with an upward arrow', '''
   <path d="M6 56h13V44h13V32h13V20h13" stroke="{ink}"/>
   <path d="M40 8h16v16M56 8L36 28" stroke="{accent}" stroke-width="2"/>''')
+
+
+# About page: the three models, the four principles, and the five team areas.
+ICON_BIGFIRM = _i('A large office building', '''
+  <rect x="14" y="8" width="36" height="48" rx="2" stroke="{ink}"/>
+  <path d="M22 18h6M36 18h6M22 28h6M36 28h6M22 38h6M36 38h6" stroke="{line}" stroke-width="2"/>
+  <path d="M28 56V46h8v10" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_FREELANCE = _i('A single person on their own', '''
+  <circle cx="32" cy="20" r="9" stroke="{ink}"/>
+  <path d="M14 54c0-10 8-16 18-16s18 6 18 16" stroke="{ink}"/>
+  <path d="M6 58h8M50 58h8" stroke="{line}" stroke-dasharray="2 4"/>
+  <circle cx="32" cy="20" r="3" fill="{accent}" stroke="none"/>''')
+
+ICON_SENIOR = _i('A person with a star above', '''
+  <circle cx="32" cy="30" r="8" stroke="{ink}"/>
+  <path d="M16 56c0-9 7-14 16-14s16 5 16 14" stroke="{ink}"/>
+  <path d="M32 6l2.6 5.4 5.9.8-4.3 4.1 1 5.9L32 19.5 26.8 22.2l1-5.9-4.3-4.1 5.9-.8z" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_EMBEDDED = _i('Two pieces fitting together', '''
+  <rect x="6" y="18" width="28" height="28" rx="3" stroke="{ink}"/>
+  <path d="M34 26h8a6 6 0 1 1 0 12h-8" stroke="{accent}" stroke-width="2"/>
+  <rect x="42" y="18" width="16" height="28" rx="3" stroke="{line}"/>''')
+
+ICON_HONEST = _i('A speech bubble with a check mark', '''
+  <path d="M10 10h44a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H30l-12 10V46h-8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" stroke="{ink}"/>
+  <path d="M22 28l7 7 13-14" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_ACCOUNT = _i('A target with an arrow in the centre', '''
+  <circle cx="30" cy="34" r="22" stroke="{line}"/>
+  <circle cx="30" cy="34" r="13" stroke="{ink}"/>
+  <circle cx="30" cy="34" r="4" fill="{accent}" stroke="none"/>
+  <path d="M34 30l18-18M44 12h8v8" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_T_PRODUCT = _i('A compass pointing to an outcome', '''
+  <circle cx="32" cy="32" r="24" stroke="{ink}"/>
+  <path d="M42 22L36 36 22 42l6-14z" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_T_ANALYTICS = _i('A bar chart', '''
+  <path d="M8 56h48" stroke="{line}"/>
+  <path d="M14 56V38M26 56V24M38 56V32M50 56V14" stroke="{ink}" stroke-width="3"/>
+  <circle cx="50" cy="10" r="3" fill="{accent}" stroke="none"/>''')
+
+ICON_T_ENGINEERING = _i('Three nodes joined by a pipeline', '''
+  <circle cx="10" cy="32" r="5" stroke="{ink}"/>
+  <circle cx="32" cy="14" r="5" stroke="{ink}"/>
+  <circle cx="32" cy="50" r="5" stroke="{ink}"/>
+  <circle cx="54" cy="32" r="5" stroke="{accent}" stroke-width="2"/>
+  <path d="M15 30l13-12M15 34l13 12M36 18l14 11M36 46l14-11" stroke="{line}"/>''')
+
+ICON_T_QUALITY = _i('A check mark in a circle', '''
+  <circle cx="32" cy="32" r="24" stroke="{ink}"/>
+  <path d="M20 33l8 8 16-18" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_T_MANAGEMENT = _i('A hierarchy of three boxes', '''
+  <rect x="22" y="6" width="20" height="14" rx="2" stroke="{accent}" stroke-width="2"/>
+  <rect x="6" y="42" width="20" height="14" rx="2" stroke="{ink}"/>
+  <rect x="38" y="42" width="20" height="14" rx="2" stroke="{ink}"/>
+  <path d="M32 20v12M16 42V32h32v10" stroke="{line}"/>''')
+
+# The Semantic mark as an icon, for the highlighted card on the dark ground.
+ICON_SEMANTIC_LIGHT = _icon('The Semantic mark', '''
+  <circle cx="22" cy="32" r="17" fill="#8FB3A5" opacity="0.7" stroke="none"/>
+  <circle cx="42" cy="32" r="17" fill="#FFFFFF" stroke="none"/>
+  <circle cx="32" cy="32" r="7" fill="#1F332C" stroke="none"/>''')
