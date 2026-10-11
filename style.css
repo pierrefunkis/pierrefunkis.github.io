@@ -832,6 +832,16 @@ a { color: inherit; }
    .fact-word is the stand-in for an institution whose logo we do not hold a
    file for. Drop the SVG into logos/ and swap the <span> for an <img
    class="fact-mark">; nothing else needs to change. */
+.cred-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 420px;
+  border-top: 1px solid var(--line-strong);
+  padding-top: 18px;
+}
+.cred-row .fact-mark { margin-top: 0; }
+
 .fact-mark {
   height: 30px;
   width: auto;
