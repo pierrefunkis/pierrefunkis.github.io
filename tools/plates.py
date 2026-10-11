@@ -436,17 +436,21 @@ def expertise_keystone():
             pts.append((cx + r * math.cos(math.radians(a)), cy + r * math.sin(math.radians(a))))
         (x0, y0), (x1, y1), (x2, y2), (x3, y3) = pts
         is_key = (k == key)
-        blocks += ('<path d="M%.1f %.1fA%d %d 0 0 1 %.1f %.1fL%.1f %.1fA%d %d 0 0 0 %.1f %.1fz" '
+        delay = {0: 0, 6: 0, 1: .18, 5: .18, 2: .36, 4: .36, 3: .95}[k]
+        blocks += ('<path class="ks-block%s" style="--d:%ss" '
+                   'd="M%.1f %.1fA%d %d 0 0 1 %.1f %.1fL%.1f %.1fA%d %d 0 0 0 %.1f %.1fz" '
                    'fill="%s" stroke="%s" stroke-width="1.8" stroke-linejoin="round"/>'
-                   % (x0, y0, ro, ro, x1, y1, x2, y2, ri, ri, x3, y3,
-                      ACCENT if is_key else '#FFFFFF', ACCENT if is_key else INK))
-    mark = ('<circle cx="226" cy="76" r="22" fill="%s" opacity="0.5"/>'
+                   % (' ks-key' if is_key else '', delay, x0, y0, ro, ro, x1, y1, x2, y2, ri, ri,
+                      x3, y3, ACCENT if is_key else '#FFFFFF', ACCENT if is_key else INK))
+    mark = ('<g class="ks-mark"><circle cx="226" cy="76" r="22" fill="%s" opacity="0.5"/>'
             '<circle cx="254" cy="76" r="22" fill="%s"/>'
-            '<circle cx="240" cy="76" r="8" fill="#FFFFFF"/>' % (ACCENT, INK))
+            '<circle cx="240" cy="76" r="8" fill="#FFFFFF"/></g>' % (ACCENT, INK))
     return ('''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
      aria-label="A stone arch held together by its keystone, with the Semantic mark on top">
   %s
+  <g class="conv-fade" style="--d:.1s">
   <path d="M%d %dV298M%d %dV298M%d %dV298M%d %dV298" stroke="%s" stroke-width="1.8"/>
   <path d="M60 298h360" stroke="%s" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
   %s
 </svg>''' % (blocks, cx - ro, cy, cx - ri, cy, cx + ri, cy, cx + ro, cy, INK, LINE, mark))

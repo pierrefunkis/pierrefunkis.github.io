@@ -403,6 +403,14 @@ a { color: inherit; }
 }
 .plate .conv-fade { animation: conv-fade 0.7s ease both; animation-delay: var(--d, 0s); }
 @keyframes conv-fade { from { opacity: 0; } to { opacity: 1; } }
+/* Our Expertise arch: it builds from the sides, the keystone drops in last,
+   then the mark settles on top. Once, on load. */
+.plate .ks-block { animation: ks-in 0.6s cubic-bezier(.2, .7, .3, 1) both; animation-delay: var(--d, 0s); }
+.plate .ks-key { animation-name: ks-drop; animation-duration: 0.9s; }
+.plate .ks-mark { animation: ks-mark 0.8s ease both; animation-delay: 1.7s; }
+@keyframes ks-in   { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+@keyframes ks-drop { 0% { opacity: 0; transform: translateY(-70px); } 55% { opacity: 1; transform: translateY(5px); } 100% { opacity: 1; transform: none; } }
+@keyframes ks-mark { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   .plate .flow-dots { display: none; }
 }
