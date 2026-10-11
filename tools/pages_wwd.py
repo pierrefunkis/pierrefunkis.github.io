@@ -214,5 +214,6 @@ WHAT_WE_DO = '''
     tech=TECH_ITEMS.strip('\n'),
     tech_copy=TECH_COPY,
     arrow=ARROW,
-    cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
+    cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
+                 label='Book a free diagnosis session'),
 )
