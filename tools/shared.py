@@ -24,6 +24,9 @@ def _version(name):
         return hashlib.md5(fh.read()).hexdigest()[:8]
 
 
+# Set to True to bring the Insights section back (nav, footer, pages, sitemap).
+SHOW_INSIGHTS = False
+
 CSS_URL = '/style.css?v=' + _version('style.css')
 JS_URL = '/main.js?v=' + _version('main.js')
 
@@ -47,6 +50,8 @@ NAV_ITEMS = [
     ('/insights/', 'Insights'),
     ('/about/', 'About'),
 ]
+if not SHOW_INSIGHTS:
+    NAV_ITEMS = [i for i in NAV_ITEMS if i[0] != '/insights/']
 
 CTA_LABEL = 'Get in touch'
 CTA_HREF = '/contact/'
@@ -178,8 +183,7 @@ FOOTER = '''
       <div class="footer-col">
         <ul>
           <li><a href="/what-we-do/">What We Do</a></li>
-          <li><a href="/insights/">Insights</a></li>
-          <li><a href="/about/">About</a></li>
+{insights_link}          <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
@@ -199,7 +203,9 @@ FOOTER = '''
 <script src="{js_url}" defer></script>
 </body>
 </html>
-'''.format(mark=MARK, linkedin=LINKEDIN, js_url=JS_URL)
+'''.format(
+    mark=MARK, linkedin=LINKEDIN, js_url=JS_URL,
+    insights_link='          <li><a href="/insights/">Insights</a></li>\n' if SHOW_INSIGHTS else '')
 
 
 ORG_LD = '''{

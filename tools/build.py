@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 ROOT = os.path.dirname(HERE)
 
-from shared import SITE, LINKEDIN, ORG_LD, head, nav, FOOTER  # noqa: E402
+from shared import SHOW_INSIGHTS, SITE, LINKEDIN, ORG_LD, head, nav, FOOTER  # noqa: E402
 from pages_home import HOME  # noqa: E402
 from pages_wwd import WHAT_WE_DO  # noqa: E402
 from pages_about import ABOUT  # noqa: E402
@@ -94,57 +94,58 @@ PAGES.append((
     WHAT_WE_DO,
 ))
 
-# ── Insights ────────────────────────────────────────────────────────────────
-insights_ld = json.dumps({
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    '@id': SITE + '/insights/#blog',
-    'url': SITE + '/insights/',
-    'name': 'Semantic Insights',
-    'description': 'Short pieces on enterprise data quality, AI readiness, migration and '
-                   'analytics.',
-    'publisher': {'@id': SITE + '/#organization'},
-    'inLanguage': 'en',
-    'blogPost': [
-        {'@type': 'BlogPosting', 'headline': a['title'], 'datePublished': a['iso'],
-         'url': SITE + '/insights/' + a['slug'] + '/', 'description': a['excerpt'],
-         'author': {'@id': SITE + '/#organization'}}
-        for a in ARTICLES],
-}, indent=2)
-
-PAGES.append((
-    'insights/index.html', '/insights/',
-    'Insights on Enterprise Data | Semantic',
-    'Notes from inside enterprise data work: quality that does not hold, AI programs '
-    'that stall, migrations that lose the room.',
-    None, None, insights_ld, insights_index(),
-))
-
-for a in ARTICLES:
-    others = [o for o in ARTICLES if o['slug'] != a['slug']]
-    path = '/insights/%s/' % a['slug']
-    ld = json.dumps({
+if SHOW_INSIGHTS:
+    # ── Insights ────────────────────────────────────────────────────────────────
+    insights_ld = json.dumps({
         '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        'headline': a['title'],
-        'description': a['excerpt'],
-        'datePublished': a['iso'],
-        'dateModified': a['iso'],
-        'articleSection': a['category'],
-        'url': SITE + path,
-        'mainEntityOfPage': {'@type': 'WebPage', '@id': SITE + path},
-        'author': {'@id': SITE + '/#organization'},
+        '@type': 'Blog',
+        '@id': SITE + '/insights/#blog',
+        'url': SITE + '/insights/',
+        'name': 'Semantic Insights',
+        'description': 'Short pieces on enterprise data quality, AI readiness, migration and '
+                       'analytics.',
         'publisher': {'@id': SITE + '/#organization'},
-        'isPartOf': {'@id': SITE + '/insights/#blog'},
         'inLanguage': 'en',
+        'blogPost': [
+            {'@type': 'BlogPosting', 'headline': a['title'], 'datePublished': a['iso'],
+             'url': SITE + '/insights/' + a['slug'] + '/', 'description': a['excerpt'],
+             'author': {'@id': SITE + '/#organization'}}
+            for a in ARTICLES],
     }, indent=2)
-    # Headlines are already long; appending the brand would push every article
-    # title past the point where a results page truncates it.
+
     PAGES.append((
-        'insights/%s/index.html' % a['slug'], path,
-        a['title'],
-        a['desc'], '%s | Semantic' % a['title'], None, ld, article_page(a, others),
+        'insights/index.html', '/insights/',
+        'Insights on Enterprise Data | Semantic',
+        'Notes from inside enterprise data work: quality that does not hold, AI programs '
+        'that stall, migrations that lose the room.',
+        None, None, insights_ld, insights_index(),
     ))
+
+    for a in ARTICLES:
+        others = [o for o in ARTICLES if o['slug'] != a['slug']]
+        path = '/insights/%s/' % a['slug']
+        ld = json.dumps({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            'headline': a['title'],
+            'description': a['excerpt'],
+            'datePublished': a['iso'],
+            'dateModified': a['iso'],
+            'articleSection': a['category'],
+            'url': SITE + path,
+            'mainEntityOfPage': {'@type': 'WebPage', '@id': SITE + path},
+            'author': {'@id': SITE + '/#organization'},
+            'publisher': {'@id': SITE + '/#organization'},
+            'isPartOf': {'@id': SITE + '/insights/#blog'},
+            'inLanguage': 'en',
+        }, indent=2)
+        # Headlines are already long; appending the brand would push every article
+        # title past the point where a results page truncates it.
+        PAGES.append((
+            'insights/%s/index.html' % a['slug'], path,
+            a['title'],
+            a['desc'], '%s | Semantic' % a['title'], None, ld, article_page(a, others),
+        ))
 
 # ── About ───────────────────────────────────────────────────────────────────
 about_ld = json.dumps({
@@ -261,11 +262,12 @@ write('404.html',
 # ── sitemap ─────────────────────────────────────────────────────────────────
 urls = [('/', '1.0', '2026-08-20'),
         ('/what-we-do/', '0.9', '2026-08-20'),
-        ('/insights/', '0.8', '2026-08-20'),
         ('/about/', '0.7', '2026-08-20'),
         ('/contact/', '0.9', '2026-08-20'),
         ('/join-network/', '0.5', '2026-08-20')]
-urls += [('/insights/%s/' % a['slug'], '0.6', a['iso']) for a in ARTICLES]
+if SHOW_INSIGHTS:
+    urls.insert(2, ('/insights/', '0.8', '2026-08-20'))
+    urls += [('/insights/%s/' % a['slug'], '0.6', a['iso']) for a in ARTICLES]
 
 sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
