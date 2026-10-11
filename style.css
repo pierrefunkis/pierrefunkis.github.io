@@ -522,6 +522,8 @@ a { color: inherit; }
 .section--mint .cell { background: var(--mint); }
 .cell h3 { margin-bottom: 14px; }
 .cell .body { font-size: 16px; }
+.cell-meta { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+.cell-meta::before { content: 'Typical tools: '; }
 
 /* ── PROCESS STEPS ───────────────────────────────────────────────────────── */
 

@@ -85,11 +85,11 @@ PAGES.append((
 PAGES.append((
     'what-we-do/index.html', '/what-we-do/',
     'What We Do: Data Capabilities | Semantic',
-    'Analytics and decision support, data quality and reliability, AI readiness and '
-    'migration, with specialists vetted and managed by us from diagnosis to handover.',
+    'Vetted data specialists, managed by us: analysts, engineers, analytics engineers, '
+    'managers and governance leads, with one accountable point of contact.',
     None, None,
     webpage_ld('/what-we-do/', 'What We Do | Semantic',
-               'The areas Semantic works in, the technology we work with, and how we '
+               'The specialists Semantic staffs, the technology they work in, and how we '
                'stay accountable for the outcome.'),
     WHAT_WE_DO,
 ))
