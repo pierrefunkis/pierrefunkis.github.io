@@ -25,11 +25,6 @@ PRINCIPLES = [
      'We deliver what we commit to, with regular service reviews and continuity.'),
 ]
 
-# The same six roles as on Our Expertise, so the two pages say one thing.
-from pages_wwd import SPECIALISTS
-
-TEAM_AREAS = [(icon, title, body) for icon, title, body, _tools in SPECIALISTS]
-
 ABOUT = '''
   <section class="hero hero--page">
     <div class="container">
@@ -92,22 +87,6 @@ ABOUT = '''
     </div>
   </section>
 
-  <!-- THE TEAM -->
-  <section class="section" aria-labelledby="team-h">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-xl" id="team-h">Vetted specialists, matched to your needs</h2>
-        <p class="body">Every specialist is carefully vetted for proven capability, and
-          selected to fit your specific needs and tooling.</p>
-      </div>
-
-      <div class="grid grid--3">
-{areas}
-      </div>
-
-      <a class="link" href="/join-network/" style="margin-top:36px;">Join our network of data professionals {arrow}</a>
-    </div>
-  </section>
 {cta}'''
 
 def _cells(items, with_flag=False):
@@ -133,12 +112,6 @@ ABOUT = ABOUT.format(
     arrow=ARROW,
     models=_cells(MODELS, with_flag=True),
     principles=_cells(PRINCIPLES),
-    areas='\n'.join(
-        '''        <div class="cell">
-          {icon}
-          <h3 class="h-md">{title}</h3>
-          <p class="body">{body}</p>
-        </div>'''.format(icon=i, title=t, body=b) for i, t, b in TEAM_AREAS),
     cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
                  label='Book a free diagnosis session'),
 )
