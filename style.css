@@ -762,7 +762,6 @@ a.tag:hover { border-color: var(--ink); }
   width: max-content;
   animation: marquee-ltr 45s linear infinite;
 }
-.marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee .tags, .marquee .tech-list { flex-wrap: nowrap; flex-shrink: 0; }
 /* The gap after the last item of each copy lives on the item itself, so the
    seam between the two copies is the same 10px as every other gap in every
