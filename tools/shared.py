@@ -54,7 +54,7 @@ CTA_HREF = '/contact/'
 
 def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra='',
          og_image='/og-image.png',
-         og_alt='Semantic: senior data expertise, delivered by a dedicated team'):
+         og_alt='Semantic: senior data expertise, embedded in your team. Book a free diagnosis session.'):
     """<head> for one page. path is the site-root-relative URL, e.g. '/about/'."""
     canonical = SITE + path
     og_title = og_title or title
@@ -209,7 +209,7 @@ ORG_LD = '''{
     "name": "Semantic",
     "url": "%s/",
     "logo": "%s/favicon.svg",
-    "slogan": "Senior data expertise, delivered by a dedicated team.",
+    "slogan": "Senior data expertise, embedded in your team.",
     "description": "Semantic is a boutique data consultancy that helps companies solve complex data challenges, from diagnosis to implementation.",
     "founder": {
       "@type": "Person",
