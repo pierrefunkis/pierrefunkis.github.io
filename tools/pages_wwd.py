@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from shared import ARROW, cta_band
-from plates import (expertise_umbrella, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
+from plates import (expertise_keystone, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
                     ICON_W_HANDOVER, ICON_T_ANALYTICS, ICON_T_ENGINEERING,
                     ICON_T_ANALYTICS_ENG, ICON_T_MANAGEMENT, ICON_T_PRODUCT,
                     ICON_T_GOVERNANCE)
@@ -117,7 +117,7 @@ WHAT_WE_DO = '''
     </div>
   </section>
 {cta}'''.format(
-    plate=expertise_umbrella(),
+    plate=expertise_keystone(),
     ways=_ways(),
     specialists=_specialists(),
     arrow=ARROW,
