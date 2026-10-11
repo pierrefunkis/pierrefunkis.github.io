@@ -1,0 +1,20 @@
+# Semantic
+
+> Semantic is a boutique data consultancy that helps companies solve complex data challenges, from diagnosis to implementation. Senior data expertise, embedded in your team, with one accountable point of contact. Founded by Pierre Sarkis (formerly Amazon, HEC Paris). Serves clients in Europe, the United States and the Middle East.
+
+## Pages
+
+- [Home](https://www.workwithsemantic.com/): What Semantic does, how it works in four steps, and who it is for.
+- [Our Expertise](https://www.workwithsemantic.com/what-we-do/): Vetted data specialists (analysts, engineers, analytics engineers, managers, governance leads), the data stack they work in, and how Semantic stays accountable for outcomes.
+- [About Us](https://www.workwithsemantic.com/about/): The founder, Pierre Sarkis, and the principles behind the firm.
+- [Contact](https://www.workwithsemantic.com/contact/): Book a free diagnosis session about a data problem.
+- [Join the Network](https://www.workwithsemantic.com/join-network/): For data professionals who want to take on challenging AI and data projects with Semantic's international clients.
+
+## Expertise
+
+Data quality and reliability, data and AI readiness, data migration, analytics and decision support, data governance, master data management, business intelligence, data engineering.
+
+## Optional
+
+- [LinkedIn](https://www.linkedin.com/company/semantic-data-consulting/): Company page.
+- [Sitemap](https://www.workwithsemantic.com/sitemap.xml)

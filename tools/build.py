@@ -35,6 +35,28 @@ def webpage_ld(path, name, desc):
     }, indent=2)
 
 
+def with_graph(path, ld, crumb):
+    """Wrap a single-page JSON-LD node into a graph that also defines the Organization
+    and WebSite its @id references point at, plus a breadcrumb, so every page is
+    self-contained for crawlers that read one URL at a time."""
+    node = json.loads(ld)
+    if '@graph' in node:
+        return ld
+    node.pop('@context', None)
+    return json.dumps({
+        '@context': 'https://schema.org',
+        '@graph': [
+            json.loads(ORG_LD),
+            {'@type': 'WebSite', '@id': SITE + '/#website', 'url': SITE + '/', 'name': 'Semantic',
+             'publisher': {'@id': SITE + '/#organization'}, 'inLanguage': 'en'},
+            node,
+            {'@type': 'BreadcrumbList', 'itemListElement': [
+                {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': SITE + '/'},
+                {'@type': 'ListItem', 'position': 2, 'name': crumb, 'item': SITE + path}]},
+        ],
+    }, indent=2)
+
+
 def write(path, html):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full) or '.', exist_ok=True)
@@ -228,6 +250,10 @@ write('for-talents/index.html',
 # Pages that end on the form rather than a dark band: no rule above the footer.
 PLAIN_FOOTER = {'/contact/'}
 
+# Breadcrumb label per page (the home page already ships its own graph).
+CRUMBS = {'/what-we-do/': 'Our Expertise', '/about/': 'About Us',
+          '/contact/': 'Contact', '/join-network/': 'Join Network'}
+
 # Per-page link previews. Pages not listed use the default og-image.png.
 CARDS = {
     '/join-network/': {
@@ -244,6 +270,8 @@ for filename, path, title, desc, og_t, og_d, ld, body in PAGES:
     if path.startswith('/insights/'):
         active = '/insights/'
     card = CARDS.get(path, {})
+    if ld and path in CRUMBS:
+        ld = with_graph(path, ld, CRUMBS[path])
     footer = FOOTER
     if path in PLAIN_FOOTER:
         footer = FOOTER.replace('class="footer"', 'class="footer footer--plain"', 1)
@@ -260,11 +288,12 @@ write('404.html',
       + nav() + NOT_FOUND + FOOTER)
 
 # ── sitemap ─────────────────────────────────────────────────────────────────
-urls = [('/', '1.0', '2026-08-20'),
-        ('/what-we-do/', '0.9', '2026-08-20'),
-        ('/about/', '0.7', '2026-08-20'),
-        ('/contact/', '0.9', '2026-08-20'),
-        ('/join-network/', '0.5', '2026-08-20')]
+LASTMOD = '2026-10-11'
+urls = [('/', '1.0', LASTMOD),
+        ('/what-we-do/', '0.9', LASTMOD),
+        ('/about/', '0.7', LASTMOD),
+        ('/contact/', '0.9', LASTMOD),
+        ('/join-network/', '0.5', LASTMOD)]
 if SHOW_INSIGHTS:
     urls.insert(2, ('/insights/', '0.8', '2026-08-20'))
     urls += [('/insights/%s/' % a['slug'], '0.6', a['iso']) for a in ARTICLES]
@@ -280,3 +309,39 @@ for loc, prio, lastmod in urls:
                 '  </url>']
 sitemap.append('</urlset>')
 write('sitemap.xml', '\n'.join(sitemap) + '\n')
+
+# ── robots.txt ──────────────────────────────────────────────────────────────
+# Everything is public marketing copy, so welcome search and AI crawlers by name
+# (some honour a named group over the wildcard) and point them at the sitemap.
+AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User',
+           'Claude-SearchBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended',
+           'Applebot-Extended', 'CCBot']
+robots = ['User-agent: *', 'Allow: /', '']
+for bot in AI_BOTS:
+    robots += ['User-agent: %s' % bot, 'Allow: /', '']
+robots += ['Sitemap: %s/sitemap.xml' % SITE]
+write('robots.txt', '\n'.join(robots) + '\n')
+
+# ── llms.txt ────────────────────────────────────────────────────────────────
+# Plain-markdown summary for LLM tools (llmstxt.org format).
+write('llms.txt', f"""# Semantic
+
+> Semantic is a boutique data consultancy that helps companies solve complex data challenges, from diagnosis to implementation. Senior data expertise, embedded in your team, with one accountable point of contact. Founded by Pierre Sarkis (formerly Amazon, HEC Paris). Serves clients in Europe, the United States and the Middle East.
+
+## Pages
+
+- [Home]({SITE}/): What Semantic does, how it works in four steps, and who it is for.
+- [Our Expertise]({SITE}/what-we-do/): Vetted data specialists (analysts, engineers, analytics engineers, managers, governance leads), the data stack they work in, and how Semantic stays accountable for outcomes.
+- [About Us]({SITE}/about/): The founder, Pierre Sarkis, and the principles behind the firm.
+- [Contact]({SITE}/contact/): Book a free diagnosis session about a data problem.
+- [Join the Network]({SITE}/join-network/): For data professionals who want to take on challenging AI and data projects with Semantic's international clients.
+
+## Expertise
+
+Data quality and reliability, data and AI readiness, data migration, analytics and decision support, data governance, master data management, business intelligence, data engineering.
+
+## Optional
+
+- [LinkedIn]({LINKEDIN}): Company page.
+- [Sitemap]({SITE}/sitemap.xml)
+""")
