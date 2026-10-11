@@ -227,15 +227,17 @@ ICON_FREELANCE = _i('A single person on their own', '''
   <path d="M6 58h8M50 58h8" stroke="{line}" stroke-dasharray="2 4"/>
   <circle cx="32" cy="20" r="3" fill="{accent}" stroke="none"/>''')
 
-ICON_SENIOR = _i('A person with a star above', '''
-  <circle cx="32" cy="30" r="8" stroke="{ink}"/>
-  <path d="M16 56c0-9 7-14 16-14s16 5 16 14" stroke="{ink}"/>
-  <path d="M32 6l2.6 5.4 5.9.8-4.3 4.1 1 5.9L32 19.5 26.8 22.2l1-5.9-4.3-4.1 5.9-.8z" stroke="{accent}" stroke-width="2"/>''')
+ICON_SENIOR = _i('Two chevron stripes, like a military rank insignia', '''
+  <path d="M10 30l22-18 22 18" stroke="{accent}" stroke-width="3"/>
+  <path d="M10 46l22-18 22 18" stroke="{ink}" stroke-width="3"/>''')
 
-ICON_EMBEDDED = _i('Two pieces fitting together', '''
-  <rect x="6" y="18" width="28" height="28" rx="3" stroke="{ink}"/>
-  <path d="M34 26h8a6 6 0 1 1 0 12h-8" stroke="{accent}" stroke-width="2"/>
-  <rect x="42" y="18" width="16" height="28" rx="3" stroke="{line}"/>''')
+ICON_EMBEDDED = _i('A member placed inside a team', '''
+  <rect x="6" y="10" width="52" height="44" rx="5" stroke="{line}" stroke-dasharray="3 4"/>
+  <circle cx="20" cy="26" r="4" stroke="{ink}"/>
+  <circle cx="44" cy="26" r="4" stroke="{ink}"/>
+  <circle cx="20" cy="42" r="4" stroke="{ink}"/>
+  <circle cx="44" cy="42" r="4" fill="{accent}" stroke="none"/>
+  <path d="M24 26h16M24 42h16M20 30v8M44 30v8" stroke="{line}"/>''')
 
 ICON_HONEST = _i('A speech bubble with a check mark', '''
   <path d="M10 10h44a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H30l-12 10V46h-8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" stroke="{ink}"/>
