@@ -68,8 +68,7 @@ home_ld = json.dumps({
              'itemListElement': [
                  {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': n}}
                  for n in ['Data Quality & Reliability', 'Data & AI Readiness',
-                           'Data Migration', 'Analytics & Decision Support',
-                           'Data Management']]}},
+                           'Data Migration', 'Analytics & Decision Support']]}},
     ],
 }, indent=2)
 
@@ -85,13 +84,13 @@ PAGES.append((
 # ── What We Do ──────────────────────────────────────────────────────────────
 PAGES.append((
     'what-we-do/index.html', '/what-we-do/',
-    'What We Do: Enterprise Data Capabilities | Semantic',
-    'Data quality and reliability, AI readiness, migration, analytics and data '
-    'management, delivered by a senior-led team that stays accountable for the outcome.',
+    'What We Do: Data Capabilities | Semantic',
+    'Analytics and decision support, data quality and reliability, AI readiness and '
+    'migration, with specialists vetted and managed by us from diagnosis to handover.',
     None, None,
     webpage_ld('/what-we-do/', 'What We Do | Semantic',
-               'The full set of Semantic capabilities, the technology we build in, and how '
-               'engagements are run.'),
+               'The areas Semantic works in, the technology we work with, and how we '
+               'stay accountable for the outcome.'),
     WHAT_WE_DO,
 ))
 

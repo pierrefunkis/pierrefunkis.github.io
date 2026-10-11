@@ -1,89 +1,78 @@
 # -*- coding: utf-8 -*-
-from shared import ARROW, cta_band
-from plates import strata
+from shared import cta_band
+from plates import (strata, ICON_ANALYTICS, ICON_QUALITY, ICON_AI, ICON_MIGRATION)
 import re
 from tech import TECH_ITEMS
 
 # Second copy for the stream: ids are suffixed so the page keeps unique ids.
 TECH_COPY = re.sub(r'(SVG\w+)', r'\1b', TECH_ITEMS).strip('\n')
 
-# The five capabilities in full. Each carries a short list of what the work
-# concretely involves, so the page says what we do rather than what we believe.
-CAPABILITIES = [
-    ('01', 'Data Quality &amp; Reliability',
-     'The data a business runs on has to be right, and it has to be right on a Monday '
-     'morning without anyone checking by hand. We put testing, monitoring and incident '
-     'response around the pipelines and tables that matter, and we make the results '
-     'visible to the people who depend on them.',
-     ['Data testing and contract enforcement',
-      'Freshness, volume and schema monitoring',
-      'Incident response and root-cause analysis',
-      'Reconciliation between systems of record']),
-
-    ('02', 'Data &amp; AI Readiness',
-     'Most AI initiatives do not stall on the model. They stall on the data underneath '
-     'it: undocumented definitions, no lineage, and no way to tell whether a training '
-     'set is representative. We do the groundwork that makes an AI program buildable, '
-     'and we are direct about what is not ready yet.',
-     ['Readiness assessment against a concrete use case',
-      'Lineage and documentation for the data in scope',
-      'Access, ownership and sensitivity mapping',
-      'Feature and training data pipelines']),
-
-    ('03', 'Data Migration',
-     'Legacy system migrations and cloud warehouse adoption, delivered without losing '
-     'trust in the numbers along the way. The hard part is rarely moving the data. It '
-     'is proving, to people who will be held accountable for the figures, that what '
-     'came out matches what went in.',
-     ['Target architecture and migration sequencing',
-      'Parallel running and reconciliation',
-      'Model rebuild in the new platform',
-      'Cutover, decommissioning and handover']),
-
-    ('04', 'Analytics &amp; Decision Support',
-     'Analytics is worth what the decisions it changes are worth. We work backwards '
-     'from the decision: what is being decided, by whom, on what cadence, and what '
-     'evidence would actually move it. Then we build the smallest thing that answers '
-     'it well.',
+# The four areas, in the same order as the home page. Each carries a short list
+# of what the work concretely involves.
+AREAS = [
+    ('analytics', ICON_ANALYTICS, 'Analytics &amp; Decision Support', 'Analytics',
+     'We work backwards from the decision: who makes it, how often and on what '
+     'evidence. Then we build the smallest thing that answers it well.',
      ['Decision mapping and metric definition',
       'Semantic and reporting layers',
       'Experimentation and causal analysis',
       'Self-serve analytics that teams genuinely use']),
 
-    ('05', 'Data Management',
-     'Ownership, definitions, master data and lineage that survive contact with '
-     'reality. Governance fails when it is written for an audit rather than for the '
-     'people doing the work, so we design it to be the path of least resistance.',
-     ['Ownership and stewardship models',
-      'Business glossary and metric definitions',
-      'Master and reference data management',
-      'Lineage, cataloguing and access control']),
+    ('quality', ICON_QUALITY, 'Data Quality &amp; Reliability', 'Data Quality',
+     'Testing, monitoring and incident response around the pipelines that matter, '
+     'with the results visible to the people who depend on them.',
+     ['Data testing and contract enforcement',
+      'Freshness, volume and schema monitoring',
+      'Incident response and root-cause analysis',
+      'Reconciliation between systems of record']),
+
+    ('ai-readiness', ICON_AI, 'Data &amp; AI Readiness', 'AI Readiness',
+     'AI projects stall on the data underneath them. We do the groundwork that makes '
+     'them buildable, and we are direct about what is not ready yet.',
+     ['Readiness assessment against a concrete use case',
+      'Lineage and documentation for the data in scope',
+      'Access, ownership and sensitivity mapping',
+      'Feature and training data pipelines']),
+
+    ('migration', ICON_MIGRATION, 'Data Migration', 'Migration',
+     'Legacy and cloud migrations, delivered without losing trust in the numbers. '
+     'The hard part is proving that what came out matches what went in.',
+     ['Target architecture and migration sequencing',
+      'Parallel running and reconciliation',
+      'Model rebuild in the new platform',
+      'Cutover, decommissioning and handover']),
 ]
 
 MODEL_POINTS = [
-    'We understand the problem first, in business terms, before proposing anything.',
-    'We define the approach and put it in writing: the outcome, the sequence, and how we will know it worked.',
-    'We bring together the right specialists for that specific problem rather than staffing whoever is free.',
-    'We deliver remotely, inside your tools and your rituals, shipping in increments you can review.',
-    'We stay accountable for the outcome. One team, one counterpart, from the first call onwards.',
+    'We select and vet specialists for your specific problem and tooling.',
+    'We manage delivery and evaluate the work throughout.',
+    'We work remotely, inside your tools and your rituals.',
+    'We ensure follow-up and handover when it ends.',
 ]
 
 
-def _capabilities():
+def _areas():
     out = []
-    for idx, title, body, bullets in CAPABILITIES:
+    for slug, icon, title, _short, body, bullets in AREAS:
         items = '\n'.join('            <li>%s</li>' % b for b in bullets)
-        out.append('''      <article class="capability">
-        <div class="capability-head">
-          <span class="capability-index">{idx}</span>
-          <h3>{title}</h3>
+        out.append('''      <article class="area" id="{slug}">
+        <div class="area-head">
+          {icon}
+          <h3 class="h-md">{title}</h3>
         </div>
-        <p class="body">{body}</p>
-        <ul class="capability-list">
+        <div>
+          <p class="body">{body}</p>
+          <ul class="area-list">
 {items}
-        </ul>
-      </article>'''.format(idx=idx, title=title, body=body, items=items))
+          </ul>
+        </div>
+      </article>'''.format(slug=slug, icon=icon, title=title, body=body, items=items))
     return '\n'.join(out)
+
+
+def _jump():
+    return '\n'.join('        <li><a class="tag" href="#%s">%s</a></li>' % (slug, short)
+                     for slug, _i, _t, short, _b, _l in AREAS)
 
 
 WHAT_WE_DO = '''
@@ -95,37 +84,38 @@ WHAT_WE_DO = '''
       <p class="eyebrow">What We Do</p>
       <div class="hero-cols">
         <div>
-          <h1 class="display">Complex data problems, solved properly</h1>
+          <h1 class="display">Complex data challenges, solved properly</h1>
         </div>
         <div>
-          <p class="lede">Five areas where enterprises most often need senior help. We work
-            across all of them, and we are direct when a problem is not ours to take.</p>
+          <p class="lede">Four areas where companies most often need our help. We work
+            across all of them, and we say so when a problem is not ours to take.</p>
         </div>
       </div>
+      <ul class="tags" style="margin-top:32px;">
+{jump}
+      </ul>
     </div>
   </section>
 
-  <!-- EXPERTISE -->
+  <!-- AREAS -->
   <section class="section section--tight section--flush" aria-labelledby="expertise-h">
     <div class="container">
       <h2 class="visually-hidden" id="expertise-h">Our expertise</h2>
-      <div class="capabilities">
-{capabilities}
+      <div class="areas">
+{areas}
       </div>
     </div>
   </section>
 
-  <!-- THE SEMANTIC MODEL -->
+  <!-- ONE ACCOUNTABLE POINT OF CONTACT -->
   <section class="section section--ink" aria-labelledby="model-h">
     <div class="container">
       <div class="section-head section-head--wide">
         <div>
-          <h2 class="h-xl" id="model-h">Senior expertise, embedded in your team</h2>
+          <h2 class="h-xl" id="model-h">One accountable point of contact</h2>
         </div>
         <div>
-          <p class="body">You are not buying an individual, and you are not buying a
-            pyramid. You get a senior counterpart who owns the problem, and a team behind
-            them with the capacity to execute it.</p>
+          <p class="body">We stay your contact from the first call to the handover.</p>
         </div>
       </div>
 
@@ -142,9 +132,9 @@ WHAT_WE_DO = '''
   <section class="section" aria-labelledby="tech-h">
     <div class="container">
       <div class="section-head">
-        <h2 class="h-lg" id="tech-h">We have the technical depth to execute</h2>
-        <p class="body">Tools follow the problem, not the other way round. This is the stack
-          we build in most often.</p>
+        <h2 class="h-lg" id="tech-h">Specialists adapted to your stack</h2>
+        <p class="body">We staff the right data specialist for your stack. These are the
+          tools we work in most often.</p>
       </div>
       <div class="marquee">
         <div class="marquee-track">
@@ -158,59 +148,13 @@ WHAT_WE_DO = '''
       </div>
     </div>
   </section>
-
-  <!-- SELECTED WORK -->
-  <section class="section section--paper" aria-labelledby="work-h">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-lg" id="work-h">What engagements look like in practice</h2>
-      </div>
-
-      <div class="split">
-        <div>
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">We do not publish
-            client case studies. The work sits inside systems and commercial decisions our
-            clients would rather not see described on a website, and we would rather keep it
-            that way.</p>
-          <p class="body" style="margin-top:20px;">What we will do is walk you through
-            comparable engagements on a call: the context, what was actually wrong, how we
-            approached it, and what changed by the end. Where a client is happy to be
-            referenced, we will introduce you.</p>
-          <a class="link" href="/contact/" style="margin-top:28px;">Ask us about relevant work {arrow}</a>
-        </div>
-        <div class="note">
-          <h3 class="h-md">The shape of an engagement</h3>
-          <p class="body" style="margin-top:14px;">A free advisory conversation, then a
-            focused diagnosis where the problem warrants one, then delivery scoped to a
-            written outcome. Project-based or an ongoing retainer, depending on whether the
-            problem has an end.</p>
-        </div>
-      </div>
-
-      <!-- Case-study template. Fill one block per engagement, drop the copy above,
-           and the section becomes a proper work page:
-
-      <article class="capability">
-        <div class="capability-head">
-          <span class="capability-index">01</span>
-          <h3>Client or context</h3>
-        </div>
-        <div>
-          <p class="body"><strong>Challenge.</strong> ...</p>
-          <p class="body"><strong>Approach.</strong> ...</p>
-          <p class="body"><strong>Outcome.</strong> ...</p>
-        </div>
-      </article>
-      -->
-    </div>
-  </section>
 {cta}'''.format(
-    capabilities=_capabilities(),
+    jump=_jump(),
+    areas=_areas(),
     plate=strata(on_forest=True),
     points='\n'.join('            <li>%s</li>' % p for p in MODEL_POINTS),
     tech=TECH_ITEMS.strip('\n'),
     tech_copy=TECH_COPY,
-    arrow=ARROW,
     cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
                  label='Book a free diagnosis session'),
 )
