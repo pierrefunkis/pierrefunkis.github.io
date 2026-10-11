@@ -944,9 +944,9 @@ a { color: inherit; }
   font-size: 15px;
   border-top: 3px solid var(--accent);
 }
-/* Contact ends on the form rather than a dark band, so the rule above the
-   footer has nothing to sit against and is dropped there. */
-main:has(.split--contact) + .footer { border-top: 0; }
+/* Pages that end on a form rather than a dark band: the rule above the footer
+   has nothing to sit against, so it is dropped (set in tools/build.py). */
+.footer--plain { border-top: 0; }
 
 .footer-top {
   display: grid;

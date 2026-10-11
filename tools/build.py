@@ -227,6 +227,9 @@ write('for-talents/index.html',
       '<body><a href="/join-network/">Join Network</a></body></html>\n' % SITE)
 
 
+# Pages that end on the form rather than a dark band: no rule above the footer.
+PLAIN_FOOTER = {'/contact/'}
+
 # Per-page link previews. Pages not listed use the default og-image.png.
 CARDS = {
     '/join-network/': {
@@ -243,7 +246,10 @@ for filename, path, title, desc, og_t, og_d, ld, body in PAGES:
     if path.startswith('/insights/'):
         active = '/insights/'
     card = CARDS.get(path, {})
-    write(filename, head(title, desc, path, og_t, og_d, ld, **card) + nav(active) + body + FOOTER)
+    footer = FOOTER
+    if path in PLAIN_FOOTER:
+        footer = FOOTER.replace('class="footer"', 'class="footer footer--plain"', 1)
+    write(filename, head(title, desc, path, og_t, og_d, ld, **card) + nav(active) + body + footer)
 
 # ── 404 ─────────────────────────────────────────────────────────────────────
 # noindex: GitHub Pages serves this for any unknown URL, so it must not be
