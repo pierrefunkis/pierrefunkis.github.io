@@ -515,6 +515,10 @@ a { color: inherit; }
 /* Two equal columns whose contents start at the top rather than centring. */
 .split--start { align-items: start; }
 
+/* Contact: the form takes 60% of the row, the intro the rest. Below the stacking
+   breakpoint the form is full width. */
+.split--contact { grid-template-columns: minmax(0, 1fr) 60%; gap: 56px; align-items: start; }
+
 /* A numbered or ticked list of short statements. */
 .points { list-style: none; }
 .points li {
@@ -1006,7 +1010,7 @@ a { color: inherit; }
   .with-plate, .with-plate--lead { grid-template-columns: 1fr; gap: 40px; }
   .points--2up { grid-template-columns: 1fr; column-gap: 0; }
   .with-plate .plate-slot { display: none; }
-  .split--even { grid-template-columns: 1fr; gap: 40px; }
+  .split--even, .split--contact { grid-template-columns: 1fr; gap: 40px; }
   /* Once the columns stack, the form should not sit below a screen and a half
      of explanation. */
   .contact-form-col { order: -1; margin-bottom: 48px; }

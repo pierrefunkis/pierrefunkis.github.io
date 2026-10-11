@@ -127,10 +127,10 @@
       if (!successBox) return;
       successBox.hidden = false;
       successBox.querySelector('[data-success-title]').textContent =
-        handedOff ? 'Almost there' : 'Thanks, that reached us';
+        handedOff ? 'Almost there' : 'Thank you, your request has been received';
       successBox.querySelector('[data-success-body]').textContent = handedOff
-        ? 'We have opened your email app with the details filled in. Send that message and Pierre will come back to you within one business day. If nothing opened, write to ' + CONTACT_EMAIL + '.'
-        : 'Pierre will read it and come back to you within one business day, usually with a time to talk.';
+        ? 'We have opened your email app with the details filled in. Send that message and we will reply within one business day. If nothing opened, write to ' + CONTACT_EMAIL + '.'
+        : 'We will review it and reply within one business day, usually with a proposed time to talk.';
       successBox.setAttribute('tabindex', '-1');
       successBox.focus({ preventScroll: true });
     };
