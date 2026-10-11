@@ -1,13 +1,39 @@
 # -*- coding: utf-8 -*-
 from shared import credential, ARROW, LINKEDIN, cta_band
-from plates import CONSTELLATION
+
+from plates import (ICON_BIGFIRM, ICON_FREELANCE, ICON_SEMANTIC_LIGHT, ICON_SENIOR,
+                    ICON_EMBEDDED, ICON_HONEST, ICON_ACCOUNT, ICON_T_PRODUCT,
+                    ICON_T_ANALYTICS, ICON_T_ENGINEERING, ICON_T_QUALITY,
+                    ICON_T_MANAGEMENT)
+
+MODELS = [
+    (ICON_BIGFIRM, 'Large consultancies', False,
+     'Real capacity and a wide bench, but the senior person who scoped the work is rarely '
+     'the one doing it.'),
+    (ICON_FREELANCE, 'Freelance marketplaces', False,
+     'Capable individuals, but no structure behind them and no cover when one moves on.'),
+    (ICON_SEMANTIC_LIGHT, 'Semantic', True,
+     'Senior judgment and a dedicated team that can execute. The person who understands '
+     'your problem is accountable for solving it.'),
+]
+
+PRINCIPLES = [
+    (ICON_SENIOR, 'Senior-led',
+     'The people who scope the work are involved in delivering it.'),
+    (ICON_EMBEDDED, 'Embedded',
+     'We work in your tools, your stack and your rituals.'),
+    (ICON_HONEST, 'Honest',
+     'A counterpart who challenges you, including when you do not need us.'),
+    (ICON_ACCOUNT, 'Accountable',
+     'We own the outcome, with regular service reviews and continuity.'),
+]
 
 TEAM_AREAS = [
-    ('Data product', 'Framing the problem, defining the outcome, and keeping delivery pointed at it.'),
-    ('Analytics', 'Metric definitions, semantic layers, experimentation and the reporting people actually use.'),
-    ('Data engineering', 'Pipelines, modelling and platform work in the client stack.'),
-    ('Data quality', 'Testing, monitoring, reconciliation and incident response.'),
-    ('Data management', 'Ownership, glossaries, master data, lineage and access.'),
+    (ICON_T_PRODUCT, 'Data product', 'Framing the problem and keeping delivery pointed at the outcome.'),
+    (ICON_T_ANALYTICS, 'Analytics', 'Metrics, experimentation and reporting people actually use.'),
+    (ICON_T_ENGINEERING, 'Data engineering', 'Pipelines, modeling and platform work in your stack.'),
+    (ICON_T_QUALITY, 'Data quality', 'Testing, monitoring, reconciliation and incident response.'),
+    (ICON_T_MANAGEMENT, 'Data management', 'Ownership, glossaries, master data, lineage and access.'),
 ]
 
 ABOUT = '''
@@ -19,11 +45,11 @@ ABOUT = '''
       <p class="eyebrow">About</p>
       <div class="hero-cols">
         <div>
-          <h1 class="display">Who is behind Semantic</h1>
+          <h1 class="display">Senior expertise, with a team behind it</h1>
         </div>
         <div>
-          <p class="lede">A boutique data consultancy: senior expertise you speak to directly,
-            with the execution capacity of a dedicated team behind it.</p>
+          <p class="lede">We are a boutique data consultancy. The people who scope the work
+            stay involved in delivering it.</p>
         </div>
       </div>
     </div>
@@ -41,22 +67,15 @@ ABOUT = '''
           <p class="founder-role">Founder &amp; Principal</p>
 
           <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre spent his
-            career in data at Amazon, working across the US and Europe at the kind of scale
-            where unreliable data is not an inconvenience but an operational risk. He founded
-            Semantic to bring that standard to companies that want to be genuinely
-            data-driven without hiring an army to get there.</p>
+            career in data at Amazon, across the US and Europe, at a scale where unreliable
+            data is an operational risk, not an inconvenience. He founded Semantic to bring
+            that standard to companies that want to be data-driven without hiring an army.</p>
 
-          <p class="body" style="margin-top:20px;">A graduate of HEC Paris, he combines a
-            technical data background with business management training. That mix shapes how
-            Semantic works: technical decisions are made in business terms, and business
-            decisions are made with data that holds up.</p>
+          <p class="body" style="margin-top:20px;">A graduate of HEC Paris, he combines
+            technical data depth with business management training: technical decisions
+            made in business terms, and business decisions made with data that holds up.</p>
 
-          <p class="body" style="margin-top:20px;">Since founding Semantic he has worked with
-            data teams at companies including Pernod Ricard and Back Market, across Europe,
-            the US and the Middle East. He is the counterpart on every engagement, and the
-            person you speak to first.</p>
-
-          <dl class="facts facts--pair" style="margin-top:36px;">
+          <dl class="facts facts--pair" style="margin-top:32px;">
             <div class="fact"><dt>Previously</dt><dd>{mark_amazon}</dd></div>
             <div class="fact"><dt>Educated at</dt><dd>{mark_hec}</dd></div>
           </dl>
@@ -70,43 +89,20 @@ ABOUT = '''
   <!-- WHY SEMANTIC -->
   <section class="section section--mint" aria-labelledby="why-h">
     <div class="container">
-      <div class="section-head section-head--wide">
-        <div>
-          <p class="eyebrow">Why Semantic</p>
-          <h2 class="h-xl" id="why-h">A third option</h2>
-        </div>
-        <div>
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">Companies rarely have
-            a data problem in the abstract. They have a specific, expensive one: a number two
-            teams calculate differently, a pipeline nobody trusts before a board meeting, an
-            AI initiative stalled because the data underneath it will not hold weight.</p>
-        </div>
+      <div class="section-head">
+        <p class="eyebrow">Why Semantic</p>
+        <h2 class="h-xl" id="why-h">A third option</h2>
+        <p class="body">Complex data problems need senior judgment to frame and a team to
+          execute. Most firms offer one or the other.</p>
       </div>
 
-      <div class="with-plate--lead with-plate">
-        <div class="plate-slot">{plate_why}</div>
-        <div>
-          <p class="body">Large consulting organizations bring real
-            capacity and a wide bench, but the senior person who scoped the work is not
-            usually the one doing it. Freelance marketplaces bring capable individuals, but
-            no structure behind them and no cover when one moves on. Both models work for
-            some problems.</p>
-
-          <p class="body" style="margin-top:20px;">Semantic exists for the problems in
-            between: complex enough to need real senior judgment, and substantial enough to
-            need a team that can execute. The person who understands your problem is the
-            person accountable for solving it, and there is a dedicated team behind them
-            with the capacity to deliver it properly.</p>
-
-        </div>
+      <div class="grid grid--3">
+{models}
       </div>
 
-      <ul class="points points--2up" style="margin-top:48px;">
-        <li>Senior-led. The people who scope the work are involved in doing it.</li>
-        <li>Embedded, not adjacent. We work in your tools, your stack and your rituals.</li>
-        <li>A counterpart who challenges you, including when the answer is that you do not need us.</li>
-        <li>Accountable for the outcome, with regular service reviews and continuity we own rather than pass to you.</li>
-      </ul>
+      <div class="grid grid--4" style="margin-top:20px;">
+{principles}
+      </div>
     </div>
   </section>
 
@@ -116,45 +112,48 @@ ABOUT = '''
       <div class="section-head">
         <p class="eyebrow">The Team</p>
         <h2 class="h-xl" id="team-h">A curated team, assembled around the problem</h2>
-        <p class="body">Semantic works with a vetted team of data specialists rather than a
-          bench to be filled. Who joins an engagement depends on what the diagnosis found,
-          and the specialists work alongside a senior lead rather than being handed the
-          problem.</p>
+        <p class="body">A vetted team of data specialists, brought together by what the
+          diagnosis finds and always working alongside a senior lead.</p>
       </div>
 
-      <div class="capabilities capabilities--2up">
+      <div class="grid grid--5">
 {areas}
       </div>
 
-      <div class="note" style="margin-top:56px;">
-        <h3 class="h-md">Working with us as a specialist</h3>
-        <p class="body" style="margin-top:14px;">We take on experienced data professionals
-          and exceptional earlier-career specialists, always paired with a senior lead.</p>
-        <a class="link" href="/join-network/" style="margin-top:20px;">Join the team {arrow}</a>
-      </div>
+      <a class="link" href="/join-network/" style="margin-top:36px;">Join our network of data professionals {arrow}</a>
     </div>
   </section>
 {cta}'''
 
-def _areas():
+def _cells(items, with_flag=False):
     out = []
-    for i, (title, body) in enumerate(TEAM_AREAS, start=1):
-        out.append('''      <div class="capability">
-        <div class="capability-head">
-          <span class="capability-index">{idx:02d}</span>
-          <h3>{title}</h3>
-        </div>
-        <p class="body">{body}</p>
-      </div>'''.format(idx=i, title=title, body=body))
+    for item in items:
+        if with_flag:
+            icon, title, accent, body = item
+        else:
+            icon, title, body = item
+            accent = False
+        out.append('''        <div class="cell{cls}">
+          {icon}
+          <h3 class="h-md">{title}</h3>
+          <p class="body">{body}</p>
+        </div>'''.format(cls=' cell--accent' if accent else '', icon=icon, title=title, body=body))
     return '\n'.join(out)
 
 
 ABOUT = ABOUT.format(
     linkedin=LINKEDIN,
-    plate_why=CONSTELLATION,
     mark_amazon=credential('amazon', 'Amazon', 'Amazon'),
     mark_hec=credential('hec-paris', 'HEC Paris', 'HEC Paris'),
     arrow=ARROW,
-    areas=_areas(),
-    cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
+    models=_cells(MODELS, with_flag=True),
+    principles=_cells(PRINCIPLES),
+    areas='\n'.join(
+        '''        <div class="cell">
+          {icon}
+          <h3 class="h-md">{title}</h3>
+          <p class="body">{body}</p>
+        </div>'''.format(icon=i, title=t, body=b) for i, t, b in TEAM_AREAS),
+    cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
+                 label='Book a free diagnosis session'),
 )
