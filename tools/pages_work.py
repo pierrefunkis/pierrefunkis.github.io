@@ -11,7 +11,7 @@ PERNOD = '''
       </nav>
       <p class="eyebrow">Case study</p>
       <h1 class="display" style="max-width:none;">Making Pernod Ricard's AI sales engine trustworthy</h1>
-      <p class="lede">Semantic strengthened the data foundations of D-STAR, the in-house AI
+      <p class="lede">Semantic built the data quality foundations of D-STAR, the in-house AI
         recommendation engine that Harvard Business School later featured as a model of
         successful AI adoption.</p>
     </div>
@@ -25,9 +25,11 @@ PERNOD = '''
           <p class="body">Pernod Ricard, the world's second-largest spirits company, active in
             more than 70 countries.</p></div>
         <div class="cell"><h3 class="h-md">Engagement</h3>
-          <p class="body">15 months alongside Pernod Ricard's internal AI team on D-STAR.</p></div>
+          <p class="body">15 months alongside Pernod Ricard's internal AI team, across 12
+            markets worldwide.</p></div>
         <div class="cell cell--accent"><h3 class="h-md">Semantic's focus</h3>
-          <p class="body">Data quality: tooling and global processes behind the product.</p></div>
+          <p class="body">Data quality, built on dbt, Snowflake and the Elementary dbt
+            package.</p></div>
       </div>
     </div>
   </section>
@@ -47,24 +49,42 @@ PERNOD = '''
     </div>
   </section>
 
-  <section class="section section--mint" aria-labelledby="impact-h">
+  <section class="section section--mint" aria-labelledby="results-h">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="h-xl" id="results-h">Global impact</h2>
+        <p class="body">Measured across 12 markets.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="cell cell--accent"><h3 class="h-md">30% &rarr; 9.5%</h3>
+          <p class="body">Data quality errors, after Semantic designed and scaled the
+            resolution process.</p></div>
+        <div class="cell"><h3 class="h-md">28 &rarr; 4 days</h3>
+          <p class="body">Average time to resolve a data quality issue.</p></div>
+        <div class="cell"><h3 class="h-md">6,000+ dbt tests</h3>
+          <p class="body">Implemented to detect errors automatically and make the data
+            more reliable.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="impact-h">
     <div class="container">
       <div class="section-head">
         <h2 class="h-xl" id="impact-h">What Semantic did</h2>
-        <p class="body">Data quality is the part of AI projects that is most often overlooked.
-          Semantic made it a first-class workstream.</p>
+        <p class="body">We worked in dbt and Snowflake, using the Elementary dbt package to
+          monitor data quality checks, and set up the ownership and process around them.</p>
       </div>
-      <div class="grid grid--3">
-        <div class="cell"><h3 class="h-md">Deployed data quality tooling</h3>
-          <p class="body">Data quality tools deployed on the data behind the product, to
-            keep its recommendations dependable.</p></div>
-        <div class="cell"><h3 class="h-md">Set global processes</h3>
-          <p class="body">A global way of working for data quality, instead of one-off
-            fixes.</p></div>
-        <div class="cell"><h3 class="h-md">Strengthened the foundations</h3>
-          <p class="body">More reliable outputs, higher user confidence and smoother AI
-            adoption.</p></div>
-      </div>
+      <ul class="points">
+        <li><span><strong>Clear ownership.</strong> One IT owner and one business owner for
+          each data field in every market.</span></li>
+        <li><span><strong>Standardized checks.</strong> A documented set of checks, with clear
+          instructions to create, maintain and resolve them.</span></li>
+        <li><span><strong>Trained owners.</strong> Training sessions so owners can use the
+          Elementary dashboards and the data quality playbook to resolve issues.</span></li>
+        <li><span><strong>Monitoring over time.</strong> Tracking of resolution trends to
+          spot bottlenecks and keep improving data quality metrics.</span></li>
+      </ul>
     </div>
   </section>
 
