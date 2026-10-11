@@ -29,7 +29,7 @@ ABOUT = '''
   <section class="hero hero--page">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span aria-hidden="true">/</span><span>About</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><span>About Us</span>
       </nav>
       <h1 class="display" style="max-width:none;">Who is behind Semantic</h1>
     </div>

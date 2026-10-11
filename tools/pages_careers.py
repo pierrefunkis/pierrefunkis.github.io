@@ -143,7 +143,7 @@ NOT_FOUND = '''
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">02</span>
-            <h3><a href="/about/" style="text-decoration:none;">About</a></h3>
+            <h3><a href="/about/" style="text-decoration:none;">About Us</a></h3>
           </div>
           <p class="body">Who is behind Semantic, why it exists, and how the team
             works.</p>
