@@ -7,11 +7,25 @@ across seven hand-edited pages; running build.py rewrites the HTML files that
 are actually committed and served.
 """
 
+import hashlib
 import os
 import re
 
 SITE = 'https://www.workwithsemantic.com'
 LINKEDIN = 'https://www.linkedin.com/company/semantic-data-consulting/'
+
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def _version(name):
+    """Short content hash for an asset, so a changed file is never served from a
+    stale browser or CDN cache: its URL changes whenever its contents do."""
+    with open(os.path.join(_ROOT, name), 'rb') as fh:
+        return hashlib.md5(fh.read()).hexdigest()[:8]
+
+
+CSS_URL = '/style.css?v=' + _version('style.css')
+JS_URL = '/main.js?v=' + _version('main.js')
 
 FONTS = ('https://fonts.googleapis.com/css2?'
          'family=Schibsted+Grotesk:wght@400;500;600'
@@ -78,14 +92,14 @@ def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra='',
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="{fonts}" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">{extra}{ld}
+  <link rel="stylesheet" href="{css_url}">{extra}{ld}
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 '''.format(title=title, desc=desc, canonical=canonical, og_title=og_title,
            og_desc=og_desc, site=SITE, fonts=FONTS, extra=extra, ld=ld,
-           og_image=og_image, og_alt=og_alt)
+           og_image=og_image, og_alt=og_alt, css_url=CSS_URL)
 
 
 def nav(active=''):
@@ -182,10 +196,10 @@ FOOTER = '''
   </div>
 </footer>
 
-<script src="/main.js" defer></script>
+<script src="{js_url}" defer></script>
 </body>
 </html>
-'''.format(mark=MARK, linkedin=LINKEDIN)
+'''.format(mark=MARK, linkedin=LINKEDIN, js_url=JS_URL)
 
 
 ORG_LD = '''{
