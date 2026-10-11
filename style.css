@@ -461,7 +461,7 @@ a { color: inherit; }
 .client-logo--wide { height: 17px; }
 
 /* Link to the Pernod Ricard case study, under the logos. Harvard crimson is
-   used sparingly (mark, tag, left rule) so the banner stands out from the
+   used sparingly (tag, left rule) so the banner stands out from the
    logo row without fighting the site's green. */
 .feature-banner {
   display: flex;
@@ -479,15 +479,14 @@ a { color: inherit; }
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .feature-banner:hover { border-color: var(--ink); border-left-color: #A51C30; box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
-.feature-banner-mark {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.15;
-  font-weight: 600;
-  color: #A51C30;
+.feature-banner-logo {
+  height: 64px;
+  width: auto;
   padding-right: 28px;
   border-right: 1px solid var(--line);
+  box-sizing: content-box;
 }
+.hbs-logo { display: block; height: 72px; width: auto; margin: 0 0 28px; }
 .feature-banner-body { flex: 1 1 300px; display: flex; flex-direction: column; gap: 6px; }
 .feature-banner-tag {
   font-size: 12px;
@@ -505,7 +504,7 @@ a { color: inherit; }
   font-size: 15px;
 }
 @media (max-width: 640px) {
-  .feature-banner-mark { padding-right: 0; border-right: 0; }
+  .feature-banner-logo { padding-right: 0; border-right: 0; height: 56px; }
 }
 
 /* ── CAPABILITY LIST ─────────────────────────────────────────────────────── */
