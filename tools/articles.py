@@ -51,7 +51,7 @@ ARTICLES = [
         <ul>
           <li><strong>Definitions.</strong> The entities the use case depends on have one
             agreed definition, written down, that the people who will be held accountable
-            for the output recognise as correct.</li>
+            for the output recognize as correct.</li>
           <li><strong>Lineage.</strong> You can trace any figure the system produces back
             to the systems it came from, without a person reconstructing it from memory.</li>
           <li><strong>Reproducibility.</strong> The dataset the pilot ran on can be
@@ -172,7 +172,7 @@ ARTICLES = [
 
         <p>Done that way, the final sign-off is a formality rather than an event. Which is
           what a good migration should feel like from the business side: not a launch, but
-          a gradual realisation that everyone has quietly stopped opening the old system.</p>
+          a gradual realization that everyone has quietly stopped opening the old system.</p>
 ''',
     },
 

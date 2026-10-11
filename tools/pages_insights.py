@@ -67,8 +67,9 @@ def insights_index():
 {cta}'''.format(
         fmeta=_meta(featured), fslug=featured['slug'], ftitle=featured['title'],
         fexcerpt=featured['excerpt'], items='\n'.join(items), arrow=ARROW,
-        cta=cta_band('Recognise any of this in your own estate?',
-                     "Start with a conversation. No pitch, no deck."),
+        cta=cta_band('Recognize any of this in your own data estate?',
+                     'Book a free diagnosis session.',
+                     label='Book a free diagnosis session'),
     )
 
 
@@ -125,5 +126,6 @@ def article_page(a, others):
 {cta}'''.format(
         category=a['category'], meta=_meta(a), title=a['title'], excerpt=a['excerpt'],
         body=a['body'].rstrip(), more='\n'.join(more), arrow=ARROW,
-        cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
+        cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
+                     label='Book a free diagnosis session'),
     )
