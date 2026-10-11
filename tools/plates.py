@@ -394,3 +394,28 @@ def expertise_pool():
   <rect x="396" y="132" width="70" height="56" rx="10" fill="%s"/>
   <path d="M412 150h38M412 160h38M412 170h22" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
 </svg>''' % (''.join(people), lines, ACCENT))
+
+
+def expertise_umbrella():
+    """One contact, a canopy over three vetted specialists: we stand behind them."""
+    people = ''
+    for x in (130, 240, 350):
+        people += _person(x, 236, INK, 1.8)
+        people += ('<circle cx="%d" cy="%d" r="9" fill="#FFFFFF" stroke="%s" stroke-width="1.8"/>'
+                   '<path d="M%d %dl3 3 5-6" stroke="%s" stroke-width="1.8" stroke-linecap="round" '
+                   'stroke-linejoin="round"/>' % (x + 20, 228, ACCENT, x + 15, 228, ACCENT))
+    return ('''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
+     aria-label="One contact standing over three vetted specialists like a canopy">
+  <rect x="204" y="8" width="72" height="46" rx="9" stroke="%(ink)s" stroke-width="1.6"/>
+  <path d="M220 24h40M220 34h40M220 44h24" stroke="%(line)s" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M240 54v30" stroke="%(accent)s" stroke-width="2" stroke-linecap="round"/>
+
+  <circle cx="226" cy="108" r="22" fill="%(accent)s" opacity="0.5"/>
+  <circle cx="254" cy="108" r="22" fill="%(ink)s"/>
+  <circle cx="240" cy="108" r="8" fill="#FFFFFF"/>
+
+  <path d="M44 276C58 178 150 136 240 136s182 42 196 140" stroke="%(accent)s" stroke-width="2" stroke-linecap="round"/>
+  <path d="M74 276C86 200 160 164 240 164s154 36 166 112" stroke="%(line)s" stroke-width="1.2" stroke-dasharray="3 5"/>
+  <path d="M24 282h432" stroke="%(line)s" stroke-width="1.2" stroke-linecap="round"/>
+  %(people)s
+</svg>''' % {'ink': INK, 'line': LINE, 'accent': ACCENT, 'people': people})
