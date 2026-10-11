@@ -424,9 +424,10 @@ def expertise_umbrella():
 
 
 def expertise_keystone():
-    """A stone arch whose keystone is highlighted, with the Semantic mark on top:
-    the one piece that holds the rest together."""
-    cx, cy, ro, ri, n, key = 240, 250, 124, 80, 7, 3
+    """A stone arch of five blocks. The keystone at the top carries the Semantic
+    mark: the one piece that holds the rest together."""
+    cx, cy, ro, ri, n, key = 240, 232, 132, 74, 5, 2
+    delays = {0: 0, 4: 0, 1: .2, 3: .2, 2: .8}
     blocks = ''
     step = 180.0 / n
     for k in range(n):
@@ -436,21 +437,24 @@ def expertise_keystone():
             pts.append((cx + r * math.cos(math.radians(a)), cy + r * math.sin(math.radians(a))))
         (x0, y0), (x1, y1), (x2, y2), (x3, y3) = pts
         is_key = (k == key)
-        delay = {0: 0, 6: 0, 1: .18, 5: .18, 2: .36, 4: .36, 3: .95}[k]
-        blocks += ('<path class="ks-block%s" style="--d:%ss" '
-                   'd="M%.1f %.1fA%d %d 0 0 1 %.1f %.1fL%.1f %.1fA%d %d 0 0 0 %.1f %.1fz" '
-                   'fill="%s" stroke="%s" stroke-width="1.8" stroke-linejoin="round"/>'
-                   % (' ks-key' if is_key else '', delay, x0, y0, ro, ro, x1, y1, x2, y2, ri, ri,
-                      x3, y3, ACCENT if is_key else '#FFFFFF', ACCENT if is_key else INK))
-    mark = ('<g class="ks-mark"><circle cx="226" cy="76" r="22" fill="%s" opacity="0.5"/>'
-            '<circle cx="254" cy="76" r="22" fill="%s"/>'
-            '<circle cx="240" cy="76" r="8" fill="#FFFFFF"/></g>' % (ACCENT, INK))
+        shape = ('<path d="M%.1f %.1fA%d %d 0 0 1 %.1f %.1fL%.1f %.1fA%d %d 0 0 0 %.1f %.1fz" '
+                 'fill="%s" stroke="%s" stroke-width="%s" stroke-linejoin="round"/>'
+                 % (x0, y0, ro, ro, x1, y1, x2, y2, ri, ri, x3, y3,
+                    '#EDF2EE' if is_key else '#FFFFFF', ACCENT if is_key else INK,
+                    '2.4' if is_key else '1.8'))
+        if is_key:
+            my = cy - (ro + ri) / 2
+            shape += ('<circle cx="%.1f" cy="%.1f" r="14" fill="%s" opacity="0.5"/>'
+                      '<circle cx="%.1f" cy="%.1f" r="14" fill="%s"/>'
+                      '<circle cx="%d" cy="%.1f" r="5" fill="#FFFFFF"/>'
+                      % (cx - 8.7, my, ACCENT, cx + 8.7, my, INK, cx, my))
+        blocks += ('<g class="ks-block%s" style="--d:%ss">%s</g>'
+                   % (' ks-key' if is_key else '', delays[k], shape))
     return ('''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
-     aria-label="A stone arch held together by its keystone, with the Semantic mark on top">
+     aria-label="A stone arch held together by its keystone, which carries the Semantic mark">
   %s
   <g class="conv-fade" style="--d:.1s">
   <path d="M%d %dV298M%d %dV298M%d %dV298M%d %dV298" stroke="%s" stroke-width="1.8"/>
   <path d="M60 298h360" stroke="%s" stroke-width="1.4" stroke-linecap="round"/>
   </g>
-  %s
-</svg>''' % (blocks, cx - ro, cy, cx - ri, cy, cx + ri, cy, cx + ro, cy, INK, LINE, mark))
+</svg>''' % (blocks, cx - ro, cy, cx - ri, cy, cx + ri, cy, cx + ro, cy, INK, LINE))
