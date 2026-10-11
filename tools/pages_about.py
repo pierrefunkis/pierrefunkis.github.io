@@ -86,14 +86,14 @@ ABOUT = '''
       <div class="with-plate--lead with-plate">
         <div class="plate-slot">{plate_why}</div>
         <div>
-          <p class="body">Large consulting organisations bring real
+          <p class="body">Large consulting organizations bring real
             capacity and a wide bench, but the senior person who scoped the work is not
             usually the one doing it. Freelance marketplaces bring capable individuals, but
             no structure behind them and no cover when one moves on. Both models work for
             some problems.</p>
 
           <p class="body" style="margin-top:20px;">Semantic exists for the problems in
-            between: complex enough to need real senior judgement, and substantial enough to
+            between: complex enough to need real senior judgment, and substantial enough to
             need a team that can execute. The person who understands your problem is the
             person accountable for solving it, and there is a dedicated team behind them
             with the capacity to deliver it properly.</p>

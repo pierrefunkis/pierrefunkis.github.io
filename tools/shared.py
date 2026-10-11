@@ -210,7 +210,7 @@ ORG_LD = '''{
     "url": "%s/",
     "logo": "%s/favicon.svg",
     "slogan": "Senior data expertise, delivered by a dedicated team.",
-    "description": "Semantic is a boutique data consultancy that helps enterprises solve complex data problems, from diagnosis to implementation.",
+    "description": "Semantic is a boutique data consultancy that helps companies solve complex data challenges, from diagnosis to implementation.",
     "founder": {
       "@type": "Person",
       "name": "Pierre Sarkis",

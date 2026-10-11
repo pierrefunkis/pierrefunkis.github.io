@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-from shared import credential, ARROW, cta_band
-from plates import CONVERGENCE
+from shared import ARROW, cta_band
+from plates import (CONVERGENCE, ICON_QUALITY, ICON_AI, ICON_MIGRATION, ICON_ANALYTICS,
+                    ICON_TALK, ICON_DIAGNOSE, ICON_BUILD, ICON_IMPROVE)
 
 CLIENT_STRIP = '''
   <section class="clients" aria-labelledby="clients-h">
     <div class="container">
-      <p class="clients-label" id="clients-h">Trusted by data teams in Europe, the US and the Middle East</p>
+      <p class="clients-label" id="clients-h">Trusted by data teams around the world</p>
       <ul class="client-logos">
         <!-- Optically balanced, not mathematically. See logos/README.md. -->
         <li><img class="client-logo client-logo--tall" src="/logos/pernod-ricard.svg" alt="Pernod Ricard" width="1024" height="377" loading="lazy" decoding="async"></li>
@@ -21,49 +22,50 @@ CLIENT_STRIP = '''
 # Four of the five capabilities. The fifth, data management, lives on What We Do
 # so the home page stays an introduction rather than a catalogue.
 HOME_CAPABILITIES = [
-    ('01', 'Data Quality &amp; Reliability',
-     'Testing, monitoring and incident response for the data the business actually '
-     'runs on, so the numbers stop being a matter of opinion.'),
-    ('02', 'Data &amp; AI Readiness',
-     'The quality, lineage and ownership groundwork that separates AI initiatives '
-     'that ship from AI initiatives that stall in proof of concept.'),
-    ('03', 'Data Migration',
-     'Legacy system migrations and cloud warehouse adoption, delivered without '
-     'losing trust in the numbers along the way.'),
-    ('04', 'Analytics &amp; Decision Support',
-     'Analytics built around the decisions it informs. Hypotheses, experiments and '
-     'causal analysis, rather than dashboards nobody acts on.'),
+    (ICON_QUALITY, 'Data Quality &amp; Reliability',
+     'Testing, monitoring and incident response, so the numbers you run the business on '
+     'can be trusted.'),
+    (ICON_AI, 'Data &amp; AI Readiness',
+     'The quality, lineage and ownership foundations that take AI from pilot to '
+     'production.'),
+    (ICON_MIGRATION, 'Data Migration',
+     'Legacy and cloud migrations, delivered without losing trust in the numbers.'),
+    (ICON_ANALYTICS, 'Analytics &amp; Decision Support',
+     'Analytics built around the decisions it informs, not dashboards nobody uses.'),
 ]
 
 STEPS = [
-    ('01', 'Talk', 'A conversation about the business, the data problem behind it, and what a good outcome would actually look like.'),
-    ('02', 'Diagnose', 'We look at the real systems and data, not the org chart, and come back with root causes, priorities and a recommended approach.'),
-    ('03', 'Build', 'We bring together the right specialists for the problem and execute, shipping in increments you can review.'),
-    ('04', 'Improve', 'Where it is useful, we stay on to keep raising the standard and hand the capability over to your team.'),
+    (ICON_TALK, '01', 'Talk',
+     'A conversation about the business, the data challenge behind it and the outcome you want.'),
+    (ICON_DIAGNOSE, '02', 'Diagnose',
+     'We examine the real systems and data, then recommend root causes, priorities and an approach.'),
+    (ICON_BUILD, '03', 'Build',
+     'We assemble the right specialists and deliver in increments you can review.'),
+    (ICON_IMPROVE, '04', 'Improve',
+     'Where useful, we stay on to raise the standard and hand the capability to your team.'),
 ]
 
 
-def _capability_rows(items):
+def _capability_cells(items):
     out = []
-    for idx, title, body in items:
-        out.append('''      <article class="capability">
-        <div class="capability-head">
-          <span class="capability-index">{idx}</span>
-          <h3>{title}</h3>
-        </div>
-        <p class="body">{body}</p>
-      </article>'''.format(idx=idx, title=title, body=body))
+    for icon, title, body in items:
+        out.append('''        <div class="cell">
+          {icon}
+          <h3 class="h-md">{title}</h3>
+          <p class="body">{body}</p>
+        </div>'''.format(icon=icon, title=title, body=body))
     return '\n'.join(out)
 
 
-def _steps(items, ink=False):
+def _steps(items):
     out = []
-    for num, title, body in items:
+    for icon, num, title, body in items:
         out.append('''        <div class="step">
+          {icon}
           <div class="step-num">{num}</div>
           <h3>{title}</h3>
           <p class="body">{body}</p>
-        </div>'''.format(num=num, title=title, body=body))
+        </div>'''.format(icon=icon, num=num, title=title, body=body))
     return '\n'.join(out)
 
 
@@ -74,11 +76,11 @@ HOME = '''
       <div>
         <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
         <div class="hero-body">
-          <p class="lede">Semantic helps enterprises solve complex data problems, from
+          <p class="lede">We help companies solve complex data challenges, from
             diagnosis to implementation.</p>
           <div class="actions">
             <a class="btn btn--primary" href="/contact/">Book a free diagnosis session {arrow}</a>
-            <a class="btn btn--ghost" href="/what-we-do/">Explore our expertise</a>
+            <a class="btn btn--ghost" href="/what-we-do/">See what we do</a>
           </div>
         </div>
       </div>
@@ -89,46 +91,13 @@ HOME = '''
   <!-- WHAT WE DO -->
   <section class="section" aria-labelledby="wwd-h">
     <div class="container">
-      <div class="section-head section-head--wide">
-        <div>
-          <p class="eyebrow">What We Do</p>
-          <h2 class="h-xl" id="wwd-h">Where enterprises most often need senior help</h2>
-        </div>
-        <div>
-          <p class="body">Four of the five areas we work in. We take on the problems that
-            need senior judgement to frame and a team to execute.</p>
-          <a class="link" href="/what-we-do/" style="margin-top:18px;">Explore our expertise {arrow}</a>
-        </div>
+      <div class="section-head">
+        <p class="eyebrow">What We Do</p>
+        <h2 class="h-xl" id="wwd-h">How we help</h2>
       </div>
 
-      <div class="capabilities capabilities--2up">
+      <div class="grid grid--4">
 {capabilities}
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDIBILITY -->
-  <section class="section section--mint" aria-labelledby="cred-h">
-    <div class="container">
-      <p class="eyebrow">Credibility</p>
-      <h2 class="h-lg" id="cred-h" style="margin-bottom:36px;">Backed by serious enterprise experience</h2>
-
-      <div class="credibility">
-        <img class="credibility-photo" src="/pierre-sarkis.jpeg" alt="Pierre Sarkis, founder of Semantic"
-             width="576" height="576" loading="lazy" decoding="async">
-        <div>
-          <p class="body" style="font-size:18px;color:var(--ink-soft);max-width:70ch;">Semantic
-            was founded by Pierre Sarkis, who spent his career in data at Amazon across the US
-            and Europe, at the kind of scale where unreliable data is an operational risk rather
-            than an inconvenience. Since then Semantic has worked with data teams at companies
-            including Pernod Ricard and Back Market.</p>
-          <dl class="facts" style="margin-top:32px;">
-            <div class="fact"><dt>Previously</dt><dd>{mark_amazon}</dd></div>
-            <div class="fact"><dt>Educated at</dt><dd>{mark_hec}</dd></div>
-            <div class="fact"><dt>Working across</dt><dd>Europe, US, Middle East</dd></div>
-          </dl>
-          <a class="link" href="/about/" style="margin-top:28px;">Who is behind Semantic {arrow}</a>
-        </div>
       </div>
     </div>
   </section>
@@ -136,15 +105,9 @@ HOME = '''
   <!-- HOW WE WORK -->
   <section class="section section--ruled" aria-labelledby="how-h">
     <div class="container">
-      <div class="section-head section-head--wide">
-        <div>
-          <p class="eyebrow">How We Work</p>
-          <h2 class="h-xl" id="how-h">Four steps, and we are honest at each one</h2>
-        </div>
-        <div>
-          <p class="body">Every engagement starts the same way: a conversation, then a
-            diagnosis. If the answer is that you do not need us for this, we say so.</p>
-        </div>
+      <div class="section-head">
+        <p class="eyebrow">How We Work</p>
+        <h2 class="h-xl" id="how-h">Four steps from problem to outcome</h2>
       </div>
       <div class="steps">
 {steps}
@@ -154,10 +117,9 @@ HOME = '''
 {cta}'''.format(
     arrow=ARROW,
     plate=CONVERGENCE,
-    mark_amazon=credential('amazon', 'Amazon', 'Amazon'),
-    mark_hec=credential('hec-paris', 'HEC Paris', 'HEC Paris'),
     clients=CLIENT_STRIP,
-    capabilities=_capability_rows(HOME_CAPABILITIES),
+    capabilities=_capability_cells(HOME_CAPABILITIES),
     steps=_steps(STEPS),
-    cta=cta_band("Have a data problem you're trying to solve?", "Let's talk about it."),
+    cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
+             label='Book a free diagnosis session'),
 )

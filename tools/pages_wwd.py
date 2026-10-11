@@ -23,7 +23,7 @@ CAPABILITIES = [
     ('02', 'Data &amp; AI Readiness',
      'Most AI initiatives do not stall on the model. They stall on the data underneath '
      'it: undocumented definitions, no lineage, and no way to tell whether a training '
-     'set is representative. We do the groundwork that makes an AI programme buildable, '
+     'set is representative. We do the groundwork that makes an AI program buildable, '
      'and we are direct about what is not ready yet.',
      ['Readiness assessment against a concrete use case',
       'Lineage and documentation for the data in scope',
