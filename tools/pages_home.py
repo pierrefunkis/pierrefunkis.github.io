@@ -99,6 +99,8 @@ HOME = '''
       <div class="grid grid--4">
 {capabilities}
       </div>
+
+      <a class="link" href="/about/" style="margin-top:36px;">Learn about the senior expertise behind Semantic {arrow}</a>
     </div>
   </section>
 
