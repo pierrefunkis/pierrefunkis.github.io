@@ -46,7 +46,7 @@ ARROW = ('<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidde
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 NAV_ITEMS = [
-    ('/what-we-do/', 'What We Do'),
+    ('/what-we-do/', 'Our Expertise'),
     ('/insights/', 'Insights'),
     ('/about/', 'About'),
 ]
@@ -182,7 +182,7 @@ FOOTER = '''
       </div>
       <div class="footer-col">
         <ul>
-          <li><a href="/what-we-do/">What We Do</a></li>
+          <li><a href="/what-we-do/">Our Expertise</a></li>
 {insights_link}          <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>

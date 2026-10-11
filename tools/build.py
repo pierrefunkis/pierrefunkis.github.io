@@ -84,11 +84,11 @@ PAGES.append((
 # ── What We Do ──────────────────────────────────────────────────────────────
 PAGES.append((
     'what-we-do/index.html', '/what-we-do/',
-    'What We Do: Data Capabilities | Semantic',
+    'Our Expertise: Data Specialists | Semantic',
     'Vetted data specialists, managed by us: analysts, engineers, analytics engineers, '
     'managers and governance leads, with one accountable point of contact.',
     None, None,
-    webpage_ld('/what-we-do/', 'What We Do | Semantic',
+    webpage_ld('/what-we-do/', 'Our Expertise | Semantic',
                'The specialists Semantic staffs, the technology they work in, and how we '
                'stay accountable for the outcome.'),
     WHAT_WE_DO,

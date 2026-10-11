@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from shared import cta_band
-from plates import (contact_hub, ICON_T_ANALYTICS, ICON_T_ENGINEERING,
+from plates import (expertise_pool, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
+                    ICON_W_HANDOVER, ICON_T_ANALYTICS, ICON_T_ENGINEERING,
                     ICON_T_ANALYTICS_ENG, ICON_T_MANAGEMENT, ICON_T_PRODUCT,
                     ICON_T_GOVERNANCE)
 import re
@@ -9,11 +10,15 @@ from tech import TECH_ITEMS
 # Second copy for the stream: ids are suffixed so the page keeps unique ids.
 TECH_COPY = re.sub(r'(SVG\w+)', r'\1b', TECH_ITEMS).strip('\n')
 
-MODEL_POINTS = [
-    'We select and vet specialists for your specific problem and tooling.',
-    'We manage delivery and evaluate the work throughout.',
-    'We work remotely, inside your tools and your rituals.',
-    'We ensure follow-up and handover when it ends.',
+WAYS = [
+    (ICON_W_VETTED, 'Vetted',
+     'We select and vet specialists for your specific problem and tooling.'),
+    (ICON_W_MANAGED, 'Managed',
+     'We manage delivery and evaluate the work throughout.'),
+    (ICON_W_EMBEDDED, 'Embedded',
+     'We work remotely, inside your tools and your rituals.'),
+    (ICON_W_HANDOVER, 'Handed over',
+     'We ensure follow-up and handover when it ends.'),
 ]
 
 # The specialists we staff, in the order they appear on the page.
@@ -39,6 +44,14 @@ SPECIALISTS = [
 ]
 
 
+def _ways():
+    return '\n'.join('''        <div class="cell">
+          {icon}
+          <h3 class="h-md">{title}</h3>
+          <p class="body">{body}</p>
+        </div>'''.format(icon=i, title=t, body=b) for i, t, b in WAYS)
+
+
 def _specialists():
     out = []
     for icon, title, body, tools in SPECIALISTS:
@@ -55,25 +68,16 @@ WHAT_WE_DO = '''
   <section class="hero hero--page">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span aria-hidden="true">/</span><span>What We Do</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><span>Our Expertise</span>
       </nav>
-      <p class="eyebrow">What We Do</p>
-      <h1 class="display">Complex data challenges, solved properly</h1>
-    </div>
-  </section>
-
-  <!-- ONE ACCOUNTABLE POINT OF CONTACT -->
-  <section class="section section--ink" aria-labelledby="model-h">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-xl" id="model-h">One accountable point of contact</h2>
-      </div>
-
       <div class="with-plate">
-        <ul class="points">
-{points}
-        </ul>
+        <div>
+          <h1 class="display">One accountable point of contact</h1>
+        </div>
         <div class="plate-slot">{plate}</div>
+      </div>
+      <div class="grid grid--4" style="margin-top:48px;">
+{ways}
       </div>
     </div>
   </section>
@@ -110,8 +114,8 @@ WHAT_WE_DO = '''
     </div>
   </section>
 {cta}'''.format(
-    points='\n'.join('            <li>%s</li>' % p for p in MODEL_POINTS),
-    plate=contact_hub(),
+    plate=expertise_pool(),
+    ways=_ways(),
     specialists=_specialists(),
     tech=TECH_ITEMS.strip('\n'),
     tech_copy=TECH_COPY,

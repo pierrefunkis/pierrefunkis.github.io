@@ -336,3 +336,61 @@ ICON_T_GOVERNANCE = _i('A document with a check mark', '''
   <path d="M14 6h26l12 12v40H14z" stroke="{ink}"/>
   <path d="M40 6v12h12" stroke="{line}"/>
   <path d="M22 38l7 7 13-14" stroke="{accent}" stroke-width="2"/>''')
+
+
+# Our Expertise: four icons for the way we work, and an illustration of a few
+# vetted specialists picked out of a pool, all reaching one contact.
+ICON_W_VETTED = _i('A person with a check mark', '''
+  <circle cx="26" cy="22" r="9" stroke="{ink}"/>
+  <path d="M8 54c0-10 8-16 18-16 6 0 11 2 14 6" stroke="{ink}"/>
+  <circle cx="46" cy="46" r="11" fill="#FFFFFF" stroke="{accent}" stroke-width="2"/>
+  <path d="M41 46l4 4 7-8" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_W_MANAGED = _i('A clipboard with a progress line', '''
+  <rect x="12" y="10" width="40" height="46" rx="4" stroke="{ink}"/>
+  <path d="M24 10V6h16v4" stroke="{ink}"/>
+  <path d="M20 26h24M20 36h16" stroke="{line}" stroke-width="2"/>
+  <path d="M20 47l6-5 5 3 9-8" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_W_EMBEDDED = _i('A screen with a plug', '''
+  <rect x="6" y="10" width="52" height="34" rx="4" stroke="{ink}"/>
+  <path d="M24 54h16M32 44v10" stroke="{line}"/>
+  <path d="M26 27h6M32 22v10M32 27h6" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_W_HANDOVER = _i('A baton passed from one box to another', '''
+  <rect x="5" y="22" width="20" height="20" rx="3" stroke="{ink}"/>
+  <rect x="39" y="22" width="20" height="20" rx="3" stroke="{line}"/>
+  <path d="M27 32h10M33 27l5 5-5 5" stroke="{accent}" stroke-width="2"/>''')
+
+
+def _person(x, y, color, width=1.6):
+    return ('<circle cx="%d" cy="%d" r="9" stroke="%s" stroke-width="%s"/>'
+            '<path d="M%d %d a16 16 0 0 1 32 0" stroke="%s" stroke-width="%s" '
+            'stroke-linecap="round"/>' % (x, y - 10, color, width, x - 16, y + 16, color, width))
+
+
+def expertise_pool():
+    """A grid of people, a few picked out, all connected to one contact."""
+    xs, ys = (60, 140, 220, 300), (70, 160, 250)
+    picked = {(300, 70), (220, 160), (300, 250)}
+    people = []
+    for y in ys:
+        for x in xs:
+            if (x, y) == (300, 160):
+                continue  # a clear path for the middle line
+            if (x, y) in picked:
+                people.append('<circle cx="%d" cy="%d" r="30" stroke="%s" stroke-width="1.4" '
+                              'stroke-dasharray="3 4"/>' % (x, y, ACCENT))
+                people.append(_person(x, y, INK, 1.8))
+            else:
+                people.append(_person(x, y, LINE))
+    lines = ''.join(
+        '<path d="M%d %dC%d %d 360 160 396 160" stroke="%s" stroke-width="1.4" '
+        'stroke-linecap="round"/>' % (x + 32, y, x + 90, y, ACCENT) for x, y in sorted(picked))
+    return ('''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
+     aria-label="A few vetted specialists picked out of a larger pool, all connected to one contact">
+  %s
+  %s
+  <rect x="396" y="132" width="70" height="56" rx="10" fill="%s"/>
+  <path d="M412 150h38M412 160h38M412 170h22" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>''' % (''.join(people), lines, ACCENT))

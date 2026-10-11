@@ -135,7 +135,7 @@ NOT_FOUND = '''
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">01</span>
-            <h3><a href="/what-we-do/" style="text-decoration:none;">What We Do</a></h3>
+            <h3><a href="/what-we-do/" style="text-decoration:none;">Our Expertise</a></h3>
           </div>
           <p class="body">The full set of Semantic capabilities, the technology we build
             in, and how engagements are run.</p>

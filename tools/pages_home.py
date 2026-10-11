@@ -80,7 +80,7 @@ HOME = '''
             diagnosis to implementation.</p>
           <div class="actions">
             <a class="btn btn--primary" href="/contact/">Book a free diagnosis session {arrow}</a>
-            <a class="btn btn--ghost" href="/what-we-do/">See what we do</a>
+            <a class="btn btn--ghost" href="/what-we-do/">See our expertise</a>
           </div>
         </div>
       </div>
