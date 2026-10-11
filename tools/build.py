@@ -227,12 +227,12 @@ PAGES.append((
 PAGES.append((
     'work/pernod-ricard/index.html', '/work/pernod-ricard/',
     'Pernod Ricard Case Study: Data Quality for AI | Semantic',
-    'How Semantic strengthened the data quality foundations of Pernod Ricard\'s D-STAR AI '
-    'sales engine, featured by Harvard Business School.',
+    'How Semantic cut data quality errors from 30% to 9.5% across 12 markets for Pernod '
+    'Ricard\'s D-STAR AI sales engine, featured by Harvard Business School.',
     None, None,
     webpage_ld('/work/pernod-ricard/', 'Pernod Ricard case study | Semantic',
-               'Data quality tooling and global processes behind D-STAR, the AI recommendation '
-               'engine for Pernod Ricard sales teams.'),
+               'Data quality tests, ownership and resolution processes behind D-STAR, the AI '
+               'recommendation engine for Pernod Ricard sales teams.'),
     PERNOD,
 ))
 
@@ -349,7 +349,7 @@ write('llms.txt', f"""# Semantic
 - [Home]({SITE}/): What Semantic does, how it works in four steps, and who it is for.
 - [Our Expertise]({SITE}/what-we-do/): Vetted data specialists (analysts, engineers, analytics engineers, managers, governance leads), the data stack they work in, and how Semantic stays accountable for outcomes.
 - [About Us]({SITE}/about/): The founder, Pierre Sarkis, and the principles behind the firm.
-- [Pernod Ricard case study]({SITE}/work/pernod-ricard/): How Semantic strengthened the data quality behind D-STAR, Pernod Ricard's AI sales recommendation engine, featured by Harvard Business School.
+- [Pernod Ricard case study]({SITE}/work/pernod-ricard/): How Semantic cut data quality errors from 30% to 9.5% across 12 markets behind D-STAR, Pernod Ricard's AI sales recommendation engine, featured by Harvard Business School.
 - [Contact]({SITE}/contact/): Book a free diagnosis session about a data problem.
 - [Join the Network]({SITE}/join-network/): For data professionals who want to take on challenging AI and data projects with Semantic's international clients.
 
