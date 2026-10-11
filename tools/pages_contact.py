@@ -13,34 +13,13 @@ CONTACT = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>Contact</span>
       </nav>
       <p class="eyebrow">Contact</p>
-      <div class="hero-cols">
-        <div>
-          <h1 class="display">Discuss your data challenge with us</h1>
-        </div>
-        <div>
-          <p class="lede">Book a free diagnosis session. Share a few details and we will
-            reply within one business day.</p>
-        </div>
-      </div>
+      <h1 class="display">Discuss your data challenge with us</h1>
     </div>
   </section>
 
   <section class="section section--tight" style="padding-top:0;" aria-labelledby="book-h">
     <div class="container">
       <div class="split split--contact">
-        <div>
-          <h2 class="h-lg" id="book-h">What to expect</h2>
-          <p class="body" style="margin-top:20px;">A focused conversation about your
-            challenge with our senior team. Free and without obligation.</p>
-
-          <ul class="points" style="margin-top:32px;">
-{points}
-          </ul>
-
-          <p class="body--tight" style="margin-top:24px;color:var(--muted);">No brief is
-            needed. Describe the symptom and we will help define the problem.</p>
-        </div>
-
         <div class="contact-form-col">
           <!-- If a scheduling tool is adopted later, its embed drops in here and the
                form below becomes the fallback for people who would rather write. -->
@@ -96,6 +75,17 @@ CONTACT = '''
                 business day, usually with a proposed time to talk.</p>
             </div>
           </div>
+        </div>
+
+        <div>
+          <h2 class="h-lg" id="book-h">What to expect</h2>
+          <p class="body" style="margin-top:20px;">A focused conversation about your
+            data challenges with our senior team. Free and without obligation.</p>
+
+          <ul class="points" style="margin-top:32px;">
+{points}
+          </ul>
+
         </div>
       </div>
     </div>
