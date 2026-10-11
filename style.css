@@ -460,35 +460,52 @@ a { color: inherit; }
 /* Long wordmarks look oversized at it. */
 .client-logo--wide { height: 17px; }
 
-/* Link to the Pernod Ricard case study, under the logos. */
+/* Link to the Pernod Ricard case study, under the logos. Harvard crimson is
+   used sparingly (mark, tag, left rule) so the banner stands out from the
+   logo row without fighting the site's green. */
 .feature-banner {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px 24px;
+  gap: 14px 28px;
   margin-top: 32px;
-  padding: 18px 22px;
+  padding: 20px 24px;
   border: 1px solid var(--line);
+  border-left: 4px solid #A51C30;
   border-radius: 10px;
   background: #fff;
   color: var(--ink);
   text-decoration: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.feature-banner:hover { border-color: var(--ink); }
+.feature-banner:hover { border-color: var(--ink); border-left-color: #A51C30; box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
+.feature-banner-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.15;
+  font-weight: 600;
+  color: #A51C30;
+  padding-right: 28px;
+  border-right: 1px solid var(--line);
+}
+.feature-banner-body { flex: 1 1 300px; display: flex; flex-direction: column; gap: 6px; }
 .feature-banner-tag {
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  font-weight: 600;
+  color: #A51C30;
 }
-.feature-banner-text { flex: 1 1 320px; font-size: 16px; line-height: 1.5; }
+.feature-banner-text { font-size: 17px; line-height: 1.45; }
 .feature-banner-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-weight: 500;
   font-size: 15px;
+}
+@media (max-width: 640px) {
+  .feature-banner-mark { padding-right: 0; border-right: 0; }
 }
 
 /* ── CAPABILITY LIST ─────────────────────────────────────────────────────── */
