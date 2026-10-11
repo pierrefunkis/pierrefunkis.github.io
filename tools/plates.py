@@ -239,9 +239,11 @@ ICON_EMBEDDED = _i('A member placed inside a team', '''
   <circle cx="44" cy="42" r="4" fill="{accent}" stroke="none"/>
   <path d="M24 26h16M24 42h16M20 30v8M44 30v8" stroke="{line}"/>''')
 
-ICON_HONEST = _i('A speech bubble with a check mark', '''
-  <path d="M10 10h44a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H30l-12 10V46h-8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" stroke="{ink}"/>
-  <path d="M22 28l7 7 13-14" stroke="{accent}" stroke-width="2"/>''')
+ICON_RELIABLE = _i('A clock with a check mark: delivery you can count on', '''
+  <circle cx="30" cy="32" r="22" stroke="{ink}"/>
+  <path d="M30 18v14l9 6" stroke="{line}" stroke-width="2"/>
+  <circle cx="50" cy="48" r="10" fill="#FFFFFF" stroke="{accent}" stroke-width="2"/>
+  <path d="M45 48l4 4 7-8" stroke="{accent}" stroke-width="2"/>''')
 
 ICON_ACCOUNT = _i('A target with an arrow in the centre', '''
   <circle cx="30" cy="34" r="22" stroke="{line}"/>

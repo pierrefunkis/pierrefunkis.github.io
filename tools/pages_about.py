@@ -2,16 +2,17 @@
 from shared import credential, ARROW, LINKEDIN, cta_band
 
 from plates import (ICON_BIGFIRM, ICON_FREELANCE, ICON_SEMANTIC_LIGHT, ICON_SENIOR,
-                    ICON_EMBEDDED, ICON_HONEST, ICON_T_PRODUCT,
+                    ICON_EMBEDDED, ICON_RELIABLE, ICON_T_PRODUCT,
                     ICON_T_ANALYTICS, ICON_T_ENGINEERING, ICON_T_QUALITY,
                     ICON_T_MANAGEMENT)
 
 MODELS = [
     (ICON_BIGFIRM, 'Large consultancies', False,
-     'Real capacity and a wide bench, but the senior person who scoped the work is rarely '
-     'the one doing it.'),
+     'Substantial capacity, but slow to adapt and expensive. The senior person who scoped '
+     'the work is rarely the one who delivers it.'),
     (ICON_FREELANCE, 'Freelance marketplaces', False,
-     'Capable individuals, but no structure behind them and no cover when one moves on.'),
+     'Capable individuals, but without organizational structure behind them and without '
+     'continuity if they become unavailable.'),
     (ICON_SEMANTIC_LIGHT, 'Semantic', True,
      'Senior judgment and a dedicated team that can execute. The person who understands '
      'your problem is accountable for solving it.'),
@@ -22,8 +23,8 @@ PRINCIPLES = [
      'The people who scope the work are involved in delivering it.'),
     (ICON_EMBEDDED, 'Embedded',
      'We work in your tools, your stack and your rituals.'),
-    (ICON_HONEST, 'Honest',
-     'A counterpart who challenges you, including when you do not need us.'),
+    (ICON_RELIABLE, 'Reliable',
+     'We deliver what we commit to, with regular service reviews and continuity.'),
 ]
 
 TEAM_AREAS = [
@@ -41,7 +42,7 @@ ABOUT = '''
         <a href="/">Home</a><span aria-hidden="true">/</span><span>About</span>
       </nav>
       <p class="eyebrow">About</p>
-      <h1 class="display">Who is behind Semantic</h1>
+      <h1 class="display" style="max-width:none;">Who is behind Semantic</h1>
     </div>
   </section>
 
@@ -54,18 +55,22 @@ ABOUT = '''
              data-monogram="PS" loading="lazy" decoding="async">
         <div>
           <h2 class="h-lg" id="founder-h">Pierre Sarkis</h2>
-          <p class="founder-role">Founder &amp; Principal</p>
+          <p class="founder-role">Founder</p>
 
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre pairs the
-            technical data knowledge he built at Amazon, working in Paris and New York, with
-            the business perspective he gained through his studies at HEC Paris. He founded
-            Semantic to bring that rigor to companies that want to be data-driven without
-            hiring an army.</p>
+          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre built his
+            technical data foundations at Amazon, working in Paris and New York at a scale
+            where unreliable data is an operational risk, not an inconvenience. He pairs that
+            depth with the business perspective gained through his studies at HEC Paris.</p>
 
-          <dl class="facts facts--pair" style="margin-top:32px;">
-            <div class="fact"><dd>{mark_amazon}</dd></div>
-            <div class="fact"><dd>{mark_hec}</dd></div>
-          </dl>
+          <p class="body" style="margin-top:20px;">He founded Semantic to bring that
+            standard to companies that want to be data-driven without hiring an army:
+            technical decisions made in business terms, and business decisions made with data
+            that holds up.</p>
+
+          <div class="cred-row" style="margin-top:32px;">
+            <div>{mark_amazon}</div>
+            <div>{mark_hec}</div>
+          </div>
 
           <a class="link" href="{linkedin}" rel="noopener" style="margin-top:28px;">Connect on LinkedIn {arrow}</a>
         </div>
@@ -98,9 +103,9 @@ ABOUT = '''
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">The Team</p>
-        <h2 class="h-xl" id="team-h">A curated team, assembled around the problem</h2>
-        <p class="body">A vetted team of data specialists, brought together by what the
-          diagnosis finds.</p>
+        <h2 class="h-xl" id="team-h">Vetted specialists, matched to your needs</h2>
+        <p class="body">Every specialist is carefully vetted for proven capability, and
+          selected to fit your specific needs and tooling.</p>
       </div>
 
       <div class="grid grid--5">
