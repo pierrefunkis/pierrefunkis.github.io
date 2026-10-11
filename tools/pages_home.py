@@ -74,7 +74,7 @@ HOME = '''
   <section class="hero">
     <div class="container with-plate">
       <div>
-        <h1 class="display">Senior data expertise, delivered by a dedicated team.</h1>
+        <h1 class="display">Senior data expertise, embedded in your team.</h1>
         <div class="hero-body">
           <p class="lede">We help companies solve complex data challenges, from
             diagnosis to implementation.</p>

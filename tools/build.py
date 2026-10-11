@@ -61,7 +61,7 @@ home_ld = json.dumps({
         {'@type': 'Service', 'serviceType': 'Data consulting',
          'provider': {'@id': SITE + '/#organization'},
          'name': 'Enterprise data consulting',
-         'description': 'Senior data expertise delivered by a dedicated team, from diagnosis '
+         'description': 'Senior data expertise embedded in your team, from diagnosis '
                         'through implementation.',
          'hasOfferCatalog': {
              '@type': 'OfferCatalog', 'name': 'What we do',
@@ -77,7 +77,7 @@ PAGES.append((
     'index.html', '/',
     'Senior Data Expertise | Semantic',
     'We help companies solve complex data challenges, from diagnosis to implementation.',
-    'Senior data expertise, delivered by a dedicated team | Semantic',
+    'Senior data expertise, embedded in your team | Semantic',
     'We help companies solve complex data challenges, from diagnosis to implementation.',
     home_ld, HOME,
 ))

@@ -7,7 +7,7 @@ deploy time. Push to the default branch and it deploys.
 ## Positioning
 
 > **SEMANTIC**
-> Senior data expertise, delivered by a dedicated team.
+> Senior data expertise, embedded in your team.
 
 Semantic is a boutique data consultancy for enterprises. Pierre Sarkis is the
 founder and principal, but the site is branded around Semantic: Pierre appears

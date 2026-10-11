@@ -121,7 +121,7 @@ WHAT_WE_DO = '''
       <div class="section-head section-head--wide">
         <div>
           <p class="eyebrow">The Semantic Model</p>
-          <h2 class="h-xl" id="model-h">Senior expertise, backed by a dedicated team</h2>
+          <h2 class="h-xl" id="model-h">Senior expertise, embedded in your team</h2>
         </div>
         <div>
           <p class="body">You are not buying an individual, and you are not buying a
