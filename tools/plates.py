@@ -15,6 +15,8 @@ sit on three different grounds (white, mint, forest) and FOREST_* carries the
 variant for the dark band.
 """
 
+import math
+
 INK = '#111111'
 LINE = '#C2BFB6'
 ACCENT = '#304A43'
@@ -419,3 +421,32 @@ def expertise_umbrella():
   <path d="M24 282h432" stroke="%(line)s" stroke-width="1.2" stroke-linecap="round"/>
   %(people)s
 </svg>''' % {'ink': INK, 'line': LINE, 'accent': ACCENT, 'people': people})
+
+
+def expertise_keystone():
+    """A stone arch whose keystone is highlighted, with the Semantic mark on top:
+    the one piece that holds the rest together."""
+    cx, cy, ro, ri, n, key = 240, 250, 124, 80, 7, 3
+    blocks = ''
+    step = 180.0 / n
+    for k in range(n):
+        s, e = 180 + k * step, 180 + (k + 1) * step
+        pts = []
+        for r, a in ((ro, s), (ro, e), (ri, e), (ri, s)):
+            pts.append((cx + r * math.cos(math.radians(a)), cy + r * math.sin(math.radians(a))))
+        (x0, y0), (x1, y1), (x2, y2), (x3, y3) = pts
+        is_key = (k == key)
+        blocks += ('<path d="M%.1f %.1fA%d %d 0 0 1 %.1f %.1fL%.1f %.1fA%d %d 0 0 0 %.1f %.1fz" '
+                   'fill="%s" stroke="%s" stroke-width="1.8" stroke-linejoin="round"/>'
+                   % (x0, y0, ro, ro, x1, y1, x2, y2, ri, ri, x3, y3,
+                      ACCENT if is_key else '#FFFFFF', ACCENT if is_key else INK))
+    mark = ('<circle cx="226" cy="76" r="22" fill="%s" opacity="0.5"/>'
+            '<circle cx="254" cy="76" r="22" fill="%s"/>'
+            '<circle cx="240" cy="76" r="8" fill="#FFFFFF"/>' % (ACCENT, INK))
+    return ('''<svg class="plate" viewBox="0 0 480 320" fill="none" role="img"
+     aria-label="A stone arch held together by its keystone, with the Semantic mark on top">
+  %s
+  <path d="M%d %dV298M%d %dV298M%d %dV298M%d %dV298" stroke="%s" stroke-width="1.8"/>
+  <path d="M60 298h360" stroke="%s" stroke-width="1.4" stroke-linecap="round"/>
+  %s
+</svg>''' % (blocks, cx - ro, cy, cx - ri, cy, cx + ri, cy, cx + ro, cy, INK, LINE, mark))
