@@ -28,14 +28,14 @@ ON_FOREST_STRONG = '#8FB3A5'
 CONVERGENCE = '''<svg class="plate" viewBox="0 0 480 300" fill="none" role="img"
      aria-label="Several lines drawn together into a single point and leaving as one">
   <g stroke="{line}" stroke-width="1.2" stroke-linecap="round">
-    <path d="M14 26C170 26 214 150 292 150"/>
-    <path d="M14 88C170 88 224 150 292 150"/>
-    <path d="M14 212C170 212 224 150 292 150"/>
-    <path d="M14 274C170 274 214 150 292 150"/>
+    <path class="conv-draw" pathLength="1" style="--d:0s" d="M14 26C170 26 214 150 292 150"/>
+    <path class="conv-draw" pathLength="1" style="--d:.12s" d="M14 88C170 88 224 150 292 150"/>
+    <path class="conv-draw" pathLength="1" style="--d:.24s" d="M14 150h278"/>
+    <path class="conv-draw" pathLength="1" style="--d:.36s" d="M14 212C170 212 224 150 292 150"/>
+    <path class="conv-draw" pathLength="1" style="--d:.48s" d="M14 274C170 274 214 150 292 150"/>
   </g>
-  <path d="M14 150h278" stroke="{line}" stroke-width="1.2" stroke-linecap="round"/>
 
-  <g fill="{line}">
+  <g fill="{line}" class="conv-fade" style="--d:.1s">
     <circle cx="14" cy="26" r="3"/>
     <circle cx="14" cy="88" r="3"/>
     <circle cx="14" cy="150" r="3"/>
@@ -44,13 +44,24 @@ CONVERGENCE = '''<svg class="plate" viewBox="0 0 480 300" fill="none" role="img"
   </g>
 
   <!-- the point where it is reconciled -->
-  <circle cx="292" cy="150" r="22" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
-  <circle cx="292" cy="150" r="7" fill="{accent}"/>
+  <circle class="conv-fade" style="--d:1s" cx="292" cy="150" r="22" stroke="{line}" stroke-width="1" stroke-dasharray="3 5"/>
+  <circle class="conv-pulse" cx="292" cy="150" r="22" stroke="{accent}" stroke-width="1"/>
+  <circle class="conv-fade" style="--d:.9s" cx="292" cy="150" r="7" fill="{accent}"/>
 
   <!-- one answer out -->
-  <path d="M314 150h152" stroke="{accent}" stroke-width="2" stroke-linecap="round"/>
-  <path d="M452 136l14 14-14 14" stroke="{accent}" stroke-width="2"
+  <path class="conv-draw" pathLength="1" style="--d:1.1s" d="M314 150h152" stroke="{accent}" stroke-width="2" stroke-linecap="round"/>
+  <path class="conv-fade" style="--d:2s" d="M452 136l14 14-14 14" stroke="{accent}" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- data flowing in, one dot per line, then one answer out -->
+  <g class="flow-dots" fill="{accent}">
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="2.2s" repeatCount="indefinite" path="M14 26C170 26 214 150 292 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="2.2s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="2.8s" repeatCount="indefinite" path="M14 88C170 88 224 150 292 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="2.8s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="3.4s" repeatCount="indefinite" path="M14 150h278"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="3.4s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="4s" repeatCount="indefinite" path="M14 212C170 212 224 150 292 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="4s" repeatCount="indefinite"/></circle>
+    <circle r="2.8" opacity="0"><animateMotion dur="3.4s" begin="4.6s" repeatCount="indefinite" path="M14 274C170 274 214 150 292 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="4.6s" repeatCount="indefinite"/></circle>
+    <circle r="3.2" opacity="0"><animateMotion dur="2.4s" begin="3.6s" repeatCount="indefinite" path="M314 150h140"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.15;.8;1" dur="2.4s" begin="3.6s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>'''.format(line=LINE, accent=ACCENT)
 
 
