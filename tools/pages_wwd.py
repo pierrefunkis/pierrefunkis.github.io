@@ -88,7 +88,7 @@ WHAT_WE_DO = '''
   <section class="section" aria-labelledby="specialists-h">
     <div class="container">
       <div class="section-head">
-        <h2 class="h-xl" id="specialists-h">The specialists we staff</h2>
+        <h2 class="h-xl" id="specialists-h">Vetted specialists, matched to your needs</h2>
       </div>
       <div class="grid grid--3">
 {specialists}
