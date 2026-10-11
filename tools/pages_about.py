@@ -84,6 +84,7 @@ ABOUT = '''
       <div class="grid grid--3" style="margin-top:20px;">
 {principles}
       </div>
+      <a class="link" href="/join-network/" style="margin-top:36px;">Join our network of data professionals {arrow}</a>
     </div>
   </section>
 

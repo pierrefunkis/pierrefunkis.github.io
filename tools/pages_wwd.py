@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from shared import cta_band
+from shared import ARROW, cta_band
 from plates import (expertise_umbrella, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
                     ICON_W_HANDOVER, ICON_T_ANALYTICS, ICON_T_ENGINEERING,
                     ICON_T_ANALYTICS_ENG, ICON_T_MANAGEMENT, ICON_T_PRODUCT,
@@ -93,6 +93,7 @@ WHAT_WE_DO = '''
       <div class="grid grid--3">
 {specialists}
       </div>
+      <a class="link" href="/join-network/" style="margin-top:36px;">Join our network of data professionals {arrow}</a>
     </div>
   </section>
 
@@ -119,6 +120,7 @@ WHAT_WE_DO = '''
     plate=expertise_umbrella(),
     ways=_ways(),
     specialists=_specialists(),
+    arrow=ARROW,
     tech=TECH_ITEMS.strip('\n'),
     tech_copy=TECH_COPY,
     cta=cta_band('Discuss your data challenge with us', 'Book a free diagnosis session.',
