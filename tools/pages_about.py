@@ -2,9 +2,7 @@
 from shared import credential, ARROW, LINKEDIN, cta_band
 
 from plates import (ICON_BIGFIRM, ICON_FREELANCE, ICON_SEMANTIC_LIGHT, ICON_SENIOR,
-                    ICON_EMBEDDED, ICON_RELIABLE, ICON_T_PRODUCT,
-                    ICON_T_ANALYTICS, ICON_T_ENGINEERING, ICON_T_QUALITY,
-                    ICON_T_MANAGEMENT)
+                    ICON_EMBEDDED, ICON_RELIABLE)
 
 MODELS = [
     (ICON_BIGFIRM, 'Large consultancies', False,
@@ -27,13 +25,10 @@ PRINCIPLES = [
      'We deliver what we commit to, with regular service reviews and continuity.'),
 ]
 
-TEAM_AREAS = [
-    (ICON_T_PRODUCT, 'Data product', 'Framing the problem and keeping delivery pointed at the outcome.'),
-    (ICON_T_ANALYTICS, 'Analytics', 'Metrics, experimentation and reporting people actually use.'),
-    (ICON_T_ENGINEERING, 'Data engineering', 'Pipelines, modeling and platform work in your stack.'),
-    (ICON_T_QUALITY, 'Data quality', 'Testing, monitoring, reconciliation and incident response.'),
-    (ICON_T_MANAGEMENT, 'Data management', 'Ownership, glossaries, master data, lineage and access.'),
-]
+# The same six roles as on Our Expertise, so the two pages say one thing.
+from pages_wwd import SPECIALISTS
+
+TEAM_AREAS = [(icon, title, body) for icon, title, body, _tools in SPECIALISTS]
 
 ABOUT = '''
   <section class="hero hero--page">
@@ -41,7 +36,6 @@ ABOUT = '''
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span aria-hidden="true">/</span><span>About</span>
       </nav>
-      <p class="eyebrow">About</p>
       <h1 class="display" style="max-width:none;">Who is behind Semantic</h1>
     </div>
   </section>
@@ -57,8 +51,8 @@ ABOUT = '''
           <h2 class="h-lg" id="founder-h">Pierre Sarkis</h2>
           <p class="founder-role">Founder</p>
 
-          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre Sarkis built
-            his data expertise at Amazon, working across Paris and New York on large-scale
+          <p class="body" style="font-size:18px;color:var(--ink-soft);">Pierre built his
+            data expertise at Amazon, working across Paris and New York on large-scale
             data projects impacting millions of users. He combines this technical depth with
             the business acumen gained at HEC Paris, bridging the gap between complex
             technical challenges and business outcomes.</p>
@@ -107,7 +101,7 @@ ABOUT = '''
           selected to fit your specific needs and tooling.</p>
       </div>
 
-      <div class="grid grid--5">
+      <div class="grid grid--3">
 {areas}
       </div>
 
