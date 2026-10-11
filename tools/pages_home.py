@@ -16,7 +16,7 @@ CLIENT_STRIP = '''
         <li><img class="client-logo client-logo--light" src="/logos/shelt.png" alt="Shelt" width="1291" height="380" loading="lazy" decoding="async"></li>
       </ul>
       <a class="feature-banner" href="/work/pernod-ricard/">
-        <span class="feature-banner-mark" aria-hidden="true">Harvard<br>Business School</span>
+        <img class="feature-banner-logo" src="/logos/HBS-styleguide-primary-logo-3.png" alt="Harvard Business School" width="2000" height="990" loading="lazy" decoding="async">
         <span class="feature-banner-body">
           <span class="feature-banner-tag">Featured by HBS</span>
           <span class="feature-banner-text">How Semantic strengthened the data behind Pernod Ricard&rsquo;s AI program</span>

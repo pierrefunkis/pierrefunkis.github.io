@@ -73,6 +73,7 @@ PERNOD = '''
       <div class="section-head">
         <h2 class="h-xl" id="hbs-h">Recognised by Harvard Business School</h2>
       </div>
+      <img class="hbs-logo" src="/logos/HBS-styleguide-primary-logo-3.png" alt="Harvard Business School" width="2000" height="990" loading="lazy" decoding="async">
       <p class="body">Harvard Business School professors Iavor Bojinov and Edward McFowland III
         wrote a case study on Pernod Ricard's digital transformation, covered in HBS
         <em>Working Knowledge</em> on November 21, 2025. They found the company had done
