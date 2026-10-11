@@ -427,7 +427,7 @@ def expertise_keystone():
     """A stone arch of five blocks. The keystone at the top carries the Semantic
     mark: the one piece that holds the rest together."""
     cx, cy, ro, ri, n, key = 240, 232, 132, 74, 5, 2
-    delays = {0: 0, 4: 0, 1: .2, 3: .2, 2: .8}
+    delays = {0: 0, 4: 0, 1: .5, 3: .5, 2: 1.6}
     blocks = ''
     step = 180.0 / n
     for k in range(n):
