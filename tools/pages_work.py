@@ -18,7 +18,29 @@ PERNOD = '''
     </div>
   </section>
 
-  <section class="section section--tight section--flush section--compact" aria-labelledby="glance-h">
+  <section class="section section--flush" aria-labelledby="hbs-h">
+    <div class="container">
+      <img class="hbs-logo" src="/logos/HBS-styleguide-primary-logo-3.png" alt="Harvard Business School" width="2000" height="990" loading="lazy" decoding="async">
+      <div class="section-head">
+        <h2 class="h-xl" id="hbs-h">Recognised by Harvard Business School</h2>
+      </div>
+      <p class="body">Harvard Business School professors Iavor Bojinov and Edward McFowland III
+        wrote a case study on Pernod Ricard's digital transformation, covered in HBS
+        <em>Working Knowledge</em> on November 21, 2025. They found the company had done
+        &ldquo;a fairly good job, better than some tech companies&rdquo; at getting employees
+        to adopt AI. According to the article:</p>
+      <ul class="points" style="margin-top:24px;">
+        <li><span>D-STAR reached <strong>85% adoption</strong> across deployed markets by 2023.</span></li>
+        <li><span>The tools delivered <strong>sales increases of 1.5% to 4.5%</strong>, depending on
+          the market.</span></li>
+        <li><span>In France, stores that followed D-STAR's recommendations outperformed control
+          groups on net sales growth and net market share growth.</span></li>
+      </ul>
+      <a class="link" href="{hbs}" rel="noopener" style="margin-top:28px;">Read the HBS article {arrow}</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="glance-h">
     <div class="container">
       <h2 class="h-xl" id="glance-h">At a glance</h2>
       <div class="grid grid--3" style="margin-top:28px;">
@@ -86,28 +108,6 @@ PERNOD = '''
         <li><span><strong>Monitoring over time.</strong> Tracking of resolution trends to
           spot bottlenecks and keep improving data quality metrics.</span></li>
       </ul>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="hbs-h">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-xl" id="hbs-h">Recognised by Harvard Business School</h2>
-      </div>
-      <img class="hbs-logo" src="/logos/HBS-styleguide-primary-logo-3.png" alt="Harvard Business School" width="2000" height="990" loading="lazy" decoding="async">
-      <p class="body">Harvard Business School professors Iavor Bojinov and Edward McFowland III
-        wrote a case study on Pernod Ricard's digital transformation, covered in HBS
-        <em>Working Knowledge</em> on November 21, 2025. They found the company had done
-        &ldquo;a fairly good job, better than some tech companies&rdquo; at getting employees
-        to adopt AI. According to the article:</p>
-      <ul class="points" style="margin-top:24px;">
-        <li><span>D-STAR reached <strong>85% adoption</strong> across deployed markets by 2023.</span></li>
-        <li><span>The tools delivered <strong>sales increases of 1.5% to 4.5%</strong>, depending on
-          the market.</span></li>
-        <li><span>In France, stores that followed D-STAR's recommendations outperformed control
-          groups on net sales growth and net market share growth.</span></li>
-      </ul>
-      <a class="link" href="{hbs}" rel="noopener" style="margin-top:28px;">Read the HBS article {arrow}</a>
     </div>
   </section>
 
