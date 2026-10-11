@@ -167,3 +167,49 @@ ICON_PAY = _icon('A banknote and a coin', '''
   <path d="M10 20v.01M46 38v.01" stroke="{line}" stroke-width="3"/>
   <circle cx="48" cy="46" r="12" fill="#FFFFFF" stroke="{accent}" stroke-width="2"/>
   <path d="M48 40v12M52 43.5c-1-1.5-8-2-8 1.5s8 1.5 8 5-7 3-8 1.5" stroke="{accent}"/>'''.format(line=LINE, ink=INK, accent=ACCENT))
+
+
+# Icons for the home page: the four areas of work, and the four steps.
+def _i(label, body):
+    return _icon(label, body.format(line=LINE, ink=INK, accent=ACCENT))
+
+
+ICON_QUALITY = _i('A shield with a pulse line through it', '''
+  <path d="M32 7l20 7v16c0 13-9 21-20 26C21 51 12 43 12 30V14z" stroke="{ink}"/>
+  <path d="M20 32h8l3-8 5 15 3-7h5" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_AI = _i('A chip with an AI spark at its centre', '''
+  <rect x="16" y="16" width="32" height="32" rx="4" stroke="{ink}"/>
+  <path d="M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8" stroke="{line}"/>
+  <path d="M32 23l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_MIGRATION = _i('Data moving from one system to another', '''
+  <rect x="5" y="18" width="20" height="28" rx="3" stroke="{ink}"/>
+  <path d="M9 26h12M9 32h12M9 38h12" stroke="{line}"/>
+  <rect x="39" y="18" width="20" height="28" rx="3" stroke="{ink}"/>
+  <path d="M43 26h12M43 32h12M43 38h12" stroke="{line}"/>
+  <path d="M28 32h8M32 27l5 5-5 5" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_ANALYTICS = _i('A line chart ending in a decision point', '''
+  <path d="M8 8v48h48" stroke="{line}"/>
+  <path d="M14 44l12-12 10 8 14-18" stroke="{ink}"/>
+  <circle cx="50" cy="22" r="5" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_TALK = _i('Two speech bubbles', '''
+  <path d="M9 12h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 7v-7H9a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" stroke="{ink}"/>
+  <path d="M46 24h8a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-3v7l-8-7H30a4 4 0 0 1-4-4" stroke="{line}"/>
+  <path d="M15 23h.01M23 23h.01M31 23h.01" stroke="{accent}" stroke-width="3"/>''')
+
+ICON_DIAGNOSE = _i('A magnifying glass over a pulse line', '''
+  <circle cx="27" cy="27" r="17" stroke="{ink}"/>
+  <path d="M40 40l16 16" stroke="{ink}" stroke-width="2"/>
+  <path d="M17 28h6l3-7 4 13 3-6h4" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_BUILD = _i('Stacked building blocks', '''
+  <rect x="6" y="36" width="22" height="20" rx="2" stroke="{ink}"/>
+  <rect x="34" y="36" width="22" height="20" rx="2" stroke="{ink}"/>
+  <rect x="20" y="12" width="22" height="20" rx="2" stroke="{accent}" stroke-width="2"/>''')
+
+ICON_IMPROVE = _i('Rising steps with an upward arrow', '''
+  <path d="M6 56h13V44h13V32h13V20h13" stroke="{ink}"/>
+  <path d="M40 8h16v16M56 8L36 28" stroke="{accent}" stroke-width="2"/>''')

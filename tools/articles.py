@@ -12,20 +12,20 @@ ARTICLES = [
         'category': 'AI Readiness',
         'iso': '2026-08-04',
         'date': '4 August 2026',
-        'title': 'Most AI programmes stall on the data underneath them',
+        'title': 'Most AI programs stall on the data underneath them',
         'excerpt': 'The pilot works. The rollout does not. Almost always, the reason is '
                    'sitting in the data layer, and it was there long before anyone said '
                    'the word model.',
         'desc': 'Why enterprise AI initiatives stall in proof of concept, and the data '
                 'groundwork that decides whether they ship.',
         'body': '''
-        <p>There is a pattern that repeats across large organisations. A team builds a
+        <p>There is a pattern that repeats across large organizations. A team builds a
           proof of concept, it works, everyone is encouraged, and then the thing never
-          reaches production. Six months later the programme is quietly rescoped.</p>
+          reaches production. Six months later the program is quietly rescoped.</p>
 
         <p>The post-mortem usually blames the model, the vendor or the change management.
           In our experience the cause is almost always further down: the data the pilot
-          ran on was hand-assembled, and nothing in the organisation can produce that
+          ran on was hand-assembled, and nothing in the organization can produce that
           same data reliably, at scale, on a schedule, with an owner attached to it.</p>
 
         <h2>A pilot hides the work a rollout exposes</h2>
@@ -40,7 +40,7 @@ ARTICLES = [
           the output possible. So the decision to scale is taken on the assumption that
           the hard part is done, when in fact the hard part has not started.</p>
 
-        <blockquote>Every judgement call an analyst made by hand during the pilot becomes,
+        <blockquote>Every judgment call an analyst made by hand during the pilot becomes,
           at production scale, a rule someone has to own.</blockquote>
 
         <h2>What readiness actually means</h2>
@@ -63,7 +63,7 @@ ARTICLES = [
         </ul>
 
         <p>None of these are exotic. What makes them hard is that they cut across teams,
-          and they surface disagreements that the organisation has been comfortably
+          and they surface disagreements that the organization has been comfortably
           avoiding. Two departments have been reporting different revenue figures for
           years and both have been fine with it, because neither number was ever put in
           front of a system that had to pick one.</p>
@@ -89,11 +89,11 @@ ARTICLES = [
         <p>The reflex objection is that this delays the interesting work. It is worth
           noticing what the groundwork actually produces: agreed definitions, traceable
           numbers, reproducible pipelines and named owners. Those are the things every
-          other data initiative in the organisation has also been quietly missing.</p>
+          other data initiative in the organization has also been quietly missing.</p>
 
         <p>The AI use case is a good forcing function, because it makes the absence
           impossible to ignore. But the value of fixing it does not belong to the AI
-          programme alone, and it should not be accounted for as if it does.</p>
+          program alone, and it should not be accounted for as if it does.</p>
 ''',
     },
 
@@ -142,7 +142,7 @@ ARTICLES = [
           timing difference, or a genuine bug to fix.</p>
 
         <p>Keep that log. By cutover it is the single most persuasive document in the
-          programme, because it demonstrates that every difference was noticed and
+          program, because it demonstrates that every difference was noticed and
           accounted for rather than smoothed over.</p>
 
         <h2>Decide what you are not migrating</h2>
@@ -188,7 +188,7 @@ ARTICLES = [
         'desc': 'Why data quality initiatives stall after the tooling is bought, and what '
                 'makes the difference: ownership, severity, and a response people follow.',
         'body': '''
-        <p>Most organisations that have a data quality problem have already bought
+        <p>Most organizations that have a data quality problem have already bought
           something to fix it. The tool is installed, tests exist, alerts fire. And the
           business still does not trust the numbers.</p>
 
@@ -202,7 +202,7 @@ ARTICLES = [
           belongs to everybody, which is to say nobody. Within a few weeks the channel is
           muted. The tests are still running, faithfully, into a room with no one in it.</p>
 
-        <p>The fix is unglamorous and organisational: every check that matters gets a named
+        <p>The fix is unglamorous and organizational: every check that matters gets a named
           owner, a severity, and an agreed expectation of what happens when it fires. That
           is more work than configuring the tool, and it is the work that actually
           changes outcomes.</p>
@@ -239,7 +239,7 @@ ARTICLES = [
 
         <h2>Start where the pain is</h2>
 
-        <p>Broad quality programmes struggle to hold attention because their benefit is
+        <p>Broad quality programs struggle to hold attention because their benefit is
           diffuse. Narrow ones succeed because they are legible: pick the report that
           causes the most arguments, make that one dependable end to end, and let the
           approach spread on its own evidence.</p>

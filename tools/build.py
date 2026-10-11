@@ -53,9 +53,9 @@ home_ld = json.dumps({
         {'@type': 'WebSite', '@id': SITE + '/#website', 'url': SITE + '/', 'name': 'Semantic',
          'publisher': {'@id': SITE + '/#organization'}, 'inLanguage': 'en'},
         {'@type': 'WebPage', '@id': SITE + '/#webpage', 'url': SITE + '/',
-         'name': 'Senior Data Expertise for Enterprises | Semantic',
-         'description': 'Semantic is a boutique data consultancy that helps enterprises '
-                        'solve complex data problems, from diagnosis to implementation.',
+         'name': 'Senior Data Expertise | Semantic',
+         'description': 'We help companies solve complex data challenges, from diagnosis '
+                        'to implementation.',
          'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@id': SITE + '/#organization'},
          'inLanguage': 'en'},
         {'@type': 'Service', 'serviceType': 'Data consulting',
@@ -75,12 +75,10 @@ home_ld = json.dumps({
 
 PAGES.append((
     'index.html', '/',
-    'Senior Data Expertise for Enterprises | Semantic',
-    'Semantic is a boutique data consultancy. We help enterprises solve complex data '
-    'problems, from diagnosis to implementation.',
+    'Senior Data Expertise | Semantic',
+    'We help companies solve complex data challenges, from diagnosis to implementation.',
     'Senior data expertise, delivered by a dedicated team | Semantic',
-    'Semantic helps enterprises solve complex data problems, from diagnosis to '
-    'implementation.',
+    'We help companies solve complex data challenges, from diagnosis to implementation.',
     home_ld, HOME,
 ))
 
@@ -118,7 +116,7 @@ insights_ld = json.dumps({
 PAGES.append((
     'insights/index.html', '/insights/',
     'Insights on Enterprise Data | Semantic',
-    'Notes from inside enterprise data work: quality that does not hold, AI programmes '
+    'Notes from inside enterprise data work: quality that does not hold, AI programs '
     'that stall, migrations that lose the room.',
     None, None, insights_ld, insights_index(),
 ))

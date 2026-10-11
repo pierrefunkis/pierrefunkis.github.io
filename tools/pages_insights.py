@@ -37,7 +37,7 @@ def insights_index():
         </div>
         <div>
           <p class="lede">Short pieces on the problems we keep running into: quality that does
-            not hold, AI programmes that stall, migrations that lose the room. Written by the
+            not hold, AI programs that stall, migrations that lose the room. Written by the
             people doing the work.</p>
         </div>
       </div>
