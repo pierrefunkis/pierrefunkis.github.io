@@ -4,6 +4,7 @@ from shared import ARROW, cta_band
 HBS_URL = 'https://www.library.hbs.edu/working-knowledge/how-pernod-ricard-stirred-up-employee-enthusiasm-for-ai'
 
 PERNOD = '''
+  <div class="case">
   <section class="hero hero--page">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb">
@@ -56,7 +57,7 @@ PERNOD = '''
         <p class="body">Measured across 12 markets.</p>
       </div>
       <div class="grid grid--3">
-        <div class="cell cell--text cell--stat cell--accent"><h3 class="h-md">30% &rarr; 9.5%</h3>
+        <div class="cell cell--accent"><h3 class="h-md">30% &rarr; 2.5%</h3>
           <p class="body">Data quality errors, after Semantic designed and scaled the
             resolution process.</p></div>
         <div class="cell cell--text cell--stat"><h3 class="h-md">28 &rarr; 4 days</h3>
@@ -106,12 +107,11 @@ PERNOD = '''
         <li><span>In France, stores that followed D-STAR's recommendations outperformed control
           groups on net sales growth and net market share growth.</span></li>
       </ul>
-      <p class="body" style="margin-top:24px;">These results belong to Pernod Ricard's
-        program and teams, and the article does not name Semantic. Reliable data is what a
-        trusted recommendation engine stands on, and that was Semantic's part of the work.</p>
       <a class="link" href="{hbs}" rel="noopener" style="margin-top:28px;">Read the HBS article {arrow}</a>
     </div>
   </section>
+
+  </div>
 
 {cta}'''.format(
     hbs=HBS_URL, arrow=ARROW,
