@@ -515,9 +515,9 @@ a { color: inherit; }
 /* Two equal columns whose contents start at the top rather than centring. */
 .split--start { align-items: start; }
 
-/* Contact: the form takes 60% of the row, the intro the rest. Below the stacking
+/* Contact: the form (left) takes 60% of the row, the intro the rest. Below the stacking
    breakpoint the form is full width. */
-.split--contact { grid-template-columns: minmax(0, 1fr) 60%; gap: 56px; align-items: start; }
+.split--contact { grid-template-columns: 60% minmax(0, 1fr); gap: 56px; align-items: start; }
 
 /* A numbered or ticked list of short statements. */
 .points { list-style: none; }
