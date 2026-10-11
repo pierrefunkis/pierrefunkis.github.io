@@ -189,7 +189,7 @@ Twitter tags, exactly one `<h1>`, and a JSON-LD block. `404.html` is
 ## House style
 
 - No em dashes in visible copy. Use commas, colons or a full stop instead.
-- Nav labels are Our Expertise / Insights / About, with **Get in touch** as the
+- Nav labels are Our Expertise / Insights / About Us, with **Get in touch** as the
   CTA. There is no "Home" nav item; the wordmark links home. The CTA label is
   `CTA_LABEL` in `tools/shared.py`; the footer and breadcrumb say "Contact".
 - Do not invent clients, metrics, team size, certifications or years of

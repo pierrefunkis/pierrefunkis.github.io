@@ -48,7 +48,7 @@ ARROW = ('<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidde
 NAV_ITEMS = [
     ('/what-we-do/', 'Our Expertise'),
     ('/insights/', 'Insights'),
-    ('/about/', 'About'),
+    ('/about/', 'About Us'),
 ]
 if not SHOW_INSIGHTS:
     NAV_ITEMS = [i for i in NAV_ITEMS if i[0] != '/insights/']
@@ -183,7 +183,7 @@ FOOTER = '''
       <div class="footer-col">
         <ul>
           <li><a href="/what-we-do/">Our Expertise</a></li>
-{insights_link}          <li><a href="/about/">About</a></li>
+{insights_link}          <li><a href="/about/">About Us</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
