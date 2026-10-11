@@ -20,7 +20,7 @@ Each page answers exactly one question, and no page repeats another's answer:
 | --- | --- |
 | `/` | What is Semantic? |
 | `/what-we-do/` | What can Semantic do? |
-| `/insights/` | Does Semantic have something intelligent to say? |
+| `/insights/` | *Paused.* Set `SHOW_INSIGHTS = True` in `tools/shared.py` and rebuild to bring it back. |
 | `/about/` | Who is behind Semantic? |
 | `/contact/` | How do I start working with Semantic? |
 
@@ -29,7 +29,7 @@ Each page answers exactly one question, and no page repeats another's answer:
 ```
 index.html                    /                → Home
 what-we-do/index.html         /what-we-do/     → Expertise, technology, delivery model
-insights/index.html           /insights/       → Editorial index
+insights/index.html           /insights/       → Editorial index (paused, see SHOW_INSIGHTS)
 insights/<slug>/index.html    /insights/<slug>/→ One article each
 about/index.html              /about/          → Founder, why Semantic, the team
 contact/index.html            /contact/        → Contact, booking form

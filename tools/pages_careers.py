@@ -143,13 +143,6 @@ NOT_FOUND = '''
         <div class="capability">
           <div class="capability-head">
             <span class="capability-index">02</span>
-            <h3><a href="/insights/" style="text-decoration:none;">Insights</a></h3>
-          </div>
-          <p class="body">Short pieces on data quality, AI readiness and migration.</p>
-        </div>
-        <div class="capability">
-          <div class="capability-head">
-            <span class="capability-index">03</span>
             <h3><a href="/about/" style="text-decoration:none;">About</a></h3>
           </div>
           <p class="body">Who is behind Semantic, why it exists, and how the team
@@ -157,7 +150,7 @@ NOT_FOUND = '''
         </div>
         <div class="capability">
           <div class="capability-head">
-            <span class="capability-index">04</span>
+            <span class="capability-index">03</span>
             <h3><a href="/contact/" style="text-decoration:none;">Contact</a></h3>
           </div>
           <p class="body">Book a free advisory conversation about the problem you are
