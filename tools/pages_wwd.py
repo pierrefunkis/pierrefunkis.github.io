@@ -132,9 +132,8 @@ WHAT_WE_DO = '''
   <section class="section" aria-labelledby="tech-h">
     <div class="container">
       <div class="section-head">
-        <h2 class="h-lg" id="tech-h">Specialists adapted to your stack</h2>
-        <p class="body">We staff the right data specialist for your stack. These are the
-          tools we work in most often.</p>
+        <h2 class="h-lg" id="tech-h">Specialists for your data stack</h2>
+        <p class="body">Hands-on expertise across modern data platforms and tools.</p>
       </div>
       <div class="marquee">
         <div class="marquee-track">
