@@ -22,6 +22,8 @@ CLIENT_STRIP = '''
 # Four of the five capabilities. The fifth, data management, lives on What We Do
 # so the home page stays an introduction rather than a catalogue.
 HOME_CAPABILITIES = [
+    (ICON_ANALYTICS, 'Analytics &amp; Decision Support',
+     'Analytics built around the decisions it informs, not dashboards nobody uses.'),
     (ICON_QUALITY, 'Data Quality &amp; Reliability',
      'Testing, monitoring and incident response, so the numbers you run the business on '
      'can be trusted.'),
@@ -30,19 +32,17 @@ HOME_CAPABILITIES = [
      'production.'),
     (ICON_MIGRATION, 'Data Migration',
      'Legacy and cloud migrations, delivered without losing trust in the numbers.'),
-    (ICON_ANALYTICS, 'Analytics &amp; Decision Support',
-     'Analytics built around the decisions it informs, not dashboards nobody uses.'),
 ]
 
 STEPS = [
     (ICON_TALK, '01', 'Talk',
      'A conversation about the business, the data challenge behind it and the outcome you want.'),
     (ICON_DIAGNOSE, '02', 'Diagnose',
-     'We examine the real systems and data, then recommend root causes, priorities and an approach.'),
+     'We examine the data systems and the data itself, then recommend root causes, priorities and an action plan.'),
     (ICON_BUILD, '03', 'Build',
-     'We assemble the right specialists and deliver in increments you can review.'),
+     'We assemble the right specialists and make sure they are the right fit for your team and tools.'),
     (ICON_IMPROVE, '04', 'Improve',
-     'Where useful, we stay on to raise the standard and hand the capability to your team.'),
+     'We ensure follow-up, talent evaluation and handovers where needed.'),
 ]
 
 
@@ -92,7 +92,7 @@ HOME = '''
   <section class="section" aria-labelledby="wwd-h">
     <div class="container">
       <div class="section-head">
-        <h2 class="h-xl" id="wwd-h">How we help</h2>
+        <h2 class="h-xl" id="wwd-h">What We Do Best</h2>
       </div>
 
       <div class="grid grid--4">
@@ -107,7 +107,7 @@ HOME = '''
   <section class="section section--ruled" aria-labelledby="how-h">
     <div class="container">
       <div class="section-head">
-        <h2 class="h-xl" id="how-h">Our approach</h2>
+        <h2 class="h-xl" id="how-h">Our approach in 4 steps</h2>
       </div>
       <div class="steps">
 {steps}
