@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from shared import cta_band
-from plates import (expertise_pool, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
+from plates import (expertise_umbrella, ICON_W_VETTED, ICON_W_MANAGED, ICON_W_EMBEDDED,
                     ICON_W_HANDOVER, ICON_T_ANALYTICS, ICON_T_ENGINEERING,
                     ICON_T_ANALYTICS_ENG, ICON_T_MANAGEMENT, ICON_T_PRODUCT,
                     ICON_T_GOVERNANCE)
@@ -73,6 +73,8 @@ WHAT_WE_DO = '''
       <div class="with-plate">
         <div>
           <h1 class="display">One accountable point of contact</h1>
+          <p class="lede" style="margin-top:24px;text-wrap:balance;">We select, manage and stand behind every
+            data specialist we place.</p>
         </div>
         <div class="plate-slot">{plate}</div>
       </div>
@@ -114,7 +116,7 @@ WHAT_WE_DO = '''
     </div>
   </section>
 {cta}'''.format(
-    plate=expertise_pool(),
+    plate=expertise_umbrella(),
     ways=_ways(),
     specialists=_specialists(),
     tech=TECH_ITEMS.strip('\n'),
