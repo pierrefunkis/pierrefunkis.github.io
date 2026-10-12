@@ -232,9 +232,9 @@ ICON_BUILD = _i('Stacked building blocks', '''
   <rect x="34" y="36" width="22" height="20" rx="2" stroke="{ink}"/>
   <rect x="20" y="12" width="22" height="20" rx="2" stroke="{accent}" stroke-width="2"/>''')
 
-ICON_IMPROVE = _i('Rising steps with an upward arrow', '''
-  <path d="M6 56h13V44h13V32h13V20h13" stroke="{ink}"/>
-  <path d="M40 8h16v16M56 8L36 28" stroke="{accent}" stroke-width="2"/>''')
+ICON_IMPROVE = _i('Rising steps', '''
+  <path d="M6 56h13V44h13V32h13" stroke="{ink}"/>
+  <path d="M45 32V20h13" stroke="{accent}" stroke-width="2"/>''')
 
 
 # About page: the three models, the four principles, and the five team areas.
