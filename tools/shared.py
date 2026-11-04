@@ -54,7 +54,7 @@ if not SHOW_INSIGHTS:
     NAV_ITEMS = [i for i in NAV_ITEMS if i[0] != '/insights/']
 
 # Google Tag Manager container ID. Leave empty to disable tracking.
-GTM_ID = 'GTM-KPLG54MF'
+GTM_ID = 'GTM-MPDV6PCG'
 
 CTA_LABEL = 'Get in touch'
 CTA_HREF = '/contact/'
