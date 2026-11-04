@@ -53,6 +53,9 @@ NAV_ITEMS = [
 if not SHOW_INSIGHTS:
     NAV_ITEMS = [i for i in NAV_ITEMS if i[0] != '/insights/']
 
+# Google Tag Manager container ID. Leave empty to disable tracking.
+GTM_ID = 'GTM-KPLG54MF'
+
 CTA_LABEL = 'Get in touch'
 CTA_HREF = '/contact/'
 
@@ -64,11 +67,20 @@ def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra='',
     canonical = SITE + path
     og_title = og_title or title
     og_desc = og_desc or desc
+    gtm_head = ('''
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','%s');</script>''' % GTM_ID) if GTM_ID else ''
+    gtm_body = ('''<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%s"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+''' % GTM_ID) if GTM_ID else ''
     ld = '\n  <script type="application/ld+json">\n%s\n  </script>' % jsonld if jsonld else ''
     return '''<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">{gtm_head}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
 
@@ -100,10 +112,10 @@ def head(title, desc, path, og_title=None, og_desc=None, jsonld='', extra='',
   <link rel="stylesheet" href="{css_url}">{extra}{ld}
 </head>
 <body>
-
+{gtm_body}
 <a class="skip-link" href="#main">Skip to content</a>
 '''.format(title=title, desc=desc, canonical=canonical, og_title=og_title,
-           og_desc=og_desc, site=SITE, fonts=FONTS, extra=extra, ld=ld,
+           og_desc=og_desc, site=SITE, fonts=FONTS, extra=extra, ld=ld, gtm_head=gtm_head, gtm_body=gtm_body,
            og_image=og_image, og_alt=og_alt, css_url=CSS_URL)
 
 
